@@ -148,3 +148,21 @@ export interface SEOConfig {
   robots?: string;
   breadcrumbs?: BreadcrumbItem[];
 }
+
+export interface ContactCTAConfig {
+  sectionId: string;
+  eyebrow: string;
+  tagline: string;
+  headline: string;
+  supportingCopy: string;
+  ctaText: string;
+  ctaHref: string;
+  email: string;
+  closingMicrocopy: string;
+  metaLabels: {
+    protocol: string;
+    status: string;
+    channel: string;
+  };
+}
+

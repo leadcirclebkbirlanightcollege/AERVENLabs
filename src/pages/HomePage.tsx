@@ -10,11 +10,12 @@ import { Projects } from '../components/home/Projects';
 import { Team } from '../components/home/Team';
 import { Vision } from '../components/home/Vision';
 import { Partners } from '../components/home/Partners';
+import { ContactCTA } from '../components/home/ContactCTA';
 
 /**
- * HomePage — Section 01: Hero + Section 02: The Beginning + Section 03: Journey + Section 04: What We Build + Section 05: Projects + Section 06: Team + Section 07: Vision + Section 08: Partners.
- * Future homepage sections (Contact)
- * will be sequentially integrated in subsequent dedicated prompts.
+ * HomePage — Complete Flagship Sequence:
+ * Section 01: Hero + Section 02: The Beginning + Section 03: Journey + Section 04: What We Build +
+ * Section 05: Projects + Section 06: Team + Section 07: Vision + Section 08: Partners + Section 09: Contact CTA.
  */
 export const HomePage: React.FC = () => {
   useSEO(routeSEOConfig.home, {
@@ -47,6 +48,9 @@ export const HomePage: React.FC = () => {
 
       {/* Homepage Section 08: Partners / Infrastructure Foundation */}
       <Partners />
+
+      {/* Homepage Section 09: Contact / The Invitation */}
+      <ContactCTA />
     </div>
   );
 };
