@@ -1,0 +1,22 @@
+{
+  "name": "AervenLabs Technologies Pvt. Ltd.",
+  "short_name": "AervenLabs",
+  "description": "Building software, AI products, digital platforms, and experimental technology.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#030712",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/aervenlabs-logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}
