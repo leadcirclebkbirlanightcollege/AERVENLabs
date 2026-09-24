@@ -5,10 +5,15 @@ import { generateOrganizationSchema, generateWebSiteSchema } from '../lib/seo';
 import { Hero } from '../components/home/Hero';
 import { TheBeginning } from '../components/home/TheBeginning';
 import { Journey } from '../components/home/Journey';
+import { WhatWeBuild } from '../components/home/WhatWeBuild';
+import { Projects } from '../components/home/Projects';
+import { Team } from '../components/home/Team';
+import { Vision } from '../components/home/Vision';
+import { Partners } from '../components/home/Partners';
 
 /**
- * HomePage — Section 01: Hero + Section 02: The Beginning + Section 03: Journey.
- * Future homepage sections (What We Build, Projects, etc.)
+ * HomePage — Section 01: Hero + Section 02: The Beginning + Section 03: Journey + Section 04: What We Build + Section 05: Projects + Section 06: Team + Section 07: Vision + Section 08: Partners.
+ * Future homepage sections (Contact)
  * will be sequentially integrated in subsequent dedicated prompts.
  */
 export const HomePage: React.FC = () => {
@@ -27,6 +32,21 @@ export const HomePage: React.FC = () => {
 
       {/* Homepage Section 03: Journey / Evolution Story */}
       <Journey />
+
+      {/* Homepage Section 04: What We Build / Technology Architecture */}
+      <WhatWeBuild />
+
+      {/* Homepage Section 05: Projects / Product Showcase */}
+      <Projects />
+
+      {/* Homepage Section 06: Team / People & Builders */}
+      <Team />
+
+      {/* Homepage Section 07: Vision / Philosophy & Horizon */}
+      <Vision />
+
+      {/* Homepage Section 08: Partners / Infrastructure Foundation */}
+      <Partners />
     </div>
   );
 };

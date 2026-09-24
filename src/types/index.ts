@@ -56,6 +56,9 @@ export interface Capability {
   tagline?: string;
   category: string;
   description: string;
+  shortDescription?: string;
+  systemCode?: string;
+  discipline?: string;
   technologies?: string[];
   order: number;
 }
@@ -77,21 +80,28 @@ export interface Project {
   category: string;
   description: string;
   capabilities: string[];
+  features?: string[];
+  discipline?: string;
+  platforms?: string[];
+  technologies?: string[];
   metrics?: Record<string, string>;
   status: ProjectStatus;
   featured: boolean;
   image?: string;
   links?: ProjectLinks;
+  order?: number;
 }
 
 export interface TeamMember {
   id: string;
   name: string;
   role: string;
+  discipline?: string;
   bio?: string;
   image?: string;
   links?: SocialLinks;
   order: number;
+  featured?: boolean;
 }
 
 export interface Partner {
@@ -99,6 +109,9 @@ export interface Partner {
   name: string;
   category: string;
   role: string;
+  description?: string;
+  infraId?: string;
+  techRole?: string;
   websiteUrl?: string;
   logo?: string;
 }
