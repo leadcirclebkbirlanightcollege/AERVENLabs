@@ -122,6 +122,9 @@ export const Hero: React.FC = () => {
               <img
                 src="/assets/aervenlabs-logo.png"
                 alt=""
+                width={14}
+                height={14}
+                fetchPriority="high"
                 className="h-3.5 w-3.5 object-contain"
                 aria-hidden="true"
               />

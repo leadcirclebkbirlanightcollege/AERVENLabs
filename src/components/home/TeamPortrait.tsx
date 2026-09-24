@@ -37,7 +37,10 @@ export const TeamPortrait: React.FC<TeamPortraitProps> = ({
           <img
             src={member.image}
             alt={member.imageAlt}
+            width={400}
+            height={500}
             loading={member.featured ? 'eager' : 'lazy'}
+            decoding={member.featured ? 'sync' : 'async'}
             style={{
               objectPosition: member.imagePosition || 'center 25%',
               animationDelay: !isGlitchDone && !prefersReducedMotion ? `${delayMs}ms` : undefined,

@@ -1,13 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { SEOConfig } from '../types';
 import { defaultSEO } from '../data/seo';
 import { getCanonicalUrl } from '../lib/seo';
 
+/** Unique marker attribute used to identify managed JSON-LD script tags. */
+const JSON_LD_ATTR = 'data-agy-jsonld';
+
 /**
  * Custom React hook for dynamic document head SEO management.
  * Dynamically updates title, meta tags, canonical link, and JSON-LD schema.
+ *
+ * JSON-LD scripts are deduplicated via a `data-agy-jsonld` attribute so that
+ * navigating between routes never accumulates stale structured-data blocks.
  */
 export function useSEO(config?: Partial<SEOConfig>, jsonLdSchema?: object) {
+  const scriptRef = useRef<HTMLScriptElement | null>(null);
+
   useEffect(() => {
     const mergedConfig: SEOConfig = {
       ...defaultSEO,
@@ -22,12 +30,18 @@ export function useSEO(config?: Partial<SEOConfig>, jsonLdSchema?: object) {
       },
     };
 
-    // Update title
+    // ── Title ────────────────────────────────────────────────────────────────
     document.title = mergedConfig.title;
 
-    // Helper to set or create meta tag
-    const setMetaTag = (attributeName: string, attributeValue: string, content: string) => {
-      let element = document.querySelector(`meta[${attributeName}="${attributeValue}"]`);
+    // ── Helper: upsert a <meta> element ─────────────────────────────────────
+    const setMetaTag = (
+      attributeName: string,
+      attributeValue: string,
+      content: string
+    ) => {
+      let element = document.querySelector(
+        `meta[${attributeName}="${attributeValue}"]`
+      ) as HTMLMetaElement | null;
       if (!element) {
         element = document.createElement('meta');
         element.setAttribute(attributeName, attributeValue);
@@ -36,7 +50,7 @@ export function useSEO(config?: Partial<SEOConfig>, jsonLdSchema?: object) {
       element.setAttribute('content', content);
     };
 
-    // Description & robots
+    // ── Standard meta ────────────────────────────────────────────────────────
     if (mergedConfig.description) {
       setMetaTag('name', 'description', mergedConfig.description);
     }
@@ -47,9 +61,12 @@ export function useSEO(config?: Partial<SEOConfig>, jsonLdSchema?: object) {
       setMetaTag('name', 'keywords', mergedConfig.keywords.join(', '));
     }
 
-    // Canonical link
-    const canonicalHref = mergedConfig.canonicalUrl || getCanonicalUrl(window.location.pathname);
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    // ── Canonical link ───────────────────────────────────────────────────────
+    const canonicalHref =
+      mergedConfig.canonicalUrl || getCanonicalUrl(window.location.pathname);
+    let canonicalLink = document.querySelector(
+      'link[rel="canonical"]'
+    ) as HTMLLinkElement | null;
     if (!canonicalLink) {
       canonicalLink = document.createElement('link');
       canonicalLink.setAttribute('rel', 'canonical');
@@ -57,19 +74,26 @@ export function useSEO(config?: Partial<SEOConfig>, jsonLdSchema?: object) {
     }
     canonicalLink.setAttribute('href', canonicalHref);
 
-    // Open Graph
+    // ── Open Graph ───────────────────────────────────────────────────────────
     if (mergedConfig.openGraph?.title) {
       setMetaTag('property', 'og:title', mergedConfig.openGraph.title);
     }
     if (mergedConfig.openGraph?.description) {
-      setMetaTag('property', 'og:description', mergedConfig.openGraph.description);
+      setMetaTag(
+        'property',
+        'og:description',
+        mergedConfig.openGraph.description
+      );
     }
     if (mergedConfig.openGraph?.type) {
       setMetaTag('property', 'og:type', mergedConfig.openGraph.type);
     }
     setMetaTag('property', 'og:url', canonicalHref);
+    if (mergedConfig.openGraph?.siteName) {
+      setMetaTag('property', 'og:site_name', mergedConfig.openGraph.siteName);
+    }
 
-    // Twitter
+    // ── Twitter Card ─────────────────────────────────────────────────────────
     if (mergedConfig.twitter?.card) {
       setMetaTag('name', 'twitter:card', mergedConfig.twitter.card);
     }
@@ -77,21 +101,37 @@ export function useSEO(config?: Partial<SEOConfig>, jsonLdSchema?: object) {
       setMetaTag('name', 'twitter:title', mergedConfig.twitter.title);
     }
     if (mergedConfig.twitter?.description) {
-      setMetaTag('name', 'twitter:description', mergedConfig.twitter.description);
+      setMetaTag(
+        'name',
+        'twitter:description',
+        mergedConfig.twitter.description
+      );
     }
 
-    // JSON-LD structured data script
-    let scriptElement: HTMLScriptElement | null = null;
+    // ── JSON-LD structured data (deduplicated) ───────────────────────────────
+    // Remove any previously injected script before writing a new one.
+    const existing = document.querySelector(
+      `script[type="application/ld+json"][${JSON_LD_ATTR}]`
+    );
+    if (existing) {
+      existing.parentNode?.removeChild(existing);
+      scriptRef.current = null;
+    }
+
     if (jsonLdSchema) {
-      scriptElement = document.createElement('script');
-      scriptElement.type = 'application/ld+json';
-      scriptElement.text = JSON.stringify(jsonLdSchema);
-      document.head.appendChild(scriptElement);
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute(JSON_LD_ATTR, 'true');
+      script.text = JSON.stringify(jsonLdSchema);
+      document.head.appendChild(script);
+      scriptRef.current = script;
     }
 
+    // ── Cleanup on unmount ───────────────────────────────────────────────────
     return () => {
-      if (scriptElement && scriptElement.parentNode) {
-        scriptElement.parentNode.removeChild(scriptElement);
+      if (scriptRef.current && scriptRef.current.parentNode) {
+        scriptRef.current.parentNode.removeChild(scriptRef.current);
+        scriptRef.current = null;
       }
     };
   }, [config, jsonLdSchema]);

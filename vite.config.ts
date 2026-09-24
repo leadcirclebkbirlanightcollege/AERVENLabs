@@ -14,4 +14,17 @@ export default defineConfig({
     port: 3000,
     open: false,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'router': ['react-router-dom'],
+          'animation': ['gsap', 'motion'],
+          'icons': ['lucide-react'],
+        },
+      },
+    },
+  },
 });
+

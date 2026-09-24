@@ -9,7 +9,7 @@ import { generateBreadcrumbSchema } from '../lib/seo';
  */
 export const TermsPage: React.FC = () => {
   useSEO(
-    routeSEOConfig.terms,
+    { ...routeSEOConfig.terms, robots: 'noindex, follow' },
     routeSEOConfig.terms?.breadcrumbs
       ? generateBreadcrumbSchema(routeSEOConfig.terms.breadcrumbs)
       : undefined

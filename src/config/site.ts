@@ -7,7 +7,8 @@ import { Company, NavigationItem } from '../types';
 export const siteConfig = {
   name: 'AervenLabs',
   legalName: 'AervenLabs Technologies Pvt. Ltd.',
-  url: 'https://aervenlabs.com',
+  // Production URL — swap to custom domain once DNS is confirmed (e.g. https://aervenlabs.com)
+  url: 'https://aervenlabs.vercel.app',
   tagline: 'Technology. Built with intent.',
   description:
     'Official website of AervenLabs Technologies Pvt. Ltd. Building high-impact digital products, platforms, and intelligent software systems.',

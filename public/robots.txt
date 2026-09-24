@@ -1,4 +1,12 @@
+# AervenLabs Technologies — robots.txt
+# https://aervenlabs.vercel.app
+
+# Allow all legitimate crawlers (Googlebot, Bingbot, etc.)
 User-agent: *
 Allow: /
 
-Sitemap: https://aervenlabs.com/sitemap.xml
+# Disallow internal utility paths that should not be indexed
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://aervenlabs.vercel.app/sitemap.xml

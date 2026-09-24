@@ -9,7 +9,7 @@ import { generateBreadcrumbSchema } from '../lib/seo';
  */
 export const PrivacyPage: React.FC = () => {
   useSEO(
-    routeSEOConfig.privacy,
+    { ...routeSEOConfig.privacy, robots: 'noindex, follow' },
     routeSEOConfig.privacy?.breadcrumbs
       ? generateBreadcrumbSchema(routeSEOConfig.privacy.breadcrumbs)
       : undefined
