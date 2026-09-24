@@ -25,6 +25,8 @@ export const WhatWeBuild: React.FC = () => {
     mm.add('(min-width: 1024px)', () => {
       if (!sectionRef.current || !pinContainerRef.current) return;
 
+      let lastIndex = 0;
+
       // Pin the frame over a controlled scroll distance (~190vh)
       ScrollTrigger.create({
         trigger: sectionRef.current,
@@ -37,7 +39,10 @@ export const WhatWeBuild: React.FC = () => {
             Math.floor(self.progress * capabilitiesData.length),
             capabilitiesData.length - 1
           );
-          setActiveIndex(index);
+          if (index !== lastIndex) {
+            lastIndex = index;
+            setActiveIndex(index);
+          }
         },
       });
     });
@@ -65,8 +70,8 @@ export const WhatWeBuild: React.FC = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.1,
-        delayChildren: prefersReducedMotion ? 0 : 0.05,
+        staggerChildren: prefersReducedMotion ? 0 : 0.08,
+        delayChildren: prefersReducedMotion ? 0 : 0.04,
       },
     },
   };
@@ -80,7 +85,7 @@ export const WhatWeBuild: React.FC = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: prefersReducedMotion ? 0.01 : 0.75,
+        duration: prefersReducedMotion ? 0.01 : 0.7,
         ease: [0.16, 1, 0.3, 1] as const,
       },
     },
@@ -93,8 +98,8 @@ export const WhatWeBuild: React.FC = () => {
       ref={sectionRef}
       id="what-we-build"
       aria-labelledby="what-we-build-title"
-      className={`relative bg-black text-foreground border-t border-border-subtle ${
-        prefersReducedMotion ? 'py-24 sm:py-32' : 'lg:h-[200vh]'
+      className={`relative bg-black text-foreground border-t border-border-subtle py-28 md:py-36 ${
+        prefersReducedMotion ? 'lg:py-44' : 'lg:py-0 lg:h-[200vh]'
       }`}
     >
       {/* Background Architectural Grid Lines */}
@@ -403,7 +408,7 @@ export const WhatWeBuild: React.FC = () => {
               <li key={cap.id} className="relative space-y-6">
                 {/* Architectural Node Indicator on the Left Spine */}
                 <div
-                  className="absolute -left-[31px] sm:-left-[39px] top-1.5 h-3 w-3 rotate-45 border border-white bg-white shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+                  className="absolute -left-[31px] sm:-left-[39px] top-1.5 h-3 w-3 rotate-45 border border-white bg-white"
                   aria-hidden="true"
                 />
 

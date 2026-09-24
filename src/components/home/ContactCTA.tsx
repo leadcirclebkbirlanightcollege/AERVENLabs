@@ -132,7 +132,7 @@ export const ContactCTA: React.FC = () => {
                 {/* Primary CTA */}
                 <Link
                   to={contactCTAConfig.ctaHref}
-                  className="group inline-flex items-center justify-between sm:justify-center gap-4 bg-white text-black font-mono text-xs sm:text-sm font-semibold tracking-wider uppercase px-8 py-4 rounded-[2px] border border-white hover:bg-neutral-200 hover:border-neutral-300 active:scale-[0.99] transition-all duration-200 min-h-[48px] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black select-none shrink-0 w-full sm:w-auto"
+                  className="group inline-flex items-center justify-between sm:justify-center gap-4 bg-white text-black font-mono text-xs sm:text-sm font-semibold tracking-wider uppercase px-6 sm:px-8 py-4 rounded-[2px] border border-white hover:bg-neutral-200 hover:border-neutral-300 active:scale-[0.99] transition-all duration-200 min-h-[48px] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black select-none shrink-0 w-full sm:w-auto"
                   aria-label="Start a conversation with AervenLabs"
                 >
                   <span>{contactCTAConfig.ctaText}</span>

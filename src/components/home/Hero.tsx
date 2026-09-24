@@ -17,17 +17,19 @@ export const Hero: React.FC = () => {
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // GSAP subtle scroll-driven narrative interaction
+  // GSAP subtle scroll-driven narrative interaction (desktop only)
   useEffect(() => {
     if (prefersReducedMotion || typeof window === 'undefined') return;
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
-      // Subtle headline parallax drift upward
-      if (headlineRef.current) {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 768px)', () => {
+      // Subtle headline parallax drift upward (restrained to -20px)
+      if (headlineRef.current && heroRef.current) {
         gsap.to(headlineRef.current, {
-          yPercent: -12,
+          y: -20,
           ease: 'none',
           scrollTrigger: {
             trigger: heroRef.current,
@@ -38,11 +40,11 @@ export const Hero: React.FC = () => {
         });
       }
 
-      // Secondary content gradual fade
-      if (secondaryRef.current) {
+      // Secondary content gradual subtle drift (restrained to -8px)
+      if (secondaryRef.current && heroRef.current) {
         gsap.to(secondaryRef.current, {
-          opacity: 0.35,
-          yPercent: -8,
+          opacity: 0.6,
+          y: -8,
           ease: 'none',
           scrollTrigger: {
             trigger: heroRef.current,
@@ -53,22 +55,22 @@ export const Hero: React.FC = () => {
         });
       }
 
-      // Scroll cue immediate fadeout
-      if (scrollCueRef.current) {
+      // Scroll cue natural fadeout
+      if (scrollCueRef.current && heroRef.current) {
         gsap.to(scrollCueRef.current, {
           opacity: 0,
           ease: 'power1.out',
           scrollTrigger: {
             trigger: heroRef.current,
             start: 'top top',
-            end: '150px top',
+            end: '180px top',
             scrub: true,
           },
         });
       }
-    }, heroRef);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, [prefersReducedMotion]);
 
   // Headline lines for masked reveal
@@ -126,8 +128,8 @@ export const Hero: React.FC = () => {
               <span className="text-tech-label text-neutral-300">
                 AERVENLABS TECHNOLOGIES
               </span>
-              <span className="h-2.5 w-[1px] bg-white/[0.15]" aria-hidden="true" />
-              <span className="text-tech-label text-neutral-400">
+              <span className="hidden sm:inline-block h-2.5 w-[1px] bg-white/[0.15]" aria-hidden="true" />
+              <span className="hidden sm:inline-block text-tech-label text-neutral-400">
                 SYS_ID // 2026
               </span>
             </motion.div>
@@ -216,7 +218,7 @@ export const Hero: React.FC = () => {
             >
               <Link
                 to="/projects"
-                className={`${buttonVariants({ variant: 'default', size: 'default' })} group gap-2`}
+                className={`${buttonVariants({ variant: 'default', size: 'touch' })} group gap-2 w-full sm:w-auto justify-center`}
               >
                 <span>Explore Projects</span>
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -237,9 +239,16 @@ export const Hero: React.FC = () => {
             </span>
           </div>
 
-          {/* Right: Minimal Architectural Scroll Cue */}
-          <div
+          {/* Right: Minimal Architectural Scroll Cue (enters last) */}
+          <motion.div
             ref={scrollCueRef}
+            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: prefersReducedMotion ? 0.01 : 0.6,
+              delay: prefersReducedMotion ? 0 : 0.75,
+              ease: [0.16, 1, 0.3, 1],
+            }}
             className="flex items-center gap-3 ml-auto sm:ml-0"
             aria-hidden="true"
           >
@@ -265,7 +274,7 @@ export const Hero: React.FC = () => {
                 className="h-full w-full bg-white"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

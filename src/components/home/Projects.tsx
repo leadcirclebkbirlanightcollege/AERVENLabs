@@ -19,17 +19,19 @@ export const Projects: React.FC = () => {
   // Flagship project: Campus Connect
   const flagshipProject = projectsData[0];
 
-  // Subtle GSAP scroll-driven narrative interaction
+  // Subtle GSAP scroll-driven narrative interaction (desktop only)
   useEffect(() => {
     if (prefersReducedMotion || typeof window === 'undefined') return;
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 1024px)', () => {
       // Subtle visual parallax drift upward during natural page scroll
       if (visualRef.current && sectionRef.current) {
         gsap.to(visualRef.current, {
-          yPercent: -6,
+          y: -16,
           ease: 'none',
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -39,9 +41,9 @@ export const Projects: React.FC = () => {
           },
         });
       }
-    }, sectionRef);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, [prefersReducedMotion]);
 
   // Motion reveal variants
@@ -151,7 +153,7 @@ export const Projects: React.FC = () => {
           {/* Top Metadata Hairline Bar */}
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-subtle pb-4">
             <div className="flex items-center gap-3">
-              <span className="h-2 w-2 bg-white rounded-full animate-pulse" aria-hidden="true" />
+              <span className="h-2 w-2 bg-white rounded-full" aria-hidden="true" />
               <span className="font-mono text-xs font-semibold text-white tracking-wider uppercase">
                 PROJECT 01 // FLAGSHIP PRODUCT
               </span>
@@ -166,7 +168,7 @@ export const Projects: React.FC = () => {
                 STATUS //
               </span>
               <span className="px-2.5 py-0.5 text-tech-label font-mono text-white bg-surface-dark border border-white/20 rounded-[2px]">
-                IN DEVELOPMENT
+                PRODUCTION-READY
               </span>
             </div>
           </div>
@@ -188,7 +190,7 @@ export const Projects: React.FC = () => {
                     </span>
                   </div>
                   <span className="text-tech-label text-neutral-500 font-mono">
-                    UNIFIED ECOSYSTEM
+                    UNIFIED CAMPUS OS
                   </span>
                 </div>
 
@@ -217,7 +219,7 @@ export const Projects: React.FC = () => {
                       CAMPUS CONNECT
                     </h3>
                     <p className="mt-3 text-tech-label text-neutral-400 font-mono tracking-widest uppercase">
-                      CAMPUS TECHNOLOGY, REDESIGNED.
+                      YOUR ENTIRE COLLEGE LIFE. ONE APP.
                     </p>
                   </div>
 
@@ -225,41 +227,41 @@ export const Projects: React.FC = () => {
                   <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                     <div className="surface-level-2 p-3.5 space-y-1.5 rounded-[2px] border border-border-subtle">
                       <div className="flex items-center justify-between">
-                        <span className="text-tech-label text-white font-mono">01 // NAVIGATION</span>
-                        <span className="text-[10px] font-mono text-neutral-500">SPATIAL</span>
+                        <span className="text-tech-label text-white font-mono">01 // ATTENDANCE</span>
+                        <span className="text-[10px] font-mono text-neutral-500">TIMING-SAFE</span>
                       </div>
                       <p className="text-xs text-neutral-400 font-sans">
-                        Interactive campus map, building wayfinding & facility routes.
+                        Dynamic QR tokens, live faculty roster & statutory audit registers.
                       </p>
                     </div>
 
                     <div className="surface-level-2 p-3.5 space-y-1.5 rounded-[2px] border border-border-subtle">
                       <div className="flex items-center justify-between">
-                        <span className="text-tech-label text-white font-mono">02 // EVENTS</span>
-                        <span className="text-[10px] font-mono text-neutral-500">SCHEDULES</span>
+                        <span className="text-tech-label text-white font-mono">02 // IDENTITY</span>
+                        <span className="text-[10px] font-mono text-neutral-500">VERIFIED</span>
                       </div>
                       <p className="text-xs text-neutral-400 font-sans">
-                        Centralized institutional schedules, activities & announcements.
+                        Smart digital student IDs with optical hologram & security QR.
                       </p>
                     </div>
 
                     <div className="surface-level-2 p-3.5 space-y-1.5 rounded-[2px] border border-border-subtle">
                       <div className="flex items-center justify-between">
-                        <span className="text-tech-label text-white font-mono">03 // NOTICES</span>
-                        <span className="text-[10px] font-mono text-neutral-500">REAL-TIME</span>
+                        <span className="text-tech-label text-white font-mono">03 // ACADEMICS</span>
+                        <span className="text-[10px] font-mono text-neutral-500">OPERATIONS</span>
                       </div>
                       <p className="text-xs text-neutral-400 font-sans">
-                        Instant digital notice boards & prioritized push alerts.
+                        Timetable matrix, assignment grading, SGPA & batch promotion.
                       </p>
                     </div>
 
                     <div className="surface-level-2 p-3.5 space-y-1.5 rounded-[2px] border border-border-subtle">
                       <div className="flex items-center justify-between">
-                        <span className="text-tech-label text-white font-mono">04 // ENGAGEMENT</span>
-                        <span className="text-[10px] font-mono text-neutral-500">STUDENT</span>
+                        <span className="text-tech-label text-white font-mono">04 // CREDENTIALS</span>
+                        <span className="text-[10px] font-mono text-neutral-500">ZERO-AUTH</span>
                       </div>
                       <p className="text-xs text-neutral-400 font-sans">
-                        Unified directory, resources & connected student community.
+                        Public cryptographic credential verification at /verify/:ref.
                       </p>
                     </div>
                   </div>
@@ -277,7 +279,7 @@ export const Projects: React.FC = () => {
                     AERVENLABS TECHNOLOGIES // FLAGSHIP SPECIFICATION
                   </span>
                   <span className="text-tech-label text-neutral-500 font-mono">
-                    DEV_PREVIEW_v0.9
+                    v1.0.0 // PRODUCTION
                   </span>
                 </div>
               </div>

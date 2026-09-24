@@ -11,14 +11,20 @@ export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
 
-  // Monitor scroll state with passive listener
+  // Monitor scroll state with passive listener (guarded to prevent redundant renders)
   useEffect(() => {
+    let lastScrolled = window.scrollY > 20;
+    setIsScrolled(lastScrolled);
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const scrolled = window.scrollY > 20;
+      if (scrolled !== lastScrolled) {
+        lastScrolled = scrolled;
+        setIsScrolled(scrolled);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

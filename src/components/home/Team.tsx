@@ -1,15 +1,20 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Github, Linkedin, Twitter } from 'lucide-react';
 import { teamMembers, teamSectionConfig } from '../../data/team';
 import { TeamMember } from '../../types';
+import { TeamPortrait } from './TeamPortrait';
 
+/**
+ * Homepage Section 05: The Team ("People behind the systems.").
+ * Premium editorial portrait presentation for the 8 real AervenLabs team members.
+ * Strictly monochrome, architectural, intentional, and human.
+ */
 export const Team: React.FC = () => {
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Motion variants for section entry
+  // Staggered motion variants for restrained section entry
   const containerVariants = {
     hidden: {},
     visible: {
@@ -35,14 +40,6 @@ export const Team: React.FC = () => {
     },
   };
 
-  const hasVerifiedMembers = teamMembers.length > 0;
-  const featuredMember = hasVerifiedMembers
-    ? teamMembers.find((m) => m.featured) || teamMembers[0]
-    : null;
-  const secondaryMembers = hasVerifiedMembers
-    ? teamMembers.filter((m) => m.id !== featuredMember?.id)
-    : [];
-
   return (
     <section
       id="team"
@@ -65,14 +62,14 @@ export const Team: React.FC = () => {
         </div>
       </div>
 
-      <div className="container-architectural relative z-10 w-full">
+      <div className="container-architectural relative z-10 w-full space-y-16 sm:space-y-20 lg:space-y-28">
         {/* Section Header: Structured Eyebrow, Heading, & Humanizing Description */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid-architectural items-start mb-16 sm:mb-20 lg:mb-28"
+          className="grid-architectural items-start"
         >
           {/* Left Column: Eyebrow & Oversized Architectural 05 */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
@@ -119,236 +116,113 @@ export const Team: React.FC = () => {
         </motion.div>
 
         {/* ============================================================== */}
-        {/* CASE A: VERIFIED TEAM MEMBERS DATA POPULATED                   */}
+        {/* 12-COLUMN EDITORIAL TEAM PORTRAIT SYSTEM (ALL 8 MEMBERS)       */}
         {/* ============================================================== */}
-        {hasVerifiedMembers && (
-          <div className="space-y-16 lg:space-y-24">
-            {/* Featured Team Member Layout */}
-            {featuredMember && (
-              <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="grid-architectural items-center gap-8 lg:gap-16 border-b border-border-subtle pb-16 lg:pb-24"
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
+        >
+          {teamMembers.map((member: TeamMember, index: number) => {
+            // Editorial span and responsive ordering:
+            // Desktop: Founder & Co-Founder get top 6-col priority, followed by Mentor + Engineering/Design (4-cols)
+            // Mobile & Tablet: Natural sequential order (01 -> 08)
+            const getGridClasses = (id: string) => {
+              switch (id) {
+                case 'atharv-a-jadhav':
+                  return 'lg:col-span-6 lg:order-1';
+                case 'pransu-b-mishra':
+                  return 'lg:col-span-6 lg:order-2';
+                case 'amit-n-rai':
+                  return 'lg:col-span-4 lg:order-3';
+                case 'aditya-s-pandey':
+                  return 'lg:col-span-4 lg:order-4';
+                case 'aditya-v-mishra':
+                  return 'lg:col-span-4 lg:order-5';
+                case 'subhasree-g-padhi':
+                  return 'lg:col-span-4 lg:order-6';
+                case 'avadhut-g-kashid':
+                  return 'lg:col-span-4 lg:order-7';
+                case 'ajay-a-prajapati':
+                  return 'lg:col-span-4 lg:order-8';
+                default:
+                  return 'lg:col-span-4';
+              }
+            };
+
+            const gridSpanClass = getGridClasses(member.id);
+
+            return (
+              <motion.article
+                key={member.id}
+                variants={itemVariants}
+                className={`group surface-level-1 p-5 sm:p-6 lg:p-7 rounded-[2px] border border-border-subtle hover:border-white/30 transition-all duration-300 flex flex-col justify-between ${gridSpanClass}`}
               >
-                {/* Left (Cols 1-6): Large Featured Portrait */}
-                <motion.div variants={itemVariants} className="lg:col-span-6">
-                  {featuredMember.image ? (
-                    <div className="media-container-architectural relative overflow-hidden aspect-[4/5] bg-surface-dark border border-border-subtle">
-                      <img
-                        src={featuredMember.image}
-                        alt={`Portrait of ${featuredMember.name}`}
-                        loading="lazy"
-                        className="media-monochrome h-full w-full object-cover object-center transition-transform duration-500 hover:scale-[1.02]"
-                      />
-                      <div className="media-overlay-vignette" aria-hidden="true" />
-                    </div>
-                  ) : (
-                    <div className="media-container-architectural relative flex flex-col justify-between aspect-[4/5] bg-surface-dark border border-border-subtle p-8">
-                      <div className="flex justify-between text-neutral-600 font-mono text-[10px]" aria-hidden="true">
-                        <span>+ [PORTRAIT_NW]</span>
-                        <span>+ [PORTRAIT_NE]</span>
-                      </div>
-                      <div className="text-center space-y-2">
-                        <span className="font-mono text-3xl font-light text-white/20 select-none">
-                          0{featuredMember.order || 1}
-                        </span>
-                        <p className="text-tech-label text-neutral-500 font-mono tracking-widest">
-                          VERIFIED PROFILE
-                        </p>
-                      </div>
-                      <div className="flex justify-between text-neutral-600 font-mono text-[10px]" aria-hidden="true">
-                        <span>+ [PORTRAIT_SW]</span>
-                        <span>+ [PORTRAIT_SE]</span>
-                      </div>
-                    </div>
-                  )}
-                </motion.div>
-
-                {/* Right (Cols 7-12): Profile Information */}
-                <motion.div variants={itemVariants} className="lg:col-span-6 space-y-6">
-                  <div className="space-y-2">
-                    <span className="text-tech-label text-neutral-400 font-mono tracking-wider">
-                      {featuredMember.discipline || 'LEADERSHIP // ENGINEERING'}
-                    </span>
-                    <h3 className="text-heading-1 font-semibold text-white tracking-tight">
-                      {featuredMember.name}
-                    </h3>
-                    <p className="text-sm font-mono text-neutral-400 uppercase tracking-wide">
-                      {featuredMember.role}
-                    </p>
-                  </div>
-
-                  <div className="h-[1px] w-14 bg-white/20" aria-hidden="true" />
-
-                  {featuredMember.bio && (
-                    <p className="text-base text-secondary-text leading-relaxed font-sans max-w-lg">
-                      {featuredMember.bio}
-                    </p>
-                  )}
-
-                  {/* Verified Social Channels */}
-                  {featuredMember.links && (
-                    <div className="flex items-center gap-4 pt-2">
-                      {featuredMember.links.linkedin && (
-                        <a
-                          href={featuredMember.links.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Open ${featuredMember.name}'s LinkedIn profile`}
-                          className="text-neutral-400 hover:text-white transition-colors duration-200"
-                        >
-                          <Linkedin className="h-4 w-4" />
-                        </a>
-                      )}
-                      {featuredMember.links.github && (
-                        <a
-                          href={featuredMember.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Open ${featuredMember.name}'s GitHub profile`}
-                          className="text-neutral-400 hover:text-white transition-colors duration-200"
-                        >
-                          <Github className="h-4 w-4" />
-                        </a>
-                      )}
-                      {featuredMember.links.twitter && (
-                        <a
-                          href={featuredMember.links.twitter}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Open ${featuredMember.name}'s X profile`}
-                          className="text-neutral-400 hover:text-white transition-colors duration-200"
-                        >
-                          <Twitter className="h-4 w-4" />
-                        </a>
-                      )}
-                    </div>
-                  )}
-                </motion.div>
-              </motion.div>
-            )}
-
-            {/* Secondary Team Members Grid */}
-            {secondaryMembers.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {secondaryMembers.map((member: TeamMember) => (
-                  <div
-                    key={member.id}
-                    className="surface-level-1 p-6 space-y-4 rounded-[2px] border border-border-subtle"
-                  >
-                    {member.image && (
-                      <div className="media-container-architectural aspect-[4/5] overflow-hidden mb-4 bg-surface-dark">
-                        <img
-                          src={member.image}
-                          alt={`Portrait of ${member.name}`}
-                          loading="lazy"
-                          className="media-monochrome h-full w-full object-cover object-center"
-                        />
-                      </div>
-                    )}
-                    <div className="space-y-1">
-                      <h4 className="text-heading-3 font-semibold text-white tracking-tight">
-                        {member.name}
-                      </h4>
-                      <p className="text-tech-label text-neutral-400 font-mono">
-                        {member.role}
-                      </p>
-                    </div>
-                    {member.bio && (
-                      <p className="text-sm text-secondary-text leading-relaxed font-sans">
-                        {member.bio}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* ============================================================== */}
-        {/* CASE B: EDITORIAL COLLECTIVE ARCHITECTURE (NO FAKE PERSONAS)    */}
-        {/* ============================================================== */}
-        {!hasVerifiedMembers && (
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-12 lg:space-y-16"
-          >
-            {/* Monumental Collective Showcase Frame */}
-            <motion.div
-              variants={itemVariants}
-              className="media-container-architectural relative overflow-hidden surface-level-1 border border-border-subtle p-8 sm:p-12 lg:p-16 space-y-10"
-            >
-              {/* Top Frame Bezel */}
-              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-subtle pb-5">
-                <div className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" aria-hidden="true" />
-                  <span className="text-tech-label text-neutral-300 font-mono tracking-widest">
-                    COLLECTIVE SPECIFICATION // AERVENLABS CORE TEAM
-                  </span>
+                {/* 1. Portrait Frame with Cinematic Glitch Entry */}
+                <div className="w-full">
+                  <TeamPortrait
+                    member={member}
+                    index={index}
+                    prefersReducedMotion={Boolean(prefersReducedMotion)}
+                  />
                 </div>
-                <span className="text-tech-label text-neutral-500 font-mono">
-                  STATUS // ASSEMBLED FOR IMPACT
-                </span>
-              </div>
 
-              {/* Central Architectural Statement */}
-              <div className="space-y-6 max-w-4xl">
-                <p className="text-tech-label text-neutral-400 font-mono tracking-widest uppercase">
-                  {teamSectionConfig.collectiveTitle}
-                </p>
-
-                <h3 className="text-heading-1 sm:text-display-sm lg:text-display-md font-semibold tracking-tight text-white leading-tight uppercase">
-                  {teamSectionConfig.collectiveStatement}
-                </h3>
-
-                <div className="h-[1px] w-16 bg-white/20" aria-hidden="true" />
-
-                <p className="text-base sm:text-lg text-secondary-text leading-relaxed font-sans max-w-3xl">
-                  {teamSectionConfig.collectiveParagraph}
-                </p>
-              </div>
-
-              {/* Three Disciplinary Core Pillars */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-border-subtle">
-                {teamSectionConfig.pillars.map((pillar) => (
-                  <div
-                    key={pillar.number}
-                    className="surface-level-2 p-6 space-y-3 rounded-[2px] border border-border-subtle"
-                  >
-                    <div className="flex items-center justify-between border-b border-border-subtle pb-2.5">
-                      <span className="font-mono text-xs font-semibold text-white">
-                        {pillar.number} // {pillar.label}
-                      </span>
-                      <span className="text-[10px] font-mono text-neutral-500">
-                        DISCIPLINE
+                {/* 2. Architectural Information Layer */}
+                <div className="space-y-4 pt-6">
+                  {/* Top Bezel: Sequence Number & Discipline */}
+                  <div className="flex items-center justify-between border-b border-border-subtle pb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
+                      <span className="font-mono text-xs font-semibold text-white tracking-wider">
+                        0{member.order} // {member.role.toUpperCase()}
                       </span>
                     </div>
-
-                    <p className="text-tech-label text-neutral-400 font-mono">
-                      {pillar.discipline}
-                    </p>
-
-                    <p className="text-sm text-secondary-text leading-relaxed font-sans">
-                      {pillar.detail}
-                    </p>
+                    {member.discipline && (
+                      <span className="text-tech-label text-neutral-500 font-mono">
+                        {member.discipline}
+                      </span>
+                    )}
                   </div>
-                ))}
-              </div>
 
-              {/* Bottom Frame Bezel */}
-              <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border-subtle pt-5 text-neutral-500 font-mono text-[10px]">
-                <span>AERVENLABS TECHNOLOGIES // BUILDERS & LEADERSHIP</span>
-                <span>SYS_SPEC // TEAM_SPEC_05</span>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
+                  {/* Member Name */}
+                  <h3
+                    className={`${
+                      member.featured ? 'text-heading-2 sm:text-heading-1' : 'text-heading-3 sm:text-heading-2'
+                    } font-semibold text-white tracking-tight uppercase leading-snug`}
+                  >
+                    {member.name}
+                  </h3>
+
+                  {/* System Label */}
+                  <p className="text-tech-label text-neutral-400 font-mono tracking-widest leading-relaxed">
+                    {member.systemLabel}
+                  </p>
+
+                  {/* Hairline Accent Divider */}
+                  <div className="h-[1px] w-12 bg-white/20" aria-hidden="true" />
+
+                  {/* Formal Role Readout */}
+                  <div className="flex items-center justify-between pt-1">
+                    <span className="text-xs sm:text-sm font-mono text-neutral-300">
+                      {member.role}
+                    </span>
+                    <span className="text-tech-label text-neutral-600 font-mono">
+                      VERIFIED // 2026
+                    </span>
+                  </div>
+                </div>
+              </motion.article>
+            );
+          })}
+        </motion.div>
+
+        {/* Bottom Architectural Readout */}
+        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border-subtle pt-6 text-neutral-500 font-mono text-[10px] select-none" aria-hidden="true">
+          <span>AERVENLABS TECHNOLOGIES // 08 VERIFIED BUILDERS</span>
+          <span>SYS_SPEC // HUMAN_CAPITAL_ARCH</span>
+        </div>
       </div>
     </section>
   );

@@ -19,7 +19,9 @@ export const Vision: React.FC = () => {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 768px)', () => {
       // 1. Horizon line subtle reveal scrub
       if (horizonLineRef.current && sectionRef.current) {
         gsap.fromTo(
@@ -57,9 +59,9 @@ export const Vision: React.FC = () => {
           }
         );
       }
-    }, sectionRef);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, [prefersReducedMotion]);
 
   // Motion variants for section entry
@@ -82,7 +84,7 @@ export const Vision: React.FC = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: prefersReducedMotion ? 0.01 : 0.75,
+        duration: prefersReducedMotion ? 0.01 : 0.7,
         ease: [0.16, 1, 0.3, 1] as const,
       },
     },
@@ -195,13 +197,10 @@ export const Vision: React.FC = () => {
             {/* Background Faint Hairline Spine */}
             <div className="h-[1px] w-full bg-white/[0.08]" aria-hidden="true" />
 
-            {/* Dynamic Scrubbing Horizon Line */}
+            {/* Dynamic Scrubbing Horizon Line (Desktop/Tablet) / Static Horizon Line (Mobile) */}
             <div
               ref={horizonLineRef}
-              className="absolute top-1/2 left-0 w-full h-[1px] -translate-y-1/2 bg-white/30 origin-left"
-              style={{
-                transform: prefersReducedMotion ? 'scaleX(1)' : 'scaleX(0)',
-              }}
+              className="absolute top-1/2 left-0 w-full h-[1px] -translate-y-1/2 bg-white/30 origin-left scale-x-100 md:scale-x-0"
               aria-hidden="true"
             />
 
@@ -215,7 +214,7 @@ export const Vision: React.FC = () => {
               <div className="h-3 w-[1px] bg-white/40" />
 
               {/* Diamond Marker Node */}
-              <div className="h-2.5 w-2.5 rotate-45 border border-white bg-black shadow-[0_0_8px_rgba(255,255,255,0.4)] my-1" />
+              <div className="h-2.5 w-2.5 rotate-45 border border-white bg-black my-1" />
 
               {/* Bottom Vertical Construction Tick */}
               <div className="h-3 w-[1px] bg-white/40" />

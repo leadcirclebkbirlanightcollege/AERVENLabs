@@ -11,8 +11,8 @@ export const TheBeginning: React.FC = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.1,
-        delayChildren: prefersReducedMotion ? 0 : 0.05,
+        staggerChildren: prefersReducedMotion ? 0 : 0.08,
+        delayChildren: prefersReducedMotion ? 0 : 0.04,
       },
     },
   };
@@ -20,13 +20,13 @@ export const TheBeginning: React.FC = () => {
   const itemVariants = {
     hidden: {
       opacity: prefersReducedMotion ? 1 : 0,
-      y: prefersReducedMotion ? 0 : 18,
+      y: prefersReducedMotion ? 0 : 20,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: prefersReducedMotion ? 0.01 : 0.75,
+        duration: prefersReducedMotion ? 0.01 : 0.7,
         ease: [0.16, 1, 0.3, 1] as const,
       },
     },

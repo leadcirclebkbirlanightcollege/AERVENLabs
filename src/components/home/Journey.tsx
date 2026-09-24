@@ -79,7 +79,7 @@ export const Journey: React.FC = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: prefersReducedMotion ? 0.01 : 0.75,
+        duration: prefersReducedMotion ? 0.01 : 0.7,
         ease: [0.16, 1, 0.3, 1] as const,
       },
     },
@@ -220,7 +220,7 @@ export const Journey: React.FC = () => {
                     <div
                       className={`absolute left-4 sm:left-6 top-1.5 -translate-x-1/2 h-3 w-3 rotate-45 border transition-all duration-300 ${
                         isActive
-                          ? 'border-white bg-white scale-110 shadow-[0_0_8px_rgba(255,255,255,0.5)]'
+                          ? 'border-white bg-white scale-110'
                           : 'border-white/30 bg-black scale-90'
                       }`}
                       aria-hidden="true"
@@ -276,7 +276,7 @@ export const Journey: React.FC = () => {
                     <div
                       className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 h-3.5 w-3.5 rotate-45 border transition-all duration-300 ${
                         isActive
-                          ? 'border-white bg-white scale-125 shadow-[0_0_10px_rgba(255,255,255,0.6)]'
+                          ? 'border-white bg-white scale-125'
                           : isPassed
                           ? 'border-neutral-500 bg-neutral-900 scale-100'
                           : 'border-white/20 bg-black scale-90'

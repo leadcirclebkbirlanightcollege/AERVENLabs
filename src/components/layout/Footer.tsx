@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   Github,
   Linkedin,
-  Twitter,
   Instagram,
   Youtube,
   ArrowUpRight,
@@ -210,28 +209,7 @@ export const Footer: React.FC = () => {
                     </a>
                   </li>
                 )}
-                {/* Twitter / X */}
-                {siteConfig.links.twitter && (
-                  <li>
-                    <a
-                      href={siteConfig.links.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2.5 text-sm text-neutral-400 hover:text-white transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-white py-0.5"
-                      aria-label="AervenLabs on Twitter / X (opens in a new tab)"
-                    >
-                      <Twitter
-                        className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:scale-110"
-                        aria-hidden="true"
-                      />
-                      <span>Twitter / X</span>
-                      <ArrowUpRight
-                        className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-neutral-500"
-                        aria-hidden="true"
-                      />
-                    </a>
-                  </li>
-                )}
+
                 {/* Instagram */}
                 {siteConfig.links.instagram && (
                   <li>
@@ -325,7 +303,7 @@ export const Footer: React.FC = () => {
             <span className="hidden sm:inline" aria-hidden="true">
               |
             </span>
-            <span>BANGALORE / GLOBAL DISPATCH</span>
+            <span>SYS_LAYER // FINAL_CLOSURE</span>
           </div>
         </div>
       </div>

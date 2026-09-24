@@ -63,13 +63,125 @@ export interface Capability {
   order: number;
 }
 
-export type ProjectStatus = 'concept' | 'in-development' | 'active' | 'archived';
+export type ProjectStatus = 'concept' | 'in-development' | 'production-ready' | 'active' | 'archived';
 
 export interface ProjectLinks {
   demo?: string;
   github?: string;
   caseStudy?: string;
   playStore?: string;
+}
+
+export interface CaseStudySystemModule {
+  id: string;
+  number: string;
+  name: string;
+  tagline: string;
+  description: string;
+  capabilities: string[];
+  technicalHighlights?: string[];
+}
+
+export interface CaseStudyRolePersona {
+  role: string;
+  title: string;
+  description: string;
+  capabilities: string[];
+}
+
+export interface CaseStudyProblem {
+  number: string;
+  title: string;
+  description: string;
+}
+
+export interface CaseStudyMetric {
+  value: string;
+  label: string;
+  sublabel?: string;
+}
+
+export interface CaseStudyArchitectureLayer {
+  name: string;
+  role: string;
+  technologies: string[];
+  details: string;
+}
+
+export interface CaseStudyTechStackGroup {
+  category: string;
+  technologies: {
+    name: string;
+    version?: string;
+    detail?: string;
+  }[];
+}
+
+export interface CaseStudyEvolutionPhase {
+  phase: string;
+  title: string;
+  description: string;
+}
+
+export interface CampusConnectCaseStudy {
+  id: string;
+  slug: string;
+  title: string;
+  primaryTagline: string;
+  secondaryPositioning: string;
+  category: string;
+  shortPositioning: string;
+  status: string;
+  version: string;
+  platformBadges: string[];
+  foundingInstitution: {
+    name: string;
+    role: string;
+    relationship: string;
+    description: string;
+  };
+  problems: CaseStudyProblem[];
+  solutionOverview: string;
+  personas: CaseStudyRolePersona[];
+  systems: CaseStudySystemModule[];
+  experienceFlow: { step: string; label: string; description: string }[];
+  architecture: {
+    headline: string;
+    description: string;
+    layers: CaseStudyArchitectureLayer[];
+  };
+  techStack: CaseStudyTechStackGroup[];
+  securityAndMultiTenancy: {
+    headline: string;
+    description: string;
+    points: { title: string; description: string }[];
+  };
+  metrics: CaseStudyMetric[];
+  deployment: {
+    web: {
+      domains: string[];
+      type: string;
+      description: string;
+    };
+    android: {
+      version: string;
+      targetSdk: string;
+      distribution: string;
+      description: string;
+    };
+    ios: {
+      type: string;
+      note: string;
+    };
+  };
+  evolution: CaseStudyEvolutionPhase[];
+  cta: {
+    eyebrow: string;
+    headline: string;
+    copy: string;
+    buttonText: string;
+    href: string;
+  };
 }
 
 export interface Project {
@@ -90,15 +202,19 @@ export interface Project {
   image?: string;
   links?: ProjectLinks;
   order?: number;
+  caseStudy?: CampusConnectCaseStudy;
 }
 
 export interface TeamMember {
   id: string;
   name: string;
   role: string;
+  systemLabel: string;
+  image?: string;
+  imageAlt: string;
+  imagePosition?: string;
   discipline?: string;
   bio?: string;
-  image?: string;
   links?: SocialLinks;
   order: number;
   featured?: boolean;

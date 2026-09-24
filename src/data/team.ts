@@ -59,9 +59,105 @@ export const teamSectionConfig: TeamSectionConfig = {
 };
 
 /**
- * Verified team members data layer.
- * Grounded strictly in factual records. No fabricated people, mock names, or stock personas.
- * When individual profiles are verified, they will be populated here and automatically
- * rendered in the team profile layout.
+ * Verified team members centralized data layer.
+ * All eight authentic members grounded strictly in factual records.
+ * Photographs are assigned incrementally as provided by the user.
  */
-export const teamMembers: TeamMember[] = [];
+export const teamMembers: TeamMember[] = [
+  {
+    id: 'amit-n-rai',
+    name: 'Mr. Amit N. Rai',
+    role: 'Mentor',
+    systemLabel: 'MENTOR // GUIDANCE & STRATEGIC DIRECTION',
+    discipline: 'STRATEGY & ADVISORY',
+    image: '/assets/team/amit-n-rai.png',
+    imageAlt: 'Portrait of Mr. Amit N. Rai, Mentor at AervenLabs',
+    imagePosition: 'center 20%',
+    order: 1,
+    featured: false,
+  },
+  {
+    id: 'atharv-a-jadhav',
+    name: 'Atharv A. Jadhav',
+    role: 'Founder & CEO',
+    systemLabel: 'FOUNDER // PRODUCT & TECHNOLOGY',
+    discipline: 'PRODUCT & TECHNOLOGY',
+    image: '/assets/team/atharv-a-jadhav.png',
+    imageAlt: 'Portrait of Atharv A. Jadhav, Founder and CEO of AervenLabs',
+    imagePosition: 'center 20%',
+    order: 2,
+    featured: true,
+  },
+  {
+    id: 'pransu-b-mishra',
+    name: 'Pransu B. Mishra',
+    role: 'Co-Founder & CTO',
+    systemLabel: 'CO-FOUNDER // ENGINEERING & TECHNOLOGY',
+    discipline: 'ENGINEERING & TECHNOLOGY',
+    image: '/assets/team/pransu-b-mishra.png',
+    imageAlt: 'Portrait of Pransu B. Mishra, Co-Founder and CTO of AervenLabs',
+    imagePosition: 'center 20%',
+    order: 3,
+    featured: true,
+  },
+  {
+    id: 'aditya-s-pandey',
+    name: 'Aditya S. Pandey',
+    role: 'Lead Product Engineer',
+    systemLabel: 'ENGINEERING // PRODUCT SYSTEMS',
+    discipline: 'PRODUCT SYSTEMS',
+    image: '/assets/team/aditya-s-pandey.png',
+    imageAlt: 'Portrait of Aditya S. Pandey, Lead Product Engineer at AervenLabs',
+    imagePosition: 'center 15%',
+    order: 4,
+    featured: false,
+  },
+  {
+    id: 'aditya-v-mishra',
+    name: 'Aditya V. Mishra',
+    role: 'Product & UI/UX Designer',
+    systemLabel: 'DESIGN // INTERFACE ARCHITECTURE',
+    discipline: 'INTERFACE ARCHITECTURE',
+    image: '/assets/team/aditya-v-mishra.png',
+    imageAlt: 'Portrait of Aditya V. Mishra, Product & UI/UX Designer at AervenLabs',
+    imagePosition: 'center 15%',
+    order: 5,
+    featured: false,
+  },
+  {
+    id: 'subhasree-g-padhi',
+    name: 'Subhasree G. Padhi',
+    role: 'Creative & Communications Lead',
+    systemLabel: 'CREATIVE // COMMUNICATIONS & BRAND',
+    discipline: 'COMMUNICATIONS & BRAND',
+    image: '/assets/team/subhasree-g-padhi.png',
+    imageAlt: 'Portrait of Subhasree G. Padhi, Creative & Communications Lead at AervenLabs',
+    imagePosition: 'center 20%',
+    order: 6,
+    featured: false,
+  },
+  {
+    id: 'avadhut-g-kashid',
+    name: 'Avadhut G. Kashid',
+    role: 'Software Engineer',
+    systemLabel: 'ENGINEERING // SOFTWARE SYSTEMS',
+    discipline: 'SOFTWARE SYSTEMS',
+    image: '/assets/team/avadhut-g-kashid.png',
+    imageAlt: 'Portrait of Avadhut G. Kashid, Software Engineer at AervenLabs',
+    imagePosition: 'center 20%',
+    order: 7,
+    featured: false,
+  },
+  {
+    id: 'ajay-a-prajapati',
+    name: 'Ajay A. Prajapati',
+    role: 'Application Developer',
+    systemLabel: 'ENGINEERING // APPLICATION DEVELOPMENT',
+    discipline: 'APPLICATION DEVELOPMENT',
+    image: '/assets/team/ajay-a-prajapati.png',
+    imageAlt: 'Portrait of Ajay A. Prajapati, Application Developer at AervenLabs',
+    imagePosition: 'center 20%',
+    order: 8,
+    featured: false,
+  },
+];

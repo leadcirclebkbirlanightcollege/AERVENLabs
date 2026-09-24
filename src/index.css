@@ -381,6 +381,114 @@
     min-height: 48px;
     min-width: 48px;
   }
+
+  /* Editorial Team Portrait System — AervenLabs */
+  .team-portrait-frame {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--surface-dark);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+  }
+
+  .team-portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1), filter 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .team-portrait-monochrome {
+    filter: grayscale(100%) contrast(114%) brightness(96%);
+  }
+
+  .group:hover .team-portrait-monochrome {
+    filter: grayscale(100%) contrast(120%) brightness(100%);
+    transform: scale(1.015);
+  }
+
+  /* Cinematic Digital Signal Glitch Reveal (Strictly Monochrome) */
+  .team-portrait-glitch {
+    animation: portrait-signal-resolve 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Ephemeral Monochrome Signal Scanline Beam */
+  .team-portrait-scanline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.85) 50%, transparent 100%);
+    opacity: 0;
+    animation: portrait-signal-scanline 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    pointer-events: none;
+    z-index: 20;
+  }
+}
+
+@keyframes portrait-signal-resolve {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+    filter: grayscale(100%) contrast(125%) brightness(75%);
+  }
+  /* Frame 1: Initial digital displacement (~65ms) */
+  10% {
+    opacity: 0.35;
+    transform: translateY(9px) translateX(-2px);
+    filter: grayscale(100%) contrast(140%) brightness(112%);
+  }
+  /* Frame 2: Counter micro displacement (~120ms) */
+  18% {
+    opacity: 0.70;
+    transform: translateY(6px) translateX(2px);
+    filter: grayscale(100%) contrast(110%) brightness(88%);
+  }
+  /* Frame 3: Micro alignment settling (~175ms) */
+  27% {
+    opacity: 0.90;
+    transform: translateY(3px) translateX(-1px);
+    filter: grayscale(100%) contrast(120%) brightness(102%);
+  }
+  /* Frame 4: Glitch resolved, settling into final state (~220ms) */
+  35% {
+    opacity: 0.98;
+    transform: translateY(1px) translateX(0) scale(1);
+    filter: grayscale(100%) contrast(114%) brightness(96%);
+  }
+  /* 100% stable final monochrome state */
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+    filter: grayscale(100%) contrast(114%) brightness(96%);
+  }
+}
+
+@keyframes portrait-signal-scanline {
+  0% {
+    top: 0%;
+    opacity: 0;
+    height: 1px;
+  }
+  20% {
+    top: 25%;
+    opacity: 0.75;
+    height: 2px;
+  }
+  50% {
+    top: 60%;
+    opacity: 0.9;
+    height: 1px;
+  }
+  80% {
+    top: 85%;
+    opacity: 0.3;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+    height: 0px;
+  }
 }
 
 /* Global Reduced Motion Override */

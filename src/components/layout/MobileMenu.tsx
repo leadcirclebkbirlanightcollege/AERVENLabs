@@ -122,7 +122,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
           animate="open"
           exit="closed"
           variants={overlayVariants}
-          className="fixed inset-0 z-50 flex flex-col justify-between bg-black px-6 py-5 sm:px-8"
+          className="fixed inset-0 z-50 flex flex-col justify-between bg-black px-6 py-5 sm:px-8 overflow-y-auto"
         >
           {/* Top Bar inside Overlay */}
           <div className="flex items-center justify-between border-b border-border-subtle pb-4">

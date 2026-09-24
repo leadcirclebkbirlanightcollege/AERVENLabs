@@ -15,7 +15,6 @@ export const siteConfig = {
   links: {
     github: 'https://github.com/aervenlabs',
     linkedin: 'https://linkedin.com/company/aervenlabs',
-    twitter: 'https://twitter.com/aervenlabs',
     instagram: 'https://instagram.com/aervenlabs',
     youtube: 'https://youtube.com/@aervenlabs',
   },

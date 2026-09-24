@@ -57,8 +57,9 @@ export const routeSEOConfig: Record<string, Partial<SEOConfig>> = {
     ],
   },
   campusConnect: {
-    title: `Campus Connect — ${siteConfig.name}`,
-    description: 'Campus technology, redesigned. A comprehensive digital platform by AervenLabs.',
+    title: `Campus Connect — Higher Education Campus Operating System | ${siteConfig.name}`,
+    description:
+      'A unified collegiate operating system connecting academic operations, student engagement, institutional administration, and verified digital credentials.',
     breadcrumbs: [
       { name: 'Home', path: '/' },
       { name: 'Projects', path: '/projects' },
