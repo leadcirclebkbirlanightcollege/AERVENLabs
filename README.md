@@ -118,4 +118,8 @@ Please refer to the `LICENSE` file or the individual repository documentation fo
 
 ### AervenLabs
 
+<<<<<<< HEAD
 **Ideas to Impact.**
+=======
+**Ideas to Impact.**
+>>>>>>> c568ee7a75df00ee47540af7500bbf4e643bd8d3
