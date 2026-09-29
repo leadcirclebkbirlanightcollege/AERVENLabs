@@ -63,7 +63,7 @@ export const PrivacyPage: React.FC = () => {
       number: '07',
       title: 'USER RIGHTS & CONTACT DISPATCH',
       content:
-        'Users maintain rights regarding access, review, and correction of their personal data through their institutional administrative console or directly with AervenLabs. For data privacy inquiries or technical security disclosures, contact our privacy and engineering desk directly at contact@aervenlabs.net.',
+        'Users maintain rights regarding access, review, and correction of their personal data through their institutional administrative console or directly with AervenLabs. For data privacy inquiries or technical security disclosures, contact our privacy and engineering desk directly at aervenlabs@gmail.com.',
     },
   ];
 

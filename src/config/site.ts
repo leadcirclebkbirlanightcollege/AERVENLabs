@@ -12,7 +12,7 @@ export const siteConfig = {
   tagline: 'Technology. Built with intent.',
   description:
     'Official website of AervenLabs Technologies Pvt. Ltd. Building high-impact digital products, platforms, and intelligent software systems.',
-  email: 'contact@aervenlabs.net',
+  email: 'aervenlabs@gmail.com',
   links: {
     github: 'https://github.com/aervenlabs',
     linkedin: 'https://linkedin.com/company/aervenlabs',

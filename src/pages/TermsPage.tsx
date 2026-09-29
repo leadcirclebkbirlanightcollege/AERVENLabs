@@ -48,7 +48,7 @@ export const TermsPage: React.FC = () => {
       number: '05',
       title: 'SECURITY, PASSWORDS & ACCOUNT INTEGRITY',
       content:
-        'Users are responsible for safeguarding account credentials, authentication session tokens, and passwords. Any suspected unauthorized access, anomalous session activity, or security vulnerability must be reported immediately to our security and engineering desk at contact@aervenlabs.net.',
+        'Users are responsible for safeguarding account credentials, authentication session tokens, and passwords. Any suspected unauthorized access, anomalous session activity, or security vulnerability must be reported immediately to our security and engineering desk at aervenlabs@gmail.com.',
     },
     {
       id: 'service-availability',
