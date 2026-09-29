@@ -11,8 +11,8 @@ export const companyData: Company = defaultCompany;
  * Captures the founding conviction and purpose without unverified historical claims.
  */
 export const originPhilosophy: OriginPhilosophy = {
-  sectionId: '01',
-  eyebrow: '01 / THE BEGINNING',
+  sectionId: '02',
+  eyebrow: '02 / THE IDEA',
   headline: 'Every meaningful system begins with a reason to exist.',
   paragraphs: [
     'Technology should not exist simply because it can be engineered. It should exist because it solves something fundamental.',
@@ -26,13 +26,13 @@ export const originPhilosophy: OriginPhilosophy = {
 };
 
 /**
- * Editorial configuration for Homepage Section 08 — The Contact.
- * Sequential identifier 08 / THE CONTACT following 07 / THE PARTNERS.
+ * Editorial configuration for Homepage Section 09 — The Contact.
+ * Sequential identifier 09 / CONTACT following 08 / INFRASTRUCTURE.
  * Grounds the final homepage conversion in genuine human intent without marketing clichés.
  */
 export const contactCTAConfig: ContactCTAConfig = {
-  sectionId: '08',
-  eyebrow: '08 / THE CONTACT',
+  sectionId: '09',
+  eyebrow: '09 / CONTACT',
   tagline: "LET'S BUILD SOMETHING MEANINGFUL.",
   headline: 'Have an idea worth building?',
   supportingCopy:

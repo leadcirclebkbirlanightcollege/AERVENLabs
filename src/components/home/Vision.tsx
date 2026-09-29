@@ -4,6 +4,15 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { visionSectionConfig } from '../../data/vision';
 
+/**
+ * Homepage Section 07: The Future (Vision & Philosophy).
+ * Core statement: "Technology should move with purpose."
+ * Supporting idea: "The future of technology is not defined by how much we can build,
+ * but by how intentionally we build it."
+ * Visual Concept: "THE HORIZON" — minimal architectural axis representing:
+ * ORIGIN → INTENT → DIRECTION → HORIZON
+ * Closing conviction: "BUILD LESS NOISE. CREATE MORE VALUE."
+ */
 export const Vision: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const horizonLineRef = useRef<HTMLDivElement>(null);
@@ -95,7 +104,7 @@ export const Vision: React.FC = () => {
       ref={sectionRef}
       id="vision"
       aria-labelledby="vision-title"
-      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-28 md:py-36 lg:py-48"
+      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-24 sm:py-32 md:py-36 lg:py-48"
     >
       {/* Background Architectural Grid Lines */}
       <div
@@ -113,7 +122,7 @@ export const Vision: React.FC = () => {
         </div>
       </div>
 
-      <div className="container-architectural relative z-10 w-full space-y-24 sm:space-y-32 lg:space-y-40">
+      <div className="container-architectural relative z-10 w-full space-y-20 sm:space-y-28 lg:space-y-36">
         {/* Main 12-Column Architectural Stage: Header, Headline & Narrative */}
         <motion.div
           variants={containerVariants}
@@ -122,7 +131,7 @@ export const Vision: React.FC = () => {
           viewport={{ once: true, margin: '-60px' }}
           className="grid-architectural items-start"
         >
-          {/* Left Column (Cols 1-4): Eyebrow, Label & Subtle Architectural Numeral 06 */}
+          {/* Left Column (Cols 1-4): Eyebrow, Label & Architectural Numeral 07 */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
             <motion.div variants={itemVariants} className="space-y-3">
               <div className="inline-flex items-center gap-2.5">
@@ -136,24 +145,24 @@ export const Vision: React.FC = () => {
               </p>
             </motion.div>
 
-            {/* Subtle Architectural 06 Numeral Device */}
+            {/* Architectural 07 Numeral Device */}
             <div
               className="hidden lg:block select-none pointer-events-none opacity-[0.04] -translate-x-3"
               aria-hidden="true"
             >
-              <span className="font-sans text-[10rem] font-bold leading-none tracking-tighter text-white">
+              <span className="font-sans text-[11rem] font-bold leading-none tracking-tighter text-white">
                 {visionSectionConfig.sectionId}
               </span>
             </div>
           </div>
 
           {/* Right Column (Cols 5-12): Primary Vision Statement & Philosophy */}
-          <div className="lg:col-span-8 space-y-10 lg:space-y-14">
+          <div className="lg:col-span-8 space-y-8 sm:space-y-12">
             {/* Monumental Primary Headline */}
             <motion.div variants={itemVariants}>
               <h2
                 id="vision-title"
-                className="text-heading-1 sm:text-display-sm lg:text-display-md xl:text-display font-semibold tracking-tight text-white leading-[1.04]"
+                className="text-heading-1 sm:text-display-sm lg:text-display font-semibold tracking-tight text-white leading-[1.04]"
               >
                 {visionSectionConfig.headline}
               </h2>
@@ -183,7 +192,7 @@ export const Vision: React.FC = () => {
         {/* ============================================================== */}
         {/* VISUAL CONCEPT: “THE HORIZON” ARCHITECTURAL DEVICE              */}
         {/* ============================================================== */}
-        <div className="w-full space-y-6 pt-4">
+        <div className="w-full space-y-6 pt-4" aria-label="The Horizon architectural axis">
           {/* Top Micro-Metadata Readout */}
           <div className="flex flex-wrap items-center justify-between gap-4 text-neutral-500 font-mono text-[10px] tracking-widest uppercase">
             <span>{visionSectionConfig.horizonCoordinates.origin}</span>
@@ -194,10 +203,8 @@ export const Vision: React.FC = () => {
 
           {/* The Horizon Axis Line & Node Construction */}
           <div className="relative py-4">
-            {/* Background Faint Hairline Spine */}
             <div className="h-[1px] w-full bg-white/[0.08]" aria-hidden="true" />
 
-            {/* Dynamic Scrubbing Horizon Line (Desktop/Tablet) / Static Horizon Line (Mobile) */}
             <div
               ref={horizonLineRef}
               className="absolute top-1/2 left-0 w-full h-[1px] -translate-y-1/2 bg-white/30 origin-left scale-x-100 md:scale-x-0"
@@ -210,20 +217,15 @@ export const Vision: React.FC = () => {
               className="absolute top-1/2 left-1/3 sm:left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none select-none"
               aria-hidden="true"
             >
-              {/* Top Vertical Construction Tick */}
               <div className="h-3 w-[1px] bg-white/40" />
-
-              {/* Diamond Marker Node */}
               <div className="h-2.5 w-2.5 rotate-45 border border-white bg-black my-1" />
-
-              {/* Bottom Vertical Construction Tick */}
               <div className="h-3 w-[1px] bg-white/40" />
             </div>
           </div>
 
           {/* Bottom Coordinate Annotation */}
           <div className="flex items-center justify-between text-neutral-600 font-mono text-[10px] select-none" aria-hidden="true">
-            <span>COORD // HORIZON_VECTOR_06</span>
+            <span>COORD // HORIZON_VECTOR_07</span>
             <span>SYS_AXIS // INTENT_DRIVEN</span>
           </div>
         </div>
@@ -248,7 +250,7 @@ export const Vision: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Right Column (Cols 5-12): Massive Monumental Closing Statement */}
+          {/* Right Column (Cols 5-12): Monumental Closing Statement */}
           <motion.div variants={itemVariants} className="lg:col-span-8 space-y-1">
             <div className="text-display-sm sm:text-display-md lg:text-display font-semibold tracking-tighter text-white uppercase select-none leading-[0.92]">
               {visionSectionConfig.closingStatement.line1}

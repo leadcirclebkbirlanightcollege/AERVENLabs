@@ -4,6 +4,15 @@ import { ArrowUpRight } from 'lucide-react';
 import { partnersData, partnersSectionConfig } from '../../data/partners';
 import { Partner } from '../../types';
 
+/**
+ * Homepage Section 08: Infrastructure & Partners.
+ * Positioning: "Built on infrastructure designed to endure."
+ * Verified partners:
+ * - Cloudflare: DNS / Domain Infrastructure & Protective Edge Layer
+ * - Vercel: Web Deployment & Edge Hosting Infrastructure
+ * Official logos retain authentic marks strictly inside isolated boundaries (.partner-logo-boundary).
+ * Surrounding UI remains strictly monochrome.
+ */
 export const Partners: React.FC = () => {
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
@@ -37,9 +46,9 @@ export const Partners: React.FC = () => {
 
   return (
     <section
-      id="partners"
-      aria-labelledby="partners-title"
-      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-28 md:py-36 lg:py-44"
+      id="infrastructure"
+      aria-labelledby="infrastructure-title"
+      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-24 sm:py-32 md:py-36 lg:py-44"
     >
       {/* Background Architectural Grid Lines */}
       <div
@@ -58,7 +67,7 @@ export const Partners: React.FC = () => {
       </div>
 
       <div className="container-architectural relative z-10 w-full space-y-16 sm:space-y-20 lg:space-y-24">
-        {/* Section Header: Eyebrow, Title & Architectural Narrative */}
+        {/* Section Header */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -66,7 +75,7 @@ export const Partners: React.FC = () => {
           viewport={{ once: true, margin: '-60px' }}
           className="grid-architectural items-start"
         >
-          {/* Left Column: Eyebrow & Oversized Architectural 07 */}
+          {/* Left Column: Eyebrow & Architectural Numeral 08 */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
             <motion.div variants={itemVariants} className="space-y-3">
               <div className="inline-flex items-center gap-2.5">
@@ -80,12 +89,12 @@ export const Partners: React.FC = () => {
               </p>
             </motion.div>
 
-            {/* Subtle Architectural 07 Numeral Device */}
+            {/* Architectural 08 Numeral Device */}
             <div
               className="hidden lg:block select-none pointer-events-none opacity-[0.04] -translate-x-3"
               aria-hidden="true"
             >
-              <span className="font-sans text-[10rem] font-bold leading-none tracking-tighter text-white">
+              <span className="font-sans text-[11rem] font-bold leading-none tracking-tighter text-white">
                 {partnersSectionConfig.sectionId}
               </span>
             </div>
@@ -95,8 +104,8 @@ export const Partners: React.FC = () => {
           <div className="lg:col-span-8 space-y-6">
             <motion.div variants={itemVariants}>
               <h2
-                id="partners-title"
-                className="text-heading-1 md:text-display-sm font-semibold tracking-tight text-white leading-tight"
+                id="infrastructure-title"
+                className="text-heading-1 sm:text-display-sm lg:text-display font-semibold tracking-tight text-white leading-tight"
               >
                 {partnersSectionConfig.headline}
               </h2>

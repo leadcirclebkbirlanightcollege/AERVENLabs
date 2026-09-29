@@ -1,66 +1,104 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ShieldAlert } from 'lucide-react';
+import { motion } from 'motion/react';
+import { ArrowRight, Compass } from 'lucide-react';
+import { projectsArchiveConfig } from '../../data/projects';
 import { buttonVariants } from '../ui/button';
 
+/**
+ * Projects Section 04: Archive Footer ("ARCHIVE // CURRENT STATE").
+ * Quiet closing section after Campus Connect:
+ * - Label: ARCHIVE // CURRENT STATE
+ * - Large text: ONE SYSTEM. MORE TO BUILD.
+ * - Supporting text: AervenLabs continues to explore purposeful software,
+ *   intelligent systems, and digital infrastructure.
+ * - Explicitly communicates that the portfolio is intentionally focused
+ *   rather than artificially populated.
+ * - CTA: EXPLORE OUR VISION (/vision)
+ */
 export const ProjectsArchiveFooter: React.FC = () => {
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const footerData = projectsArchiveConfig.footerSection;
+
   return (
     <section
-      aria-labelledby="archive-closure-title"
-      className="relative overflow-hidden bg-black text-foreground py-16 sm:py-20 lg:py-24"
+      aria-labelledby="archive-current-state-title"
+      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-20 sm:py-28 lg:py-36"
     >
-      <div className="container-architectural relative z-10">
-        <div className="surface-level-1 border border-border-subtle p-6 sm:p-10 lg:p-14 rounded-[2px] space-y-8">
-          {/* Top Ledger Metadata */}
+      {/* Background Architectural Grid Lines */}
+      <div
+        className="pointer-events-none absolute inset-0 select-none opacity-20"
+        aria-hidden="true"
+      >
+        <div className="container-architectural h-full w-full">
+          <div className="h-full w-full border-x border-white/[0.04]">
+            <div className="grid h-full grid-cols-1 md:grid-cols-6 lg:grid-cols-12 divide-x divide-white/[0.03]">
+              {Array.from({ length: 12 }).map((_, i) => (
+                <div key={i} className="h-full" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-architectural relative z-10 w-full">
+        <div className="surface-level-1 border border-border-subtle p-8 sm:p-12 lg:p-16 rounded-[2px] space-y-10">
+          {/* Top Label */}
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-subtle pb-4 text-[11px] font-mono text-neutral-500">
             <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-neutral-400" aria-hidden="true" />
+              <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
               <span className="text-white font-semibold uppercase tracking-wider">
-                ARCHIVE VERIFICATION STANDARD
+                {footerData.label}
               </span>
             </div>
-            <span>PRODUCTION DEPLOYMENT CRITERIA ENFORCED</span>
+            <span>INTENTIONALLY FOCUSED PORTFOLIO</span>
           </div>
 
-          {/* Main Editorial Statement */}
-          <div className="grid-architectural items-start gap-y-6">
-            <div className="lg:col-span-8 space-y-4">
+          {/* 12-Column Editorial Closing Composition */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+            <div className="lg:col-span-8 space-y-5">
               <h2
-                id="archive-closure-title"
-                className="text-heading-2 sm:text-heading-1 font-semibold text-white tracking-tight uppercase leading-snug"
+                id="archive-current-state-title"
+                className="text-display sm:text-display-lg font-bold tracking-tight text-white uppercase leading-[0.92] select-none"
               >
-                SYSTEMS ENGINEERED WITH INTENT.
+                ONE SYSTEM.
+                <br />
+                MORE TO BUILD.
               </h2>
-              <p className="text-sm sm:text-base text-secondary-text leading-relaxed font-sans max-w-2xl">
-                AervenLabs maintains an immutable archive standard. We do not register speculative concepts, mockups, or unverified experiments in this index. Additional systems are added exclusively following formal multi-tenant deployment, security audit, and operational validation.
+
+              <p className="text-base sm:text-lg text-secondary-text leading-relaxed font-sans max-w-2xl pt-2">
+                {footerData.description}
               </p>
             </div>
 
             {/* Strategic Action Link */}
-            <div className="lg:col-span-4 flex flex-col justify-between items-start lg:items-end space-y-4">
+            <div className="lg:col-span-4 flex flex-col justify-end items-start lg:items-end space-y-4">
               <div className="text-left lg:text-right font-mono text-xs text-neutral-400 space-y-1">
-                <span className="text-neutral-500 block uppercase">SYSTEM INQUIRIES</span>
-                <span>PARTNER PLATFORM ENGINEERING</span>
+                <span className="text-neutral-500 block uppercase">FUTURE TRAJECTORY</span>
+                <span>PHILOSOPHY // DIRECTION</span>
               </div>
 
               <Link
-                to="/contact"
+                to={footerData.ctaHref}
                 className={`${buttonVariants({
-                  variant: 'outline',
+                  variant: 'default',
                   size: 'lg',
-                })} group gap-2.5 min-h-[48px] w-full sm:w-auto justify-center text-sm font-semibold tracking-wide uppercase`}
-                aria-label="Initiate enterprise system inquiry with AervenLabs"
+                })} group gap-3 min-h-[48px] w-full sm:w-auto justify-center text-sm font-semibold tracking-wide uppercase`}
+                aria-label="Explore AervenLabs vision and future technology roadmap"
               >
-                <span>INITIATE SYSTEM INQUIRY</span>
+                <span>{footerData.ctaText}</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </div>
           </div>
 
           {/* Bottom Telemetry Bar */}
-          <div className="pt-4 border-t border-border-subtle flex flex-wrap items-center justify-between gap-3 text-[10px] font-mono text-neutral-600">
+          <div className="pt-6 border-t border-border-subtle flex flex-wrap items-center justify-between gap-3 text-[10px] font-mono text-neutral-600">
             <span>AERVENLABS TECHNOLOGIES PVT. LTD.</span>
-            <span>SYSTEM ARCHIVE // ACTIVE</span>
+            <span>REPOSITORY DISCIPLINE // PRODUCTION FIRST</span>
           </div>
         </div>
       </div>

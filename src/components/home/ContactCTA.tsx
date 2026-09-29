@@ -5,17 +5,19 @@ import { ArrowUpRight } from 'lucide-react';
 import { contactCTAConfig } from '../../data/company';
 
 /**
- * Homepage Section 08: The Contact CTA ("The Invitation").
- * Serves as the editorial conclusion to the homepage narrative:
- * BEGINNING -> JOURNEY -> WHAT WE BUILD -> PROJECTS -> TEAM -> VISION -> PARTNERS -> CONTACT.
+ * Homepage Section 09: Contact ("The Invitation").
+ * Natural conclusion of the flagship narrative:
+ * 01 HERO → 02 IDEA → 03 JOURNEY → 04 WHAT WE BUILD → 05 FLAGSHIP PRODUCT →
+ * 06 THE PEOPLE → 07 THE FUTURE → 08 INFRASTRUCTURE → 09 CONTACT.
  * Invites visitors to begin a clear conversation without generic sales or SaaS clichés.
+ * Strictly verified company contact information.
  */
 export const ContactCTA: React.FC = () => {
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Staggered motion variants for restrained editorial entrance
+  // Staggered motion variants for editorial entrance
   const containerVariants = {
     hidden: {},
     visible: {
@@ -45,7 +47,7 @@ export const ContactCTA: React.FC = () => {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-28 md:py-36 lg:py-48"
+      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-24 sm:py-32 md:py-36 lg:py-48"
     >
       {/* Background Architectural Grid Lines */}
       <div
@@ -72,7 +74,7 @@ export const ContactCTA: React.FC = () => {
           viewport={{ once: true, margin: '-60px' }}
           className="grid-architectural items-start"
         >
-          {/* Left Column (Cols 1-4): Eyebrow, Channel Protocol & Architectural 08 Numeral */}
+          {/* Left Column (Cols 1-4): Eyebrow, Channel Protocol & Architectural 09 Numeral */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
             <motion.div variants={itemVariants} className="space-y-3">
               <div className="inline-flex items-center gap-2.5">
@@ -90,12 +92,12 @@ export const ContactCTA: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Architectural 08 Numeral Device */}
+            {/* Architectural 09 Numeral Device */}
             <div
               className="hidden lg:block select-none pointer-events-none opacity-[0.04] -translate-x-3 pt-6"
               aria-hidden="true"
             >
-              <span className="font-sans text-[10rem] font-bold leading-none tracking-tighter text-white">
+              <span className="font-sans text-[11rem] font-bold leading-none tracking-tighter text-white">
                 {contactCTAConfig.sectionId}
               </span>
             </div>
@@ -126,7 +128,7 @@ export const ContactCTA: React.FC = () => {
               <div className="h-[1px] w-16 bg-white/20" aria-hidden="true" />
             </motion.div>
 
-            {/* Primary Decisive Action & Secondary Direct Email */}
+            {/* Primary Decisive Action & Direct Email Channel */}
             <motion.div variants={itemVariants} className="pt-2">
               <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10 lg:gap-12">
                 {/* Primary CTA */}
@@ -163,7 +165,7 @@ export const ContactCTA: React.FC = () => {
             {/* Bottom Closing Microcopy and Architectural Readout */}
             <motion.div
               variants={itemVariants}
-              className="pt-12 sm:pt-16 border-t border-border-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-neutral-500 font-mono text-[11px] tracking-widest uppercase"
+              className="pt-10 sm:pt-14 border-t border-border-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-neutral-500 font-mono text-[11px] tracking-widest uppercase"
             >
               <div className="flex items-center gap-3">
                 <span className="h-1.5 w-1.5 rounded-full bg-white/40" aria-hidden="true" />

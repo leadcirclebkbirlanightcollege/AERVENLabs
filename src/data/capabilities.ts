@@ -13,8 +13,8 @@ export interface CapabilitiesSectionConfig {
  * Sequential identifier 03 / WHAT WE BUILD following 02 / THE JOURNEY.
  */
 export const capabilitiesSectionConfig: CapabilitiesSectionConfig = {
-  sectionId: '03',
-  eyebrow: '03 / WHAT WE BUILD',
+  sectionId: '04',
+  eyebrow: '04 / WHAT WE BUILD',
   headline: 'From product ideas to systems designed to operate in the real world.',
   description:
     'We engineer digital products, scalable cloud platforms, and intelligent software systems. Every capability is grounded in architectural discipline, performance, and purposeful execution.',

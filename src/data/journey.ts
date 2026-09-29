@@ -11,8 +11,8 @@ export interface JourneySectionConfig {
  * Editorial configuration for Section 02 / The Journey.
  */
 export const journeySectionConfig: JourneySectionConfig = {
-  sectionId: '02',
-  eyebrow: '02 / THE JOURNEY',
+  sectionId: '03',
+  eyebrow: '03 / THE JOURNEY',
   headline: 'The idea evolved. The engineering followed.',
   description:
     'A progression of deliberate architectural choices, deep exploration, and focused engineering—from founding purpose to scalable digital products.',
@@ -50,7 +50,7 @@ export const journeyMilestones: JourneyMilestone[] = [
     title: 'Campus Connect Platform',
     shortStatement: 'Developing our flagship digital ecosystem for institutions.',
     description:
-      'Engineering Campus Connect as a unified digital ecosystem. The platform integrates real-time campus navigation, centralized event dissemination, notifications, and student engagement into an intuitive, high-performance web and mobile application.',
+      'Engineering Campus Connect as a unified collegiate operating system. The platform integrates verified dynamic attendance, digital identity credentials, academic workflows, and student engagement into an intuitive, high-performance web and mobile application.',
     order: 3,
   },
   {

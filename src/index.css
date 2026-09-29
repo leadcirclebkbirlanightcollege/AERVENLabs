@@ -67,7 +67,7 @@
   }
 
   * {
-    @apply border-border;
+    border-color: var(--border);
   }
 
   html {
@@ -81,7 +81,8 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -106,24 +107,36 @@
     max-width: 1536px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.5rem;   /* 24px Mobile */
-    padding-right: 1.5rem;
+    padding-left: 1.25rem;  /* 20px Small Mobile (320px-390px) */
+    padding-right: 1.25rem;
+  }
+  @media (min-width: 480px) {
+    .container-architectural {
+      padding-left: 1.5rem;  /* 24px Mobile */
+      padding-right: 1.5rem;
+    }
   }
   @media (min-width: 640px) {
     .container-architectural {
-      padding-left: 2rem;   /* 32px Tablet */
+      padding-left: 2rem;    /* 32px Tablet */
       padding-right: 2rem;
     }
   }
   @media (min-width: 1024px) {
     .container-architectural {
-      padding-left: 4rem;   /* 64px Desktop */
-      padding-right: 4rem;
+      padding-left: 3.5rem;  /* 56px Desktop */
+      padding-right: 3.5rem;
     }
   }
   @media (min-width: 1280px) {
     .container-architectural {
-      padding-left: 5rem;   /* 80px Large Desktop */
+      padding-left: 4.5rem;  /* 72px Large Desktop */
+      padding-right: 4.5rem;
+    }
+  }
+  @media (min-width: 1536px) {
+    .container-architectural {
+      padding-left: 5rem;    /* 80px Ultra Desktop */
       padding-right: 5rem;
     }
   }
@@ -132,41 +145,53 @@
   .grid-architectural {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    column-gap: 1.5rem;
-    row-gap: 2rem;
+    column-gap: 1.25rem;
+    row-gap: 1.75rem;
+  }
+  @media (min-width: 480px) {
+    .grid-architectural {
+      column-gap: 1.5rem;
+      row-gap: 2rem;
+    }
   }
   @media (min-width: 768px) {
     .grid-architectural {
       grid-template-columns: repeat(6, minmax(0, 1fr));
       column-gap: 2rem;
-      row-gap: 3rem;
+      row-gap: 2.5rem;
     }
   }
   @media (min-width: 1024px) {
     .grid-architectural {
       grid-template-columns: repeat(12, minmax(0, 1fr));
       column-gap: 2rem;
-      row-gap: 4rem;
+      row-gap: 3.5rem;
     }
   }
 
   /* Section Spacing Presets */
   .section-spacing-sm {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
   }
   @media (min-width: 768px) {
     .section-spacing-sm {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
     }
   }
 
   .section-spacing {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
   @media (min-width: 768px) {
+    .section-spacing {
+      padding-top: 7.5rem;
+      padding-bottom: 7.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
     .section-spacing {
       padding-top: 9rem;
       padding-bottom: 9rem;
@@ -174,10 +199,16 @@
   }
 
   .section-spacing-lg {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
   @media (min-width: 768px) {
+    .section-spacing-lg {
+      padding-top: 9rem;
+      padding-bottom: 9rem;
+    }
+  }
+  @media (min-width: 1024px) {
     .section-spacing-lg {
       padding-top: 12rem;
       padding-bottom: 12rem;
@@ -206,52 +237,60 @@
 
   /* Typography Scale Utilities */
   .text-display {
-    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    font-size: clamp(2.35rem, 6.8vw, 6.5rem);
     line-height: 0.95;
     letter-spacing: -0.04em;
     font-weight: 600;
+    overflow-wrap: break-word;
   }
   .text-display-lg {
-    font-size: clamp(3rem, 6.5vw, 5.5rem);
+    font-size: clamp(2.1rem, 5.8vw, 5rem);
     line-height: 1.0;
     letter-spacing: -0.035em;
     font-weight: 600;
+    overflow-wrap: break-word;
   }
   .text-display-md {
-    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-size: clamp(1.75rem, 4.5vw, 3.75rem);
     line-height: 1.05;
     letter-spacing: -0.03em;
     font-weight: 600;
+    overflow-wrap: break-word;
   }
   .text-display-sm {
-    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-size: clamp(1.4rem, 3.2vw, 2.6rem);
     line-height: 1.1;
     letter-spacing: -0.025em;
     font-weight: 600;
+    overflow-wrap: break-word;
   }
   .text-heading-1 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.5rem, 3.2vw, 2.5rem);
     line-height: 1.15;
     letter-spacing: -0.025em;
     font-weight: 600;
+    overflow-wrap: break-word;
   }
   .text-heading-2 {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-size: clamp(1.25rem, 2.5vw, 1.85rem);
     line-height: 1.2;
     letter-spacing: -0.02em;
     font-weight: 600;
+    overflow-wrap: break-word;
   }
   .text-heading-3 {
-    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-size: clamp(1.1rem, 1.8vw, 1.45rem);
     line-height: 1.25;
     letter-spacing: -0.015em;
     font-weight: 500;
+    overflow-wrap: break-word;
   }
   .text-heading-4 {
-    font-size: 1.125rem;
+    font-size: 1.05rem;
     line-height: 1.35;
     letter-spacing: -0.01em;
     font-weight: 500;
+    overflow-wrap: break-word;
   }
   .text-body-lg {
     font-size: 1.125rem;

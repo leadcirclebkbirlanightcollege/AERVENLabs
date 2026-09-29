@@ -2,6 +2,13 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { originPhilosophy } from '../../data/company';
 
+/**
+ * Homepage Section 02: The Idea (Origin Philosophy).
+ * Explains WHY AervenLabs exists:
+ * "Every meaningful system begins with a reason to exist."
+ * Philosophical yet technological conviction.
+ * Strictly verified company positioning.
+ */
 export const TheBeginning: React.FC = () => {
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
@@ -34,9 +41,9 @@ export const TheBeginning: React.FC = () => {
 
   return (
     <section
-      id="the-beginning"
-      aria-labelledby="the-beginning-title"
-      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-28 md:py-36 lg:py-44"
+      id="the-idea"
+      aria-labelledby="the-idea-title"
+      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-24 sm:py-32 md:py-36 lg:py-44"
     >
       {/* Background Architectural Grid Lines */}
       <div
@@ -62,7 +69,7 @@ export const TheBeginning: React.FC = () => {
           viewport={{ once: true, margin: '-80px' }}
           className="grid-architectural"
         >
-          {/* Left Column: Section Marker & Oversized Numeral */}
+          {/* Left Column: Section Marker & Architectural Numeral 02 */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-8">
             <motion.div variants={itemVariants} className="space-y-4">
               <div className="inline-flex items-center gap-2.5">
@@ -76,7 +83,7 @@ export const TheBeginning: React.FC = () => {
               </p>
             </motion.div>
 
-            {/* Architectural 01 Numeral Device */}
+            {/* Architectural 02 Numeral Device */}
             <div
               className="hidden lg:block select-none pointer-events-none opacity-[0.05] -translate-x-3"
               aria-hidden="true"
@@ -88,18 +95,18 @@ export const TheBeginning: React.FC = () => {
           </div>
 
           {/* Right Column: Main Editorial Statement & Philosophy */}
-          <div className="lg:col-span-8 space-y-12 lg:space-y-16">
-            {/* Primary Statement */}
+          <div className="lg:col-span-8 space-y-10 lg:space-y-14">
+            {/* Primary Monumental Statement */}
             <motion.div variants={itemVariants}>
               <h2
-                id="the-beginning-title"
-                className="text-heading-1 md:text-display-sm font-semibold tracking-tight text-white leading-[1.12]"
+                id="the-idea-title"
+                className="text-heading-1 sm:text-display-sm lg:text-display font-semibold tracking-tight text-white leading-[1.08]"
               >
                 {originPhilosophy.headline}
               </h2>
             </motion.div>
 
-            {/* Editorial Supporting Paragraphs */}
+            {/* Editorial Reading Column */}
             <motion.div variants={itemVariants} className="space-y-6 max-w-2xl">
               {originPhilosophy.paragraphs.map((paragraph, index) => (
                 <p
@@ -111,20 +118,20 @@ export const TheBeginning: React.FC = () => {
               ))}
             </motion.div>
 
-            {/* Reusable Architectural Principles Micro-Grid */}
+            {/* Architectural Principles Micro-Grid */}
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-border-subtle"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-border-subtle"
             >
               {originPhilosophy.principles.map((principle) => (
                 <div
                   key={principle.label}
-                  className="surface-level-1 p-4 space-y-2 rounded-[2px]"
+                  className="surface-level-1 p-4 sm:p-5 space-y-2 rounded-[2px] border border-border-subtle"
                 >
-                  <p className="text-tech-label text-neutral-500">
+                  <p className="text-tech-label text-neutral-500 font-mono">
                     {principle.label}
                   </p>
-                  <p className="text-xs text-neutral-300 font-mono font-medium tracking-wide">
+                  <p className="text-xs text-neutral-200 font-mono font-medium tracking-wide">
                     {principle.detail}
                   </p>
                 </div>

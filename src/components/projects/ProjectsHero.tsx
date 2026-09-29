@@ -3,6 +3,15 @@ import { motion } from 'motion/react';
 import { ArrowDown } from 'lucide-react';
 import { projectsArchiveConfig } from '../../data/projects';
 
+/**
+ * Projects Section 01: Archive Hero.
+ * Editorial opening for the official technology archive:
+ * - Eyebrow: "01 / PROJECT ARCHIVE"
+ * - Headline: "SYSTEMS BUILT WITH INTENT."
+ * - Supporting copy: "AervenLabs builds digital products, platforms, and intelligent systems designed around meaningful problems."
+ * - Technical archive marker: PROJECTS // 01, ACTIVE SYSTEMS // 01, ARCHIVE STATUS // OPEN
+ * - Asymmetric 12-column architectural layout with hairline grid.
+ */
 export const ProjectsHero: React.FC = () => {
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
@@ -13,7 +22,7 @@ export const ProjectsHero: React.FC = () => {
     visible: {
       transition: {
         staggerChildren: prefersReducedMotion ? 0 : 0.08,
-        delayChildren: prefersReducedMotion ? 0 : 0.05,
+        delayChildren: prefersReducedMotion ? 0 : 0.04,
       },
     },
   };
@@ -34,7 +43,7 @@ export const ProjectsHero: React.FC = () => {
   };
 
   const handleScrollCue = () => {
-    const target = document.getElementById('project-archive-index');
+    const target = document.getElementById('projects-archive-list');
     if (target) {
       target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     }
@@ -64,7 +73,7 @@ export const ProjectsHero: React.FC = () => {
           variants={itemVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-wrap items-center justify-between gap-4 border-b border-border-subtle pb-5 sm:pb-6 mb-12 sm:mb-16 lg:mb-20 text-[11px] font-mono text-neutral-400"
+          className="flex flex-wrap items-center justify-between gap-4 border-b border-border-subtle pb-4 sm:pb-5 mb-10 sm:mb-14 lg:mb-16 text-[11px] font-mono text-neutral-400"
         >
           {/* Eyebrow & Status Dot */}
           <div className="flex items-center gap-3">
@@ -76,14 +85,14 @@ export const ProjectsHero: React.FC = () => {
             </span>
           </div>
 
-          {/* Secondary Technical Metadata */}
+          {/* Technical Archive Markers */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-neutral-500">
-            <span>{projectsArchiveConfig.meta.archive}</span>
+            <span className="text-neutral-400">{projectsArchiveConfig.meta.projectsCount}</span>
             <span className="hidden sm:inline text-neutral-700" aria-hidden="true">/</span>
-            <span className="hidden sm:inline">{projectsArchiveConfig.meta.system}</span>
+            <span className="hidden sm:inline">{projectsArchiveConfig.meta.activeSystems}</span>
             <span className="hidden sm:inline text-neutral-700" aria-hidden="true">/</span>
             <span className="px-2 py-0.5 font-mono text-[10px] text-white bg-surface-dark border border-white/20 rounded-[2px]">
-              {projectsArchiveConfig.meta.status}
+              {projectsArchiveConfig.meta.archiveStatus}
             </span>
           </div>
         </motion.div>
@@ -96,17 +105,15 @@ export const ProjectsHero: React.FC = () => {
           className="grid-architectural items-start gap-y-12 lg:gap-y-16"
         >
           {/* LEFT / CENTER (Cols 1-8): Monumental Heading & Purpose Statement */}
-          <div className="lg:col-span-8 space-y-8 sm:space-y-10">
+          <div className="lg:col-span-8 space-y-6 sm:space-y-8">
             <motion.div variants={itemVariants} className="space-y-3">
               <p className="text-tech-label text-neutral-500 font-mono tracking-widest uppercase">
-                AERVENLABS TECHNOLOGIES // CATALOG_01
+                AERVENLABS // TECHNICAL ARCHIVE
               </p>
               <h1 className="text-display sm:text-display-lg lg:text-display font-semibold tracking-tight text-white uppercase leading-[0.92] select-none">
-                PRODUCTS
+                {projectsArchiveConfig.headline.split(' ').slice(0, 2).join(' ')}
                 <br />
-                BUILT WITH
-                <br />
-                PURPOSE.
+                {projectsArchiveConfig.headline.split(' ').slice(2).join(' ')}
               </h1>
             </motion.div>
 
@@ -115,9 +122,18 @@ export const ProjectsHero: React.FC = () => {
                 {projectsArchiveConfig.description}
               </p>
             </motion.div>
+
+            {/* Architectural Statement: Focus Over Volume */}
+            <motion.div
+              variants={itemVariants}
+              className="inline-flex items-center gap-3 px-3.5 py-2 border border-border-subtle bg-surface-dark rounded-[2px] text-xs font-mono text-neutral-400"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-white/60" aria-hidden="true" />
+              <span>INTENTIONALLY FOCUSED ARCHIVE · PRODUCTION-VALIDATED SYSTEMS ONLY</span>
+            </motion.div>
           </div>
 
-          {/* RIGHT (Cols 9-12): Small Technical Readout Box & Index Manifest */}
+          {/* RIGHT (Cols 9-12): Technical Readout Box & Index Manifest */}
           <motion.div
             variants={itemVariants}
             className="lg:col-span-4 flex flex-col justify-between space-y-6 lg:pl-6"
@@ -128,7 +144,7 @@ export const ProjectsHero: React.FC = () => {
                   {projectsArchiveConfig.technicalReadout.label}
                 </span>
                 <span className="text-[10px] font-mono text-neutral-500">
-                  SYS_INDEX // LIVE
+                  SYS_CATALOG // 2026
                 </span>
               </div>
 
@@ -145,18 +161,18 @@ export const ProjectsHero: React.FC = () => {
               </div>
 
               <div className="pt-2 border-t border-border-subtle flex items-center justify-between text-[10px] font-mono text-neutral-400">
-                <span>VERIFIED SYSTEMS</span>
-                <span className="text-white font-bold">01 IN REPOSITORY</span>
+                <span>FLAGSHIP SYSTEM</span>
+                <span className="text-white font-bold">CAMPUS CONNECT</span>
               </div>
             </div>
 
             {/* Architectural Sub-Readout: Engineering Discipline */}
-            <div className="border border-border-subtle/60 p-4 rounded-[2px] text-[11px] font-mono text-neutral-500 space-y-1.5 hidden sm:block">
+            <div className="border border-border-subtle p-4 rounded-[2px] text-[11px] font-mono text-neutral-500 space-y-1.5 hidden sm:block">
               <div className="text-neutral-400 font-semibold tracking-wider uppercase">
-                ENGINEERING DISCIPLINE //
+                ENGINEERING STANDARD //
               </div>
               <p className="text-neutral-400 text-xs font-sans leading-normal">
-                Multi-tenant cloud infrastructure, timing-safe session architectures, and trustless public credential verification.
+                Multi-tenant cloud infrastructure, timing-safe session protocols, and zero-auth public credential verification.
               </p>
             </div>
           </motion.div>
@@ -167,18 +183,18 @@ export const ProjectsHero: React.FC = () => {
           variants={itemVariants}
           initial="hidden"
           animate="visible"
-          className="mt-16 sm:mt-20 lg:mt-28 pt-6 border-t border-border-subtle flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono text-neutral-500"
+          className="mt-14 sm:mt-18 lg:mt-24 pt-5 border-t border-border-subtle flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono text-neutral-500"
         >
           <div className="flex items-center gap-3">
-            <span className="text-neutral-400">REGISTRY //</span>
-            <span>SYSTEM 01 OF 01 DOCUMENTED</span>
+            <span className="text-neutral-400">SYSTEM ARCHIVE //</span>
+            <span>ENTRY 01 OF 01 DOCUMENTED</span>
           </div>
 
           <button
             type="button"
             onClick={handleScrollCue}
-            className="group flex items-center gap-2 text-neutral-400 hover:text-white transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-white rounded-[2px] px-2 py-1"
-            aria-label="Scroll down to project archive index"
+            className="group flex items-center gap-2 text-neutral-400 hover:text-white transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-white rounded-[2px] px-2 py-1 min-h-[44px]"
+            aria-label="Scroll down to selected work index"
           >
             <span className="tracking-widest uppercase">EXPLORE ARCHIVE</span>
             <ArrowDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-y-0.5" aria-hidden="true" />

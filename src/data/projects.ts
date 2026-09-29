@@ -13,12 +13,103 @@ export interface ProjectsSectionConfig {
  * Sequential identifier 04 / PROJECTS following 03 / WHAT WE BUILD.
  */
 export const projectsSectionConfig: ProjectsSectionConfig = {
-  sectionId: '04',
-  eyebrow: '04 / PROJECTS',
+  sectionId: '05',
+  eyebrow: '05 / FLAGSHIP PRODUCT',
   headline: 'Products are where ideas become tangible.',
   description:
     'We build and deploy software systems designed to solve fundamental operational problems. Campus Connect represents our flagship platform initiative, uniting academic operations, student engagement, and institutional administration into a single connected ecosystem.',
   metaLabel: 'FLAGSHIP // CAMPUS OPERATING SYSTEM',
+};
+
+export interface ProjectsArchiveConfig {
+  sectionId: string;
+  eyebrow: string;
+  headline: string;
+  description: string;
+  meta: {
+    projectsCount: string;
+    activeSystems: string;
+    archiveStatus: string;
+    system: string;
+  };
+  technicalReadout: {
+    label: string;
+    items: string[];
+  };
+  editorialBlocks: {
+    problem: {
+      label: string;
+      title: string;
+      description: string;
+    };
+    system: {
+      label: string;
+      title: string;
+      description: string;
+    };
+    evolution: {
+      label: string;
+      title: string;
+      description: string;
+    };
+  };
+  footerSection: {
+    label: string;
+    headline: string;
+    description: string;
+    ctaText: string;
+    ctaHref: string;
+  };
+}
+
+/**
+ * Editorial configuration for the dedicated /projects route.
+ * Reconstructed as an authoritative editorial engineering archive.
+ */
+export const projectsArchiveConfig: ProjectsArchiveConfig = {
+  sectionId: '01',
+  eyebrow: '01 / PROJECT ARCHIVE',
+  headline: 'SYSTEMS BUILT WITH INTENT.',
+  description:
+    'AervenLabs builds digital products, platforms, and intelligent systems designed around meaningful problems.',
+  meta: {
+    projectsCount: 'PROJECTS // 01',
+    activeSystems: 'ACTIVE SYSTEMS // 01',
+    archiveStatus: 'ARCHIVE STATUS // OPEN',
+    system: 'SYSTEM // PRODUCT ENGINEERING',
+  },
+  technicalReadout: {
+    label: 'ARCHIVE LEDGER',
+    items: ['DIGITAL PRODUCTS', 'PLATFORMS', 'SYSTEMS'],
+  },
+  editorialBlocks: {
+    problem: {
+      label: 'THE PROBLEM',
+      title: 'Workflow Fragmentation',
+      description:
+        'Fragmented collegiate administrative and student workflows create unnecessary complexity across attendance, identity, examination records, and communication.',
+    },
+    system: {
+      label: 'THE SYSTEM',
+      title: 'Unified Campus OS',
+      description:
+        'Campus Connect combines academic operations, attendance infrastructure, digital identity, verified credentials, student engagement, communication, and institutional workflows into a unified campus operating system.',
+    },
+    evolution: {
+      label: 'THE EVOLUTION',
+      title: 'Single App to Multi-Tenant Infrastructure',
+      description:
+        'Started as a single-institution lecture attendance application and evolved into a multi-tenant higher-education operating system powered by PostgreSQL Row-Level Security.',
+    },
+  },
+  footerSection: {
+    label: 'ARCHIVE // CURRENT STATE',
+    headline: 'ONE SYSTEM. MORE TO BUILD.',
+    description:
+      'AervenLabs continues to explore purposeful software, intelligent systems, and digital infrastructure. Our archive is intentionally focused on production-validated systems rather than speculative concepts.',
+    ctaText: 'EXPLORE OUR VISION',
+    ctaHref: '/vision',
+  },
 };
 
 /**
@@ -580,6 +671,11 @@ export const projectsData: Project[] = [
     id: 'campus-connect',
     slug: 'campus-connect',
     order: 1,
+    archiveNumber: '01',
+    archiveLabel: 'PROJECT 01 // FLAGSHIP PRODUCT',
+    statusLabel: 'STATUS // PRODUCTION-READY',
+    platformBadges: ['WEB // PWA', 'ANDROID // CAPACITOR', 'MULTI-TENANT // ENABLED'],
+    systemCode: 'SYS_SPEC // ARCH_CC_01',
     title: 'Campus Connect',
     tagline: 'Your Entire College Life. One App.',
     category: 'Higher Education Enterprise Campus Operating System',

@@ -5,51 +5,63 @@
         https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   <url>
-    <loc>https://aervenlabs.vercel.app/</loc>
+    <loc>https://aervenlabs.net/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://aervenlabs.vercel.app/journey</loc>
+    <loc>https://aervenlabs.net/journey</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://aervenlabs.vercel.app/team</loc>
+    <loc>https://aervenlabs.net/team</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://aervenlabs.vercel.app/projects</loc>
+    <loc>https://aervenlabs.net/projects</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://aervenlabs.vercel.app/projects/campus-connect</loc>
+    <loc>https://aervenlabs.net/projects/campus-connect</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://aervenlabs.vercel.app/partners</loc>
+    <loc>https://aervenlabs.net/partners</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://aervenlabs.vercel.app/vision</loc>
+    <loc>https://aervenlabs.net/vision</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://aervenlabs.vercel.app/contact</loc>
+    <loc>https://aervenlabs.net/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aervenlabs.net/privacy</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://aervenlabs.net/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 
 </urlset>

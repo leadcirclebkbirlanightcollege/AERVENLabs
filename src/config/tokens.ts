@@ -32,14 +32,15 @@ export const motion = {
 export const layout = {
   maxContainerWidth: 1536,
   gutters: {
-    mobile: 24,
+    mobile: 20,
     tablet: 32,
-    desktop: 64,
-    desktopLarge: 80,
+    desktop: 56,
+    desktopLarge: 72,
+    desktopUltra: 80,
   },
   grid: {
     columns: 12,
-    gapMobile: 24,
+    gapMobile: 20,
     gapDesktop: 32,
   },
 } as const;

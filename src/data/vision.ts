@@ -23,8 +23,8 @@ export interface VisionSectionConfig {
  * Grounded strictly in approved company philosophy without speculative claims.
  */
 export const visionSectionConfig: VisionSectionConfig = {
-  sectionId: '06',
-  eyebrow: '06 / THE VISION',
+  sectionId: '07',
+  eyebrow: '07 / THE FUTURE',
   headline: 'Technology should move with purpose.',
   statement:
     'We believe the future of technology is not defined by how much we can build, but by how intentionally we build it.',

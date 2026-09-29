@@ -15,8 +15,8 @@ export interface PartnersSectionConfig {
  * Strictly communicates infrastructure relationships without exaggerated claims.
  */
 export const partnersSectionConfig: PartnersSectionConfig = {
-  sectionId: '07',
-  eyebrow: '07 / THE PARTNERS',
+  sectionId: '08',
+  eyebrow: '08 / INFRASTRUCTURE',
   headline: 'Built on infrastructure designed to endure.',
   description:
     'Our products depend on reliable infrastructure beneath the interface. AervenLabs works with established technology platforms to deploy, protect, and operate digital systems with discipline.',

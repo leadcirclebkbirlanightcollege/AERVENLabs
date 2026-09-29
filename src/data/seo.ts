@@ -29,8 +29,10 @@ export const defaultSEO: SEOConfig = {
 
 export const routeSEOConfig: Record<string, Partial<SEOConfig>> = {
   home: {
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
-    description: siteConfig.description,
+    title: 'AervenLabs — Technology. Built with Intent.',
+    description:
+      'AervenLabs Technologies builds purposeful digital products, platforms, and intelligent software systems.',
+    canonicalUrl: 'https://aervenlabs.net/',
   },
   journey: {
     title: `Journey — ${siteConfig.name}`,
@@ -49,8 +51,10 @@ export const routeSEOConfig: Record<string, Partial<SEOConfig>> = {
     ],
   },
   projects: {
-    title: `Projects — ${siteConfig.name}`,
-    description: `Digital products, software platforms, and engineering work from ${siteConfig.name}.`,
+    title: 'Projects — AervenLabs',
+    description:
+      'AervenLabs builds purposeful digital products, platforms, and intelligent systems.',
+    canonicalUrl: `${siteConfig.url}/projects`,
     breadcrumbs: [
       { name: 'Home', path: '/' },
       { name: 'Projects', path: '/projects' },

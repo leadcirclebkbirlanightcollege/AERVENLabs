@@ -5,6 +5,17 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { capabilitiesData, capabilitiesSectionConfig } from '../../data/capabilities';
 import { Capability } from '../../types';
 
+/**
+ * Homepage Section 04: What We Build (Engineering Capabilities).
+ * Communicates WHAT WE ENGINEER across 5 core disciplines:
+ * 01: Product Engineering
+ * 02: Platform & Cloud Systems
+ * 03: Intelligent Systems & Applied AI
+ * 04: Interface Architecture & Design Systems
+ * 05: Interactive & Experimental Technology
+ * Desktop: Sticky editorial composition with smooth capability transitions.
+ * Mobile: Clean, natural vertical sequence with zero scroll-trapping.
+ */
 export const WhatWeBuild: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const pinContainerRef = useRef<HTMLDivElement>(null);
@@ -27,7 +38,6 @@ export const WhatWeBuild: React.FC = () => {
 
       let lastIndex = 0;
 
-      // Pin the frame over a controlled scroll distance (~190vh)
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: 'top top',
@@ -98,7 +108,7 @@ export const WhatWeBuild: React.FC = () => {
       ref={sectionRef}
       id="what-we-build"
       aria-labelledby="what-we-build-title"
-      className={`relative bg-black text-foreground border-t border-border-subtle py-28 md:py-36 ${
+      className={`relative bg-black text-foreground border-t border-border-subtle py-24 sm:py-32 md:py-36 ${
         prefersReducedMotion ? 'lg:py-44' : 'lg:py-0 lg:h-[200vh]'
       }`}
     >
@@ -148,7 +158,7 @@ export const WhatWeBuild: React.FC = () => {
                 </p>
               </div>
 
-              {/* Right Column: Editorial Headline & Brief Context */}
+              {/* Right Column: Editorial Headline */}
               <div className="lg:col-span-8">
                 <h2
                   id="what-we-build-title"
@@ -161,11 +171,11 @@ export const WhatWeBuild: React.FC = () => {
 
             {/* Core 12-Column Architectural Stage */}
             <div className="grid-architectural items-center my-auto py-8">
-              {/* LEFT COLUMN (Cols 1-4): Persistent Capability Index & Architectural 03 */}
+              {/* LEFT COLUMN (Cols 1-4): Persistent Capability Index & Architectural 04 */}
               <div className="lg:col-span-4 flex flex-col justify-between space-y-8 pr-4">
                 <div className="space-y-4">
                   <p className="text-tech-label text-neutral-500 font-mono">
-                    INDEX // TECHNICAL CATALOGUE
+                    INDEX // WHAT WE ENGINEER
                   </p>
 
                   {/* Persistent Capability Navigation List */}
@@ -185,7 +195,6 @@ export const WhatWeBuild: React.FC = () => {
                             }`}
                           >
                             <div className="flex items-center gap-3">
-                              {/* Architectural node square */}
                               <span
                                 className={`h-1.5 w-1.5 transition-all duration-300 ${
                                   isActive ? 'bg-white scale-125' : 'bg-neutral-600 group-hover:bg-neutral-400'
@@ -222,7 +231,7 @@ export const WhatWeBuild: React.FC = () => {
                   </ol>
                 </div>
 
-                {/* Large Background 03 Numeral */}
+                {/* Large Background 04 Numeral */}
                 <div
                   className="hidden lg:block select-none pointer-events-none opacity-[0.04] -translate-x-2"
                   aria-hidden="true"
@@ -272,7 +281,7 @@ export const WhatWeBuild: React.FC = () => {
                 </AnimatePresence>
               </div>
 
-              {/* RIGHT COLUMN (Cols 9-12): Description & Technical Metadata Card */}
+              {/* RIGHT COLUMN (Cols 9-12): Description & Technical Stack Card */}
               <div className="lg:col-span-4 xl:col-span-3 space-y-6">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -288,7 +297,7 @@ export const WhatWeBuild: React.FC = () => {
                       {activeCapability.description}
                     </p>
 
-                    {/* Technical Metadata Specification Card */}
+                    {/* Technical Specification Card */}
                     <div className="surface-level-1 p-5 space-y-4 rounded-[2px] border border-border-subtle">
                       <div className="flex items-center justify-between border-b border-border-subtle pb-2.5">
                         <span className="text-tech-label text-neutral-500 font-mono">
@@ -320,10 +329,9 @@ export const WhatWeBuild: React.FC = () => {
               </div>
             </div>
 
-            {/* Bottom Row: Coordinate Readout & Architectural Progress Line */}
+            {/* Bottom Row: Coordinate Readout & Progress Line */}
             <div className="w-full border-t border-border-subtle pt-4">
               <div className="flex items-center justify-between">
-                {/* Left Coordinate */}
                 <div className="flex items-center gap-3">
                   <span className="text-tech-label text-neutral-400 font-mono">
                     SYS_CAP // 0{activeIndex + 1} OF 0{capabilitiesData.length}
@@ -334,7 +342,6 @@ export const WhatWeBuild: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Progress Hairline Line */}
                 <div
                   className="w-48 sm:w-64 h-[1px] bg-white/[0.10] relative overflow-hidden"
                   aria-hidden="true"
@@ -347,9 +354,8 @@ export const WhatWeBuild: React.FC = () => {
                   />
                 </div>
 
-                {/* Right Architectural Readout */}
                 <span className="text-tech-label text-neutral-500 font-mono">
-                  AERVENLABS // SPEC_03
+                  AERVENLABS // SPEC_04
                 </span>
               </div>
             </div>
@@ -373,7 +379,6 @@ export const WhatWeBuild: React.FC = () => {
           viewport={{ once: true, margin: '-60px' }}
           className="space-y-6 mb-16 sm:mb-20"
         >
-          {/* Eyebrow & Metadata */}
           <motion.div variants={itemVariants} className="space-y-3">
             <div className="inline-flex items-center gap-2.5">
               <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
@@ -386,14 +391,12 @@ export const WhatWeBuild: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Section Heading */}
           <motion.div variants={itemVariants}>
             <h2 className="text-heading-1 sm:text-display-sm font-semibold tracking-tight text-white leading-tight">
               {capabilitiesSectionConfig.headline}
             </h2>
           </motion.div>
 
-          {/* Editorial Description */}
           <motion.div variants={itemVariants}>
             <p className="text-base sm:text-lg text-secondary-text leading-relaxed max-w-2xl font-sans">
               {capabilitiesSectionConfig.description}
@@ -401,18 +404,16 @@ export const WhatWeBuild: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Natural Vertical Flow: Sequential Capability Chapters */}
+        {/* Natural Vertical Sequence */}
         <div className="relative pl-6 sm:pl-8 border-l border-white/[0.08]">
           <ol role="list" className="space-y-16 sm:space-y-20">
             {capabilitiesData.map((cap) => (
               <li key={cap.id} className="relative space-y-6">
-                {/* Architectural Node Indicator on the Left Spine */}
                 <div
                   className="absolute -left-[31px] sm:-left-[39px] top-1.5 h-3 w-3 rotate-45 border border-white bg-white"
                   aria-hidden="true"
                 />
 
-                {/* Chapter Meta */}
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="font-mono text-xs font-semibold text-white">
                     0{cap.order}
@@ -427,25 +428,20 @@ export const WhatWeBuild: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Chapter Title */}
                 <h3 className="text-heading-2 sm:text-heading-1 font-semibold text-white tracking-tight">
                   {cap.title}
                 </h3>
 
-                {/* Short Statement */}
                 <p className="text-xs sm:text-sm font-mono text-neutral-400 tracking-wide uppercase">
                   {cap.tagline || cap.shortDescription}
                 </p>
 
-                {/* Architectural Hairline Divider */}
                 <div className="h-[1px] w-12 bg-white/20" aria-hidden="true" />
 
-                {/* Detailed Description */}
                 <p className="text-sm sm:text-base text-secondary-text leading-relaxed font-sans max-w-2xl">
                   {cap.description}
                 </p>
 
-                {/* Technical Stack Tags */}
                 <div className="surface-level-1 p-4 sm:p-5 space-y-3 rounded-[2px] border border-border-subtle max-w-xl">
                   <div className="flex items-center justify-between border-b border-border-subtle pb-2">
                     <span className="text-tech-label text-neutral-500 font-mono">

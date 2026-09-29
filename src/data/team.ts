@@ -22,8 +22,8 @@ export interface TeamSectionConfig {
  * Sequential identifier 05 / THE TEAM following 04 / PROJECTS.
  */
 export const teamSectionConfig: TeamSectionConfig = {
-  sectionId: '05',
-  eyebrow: '05 / THE TEAM',
+  sectionId: '06',
+  eyebrow: '06 / THE PEOPLE',
   headline: 'People behind the systems.',
   description:
     'Technology does not engineer itself. Behind every product architecture, platform service, and line of code is a dedicated team of engineers, designers, and builders committed to craftsmanship, purpose, and enduring digital value.',

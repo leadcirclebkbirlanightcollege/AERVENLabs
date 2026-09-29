@@ -5,16 +5,26 @@ import { TeamMember } from '../../types';
 import { TeamPortrait } from './TeamPortrait';
 
 /**
- * Homepage Section 05: The Team ("People behind the systems.").
- * Premium editorial portrait presentation for the 8 real AervenLabs team members.
- * Strictly monochrome, architectural, intentional, and human.
+ * Homepage Section 06: The People.
+ * Core statement: "People behind the systems."
+ * Strictly verified roster of all 8 authentic team members:
+ * - Mr. Amit N. Rai — Mentor
+ * - Atharv A. Jadhav — Founder & CEO
+ * - Pransu B. Mishra — Co-Founder & CTO
+ * - Aditya S. Pandey — Lead Product Engineer
+ * - Aditya V. Mishra — Product & UI/UX Designer
+ * - Subhasree G. Padhi — Creative & Communications Lead
+ * - Avadhut G. Kashid — Software Engineer
+ * - Ajay A. Prajapati — Application Developer
+ * Premium cinematic monochrome portraits with restrained signal-entry transitions.
+ * No fabricated bios, credentials, or corporate milestones.
  */
 export const Team: React.FC = () => {
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Staggered motion variants for restrained section entry
+  // Staggered motion variants for section entry
   const containerVariants = {
     hidden: {},
     visible: {
@@ -42,9 +52,9 @@ export const Team: React.FC = () => {
 
   return (
     <section
-      id="team"
-      aria-labelledby="team-title"
-      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-28 md:py-36 lg:py-44"
+      id="the-people"
+      aria-labelledby="the-people-title"
+      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-24 sm:py-32 md:py-36 lg:py-44"
     >
       {/* Background Architectural Grid Lines */}
       <div
@@ -63,7 +73,7 @@ export const Team: React.FC = () => {
       </div>
 
       <div className="container-architectural relative z-10 w-full space-y-16 sm:space-y-20 lg:space-y-28">
-        {/* Section Header: Structured Eyebrow, Heading, & Humanizing Description */}
+        {/* Section Header */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -71,7 +81,7 @@ export const Team: React.FC = () => {
           viewport={{ once: true, margin: '-60px' }}
           className="grid-architectural items-start"
         >
-          {/* Left Column: Eyebrow & Oversized Architectural 05 */}
+          {/* Left Column: Eyebrow & Architectural Numeral 06 */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
             <motion.div variants={itemVariants} className="space-y-3">
               <div className="inline-flex items-center gap-2.5">
@@ -85,12 +95,12 @@ export const Team: React.FC = () => {
               </p>
             </motion.div>
 
-            {/* Subtle Architectural 05 Numeral Device */}
+            {/* Architectural 06 Numeral Device */}
             <div
               className="hidden lg:block select-none pointer-events-none opacity-[0.04] -translate-x-3"
               aria-hidden="true"
             >
-              <span className="font-sans text-[10rem] font-bold leading-none tracking-tighter text-white">
+              <span className="font-sans text-[11rem] font-bold leading-none tracking-tighter text-white">
                 {teamSectionConfig.sectionId}
               </span>
             </div>
@@ -100,8 +110,8 @@ export const Team: React.FC = () => {
           <div className="lg:col-span-8 space-y-6">
             <motion.div variants={itemVariants}>
               <h2
-                id="team-title"
-                className="text-heading-1 md:text-display-sm font-semibold tracking-tight text-white leading-tight"
+                id="the-people-title"
+                className="text-heading-1 sm:text-display-sm lg:text-display font-semibold tracking-tight text-white leading-tight"
               >
                 {teamSectionConfig.headline}
               </h2>
@@ -126,9 +136,9 @@ export const Team: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
         >
           {teamMembers.map((member: TeamMember, index: number) => {
-            // Editorial span and responsive ordering:
-            // Desktop: Founder & Co-Founder get top 6-col priority, followed by Mentor + Engineering/Design (4-cols)
-            // Mobile & Tablet: Natural sequential order (01 -> 08)
+            // Editorial grid allocation:
+            // Leadership (Founder & Co-Founder) allocated 6 columns on large screens
+            // Advisory & Core Engineering / Design allocated 4 columns on large screens
             const getGridClasses = (id: string) => {
               switch (id) {
                 case 'atharv-a-jadhav':

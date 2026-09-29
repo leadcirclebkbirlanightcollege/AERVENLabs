@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
           <div className="w-full overflow-hidden select-none">
             <h2 className="sr-only">AervenLabs Official Brand</h2>
             <div
-              className="font-sans font-bold tracking-tighter text-white uppercase text-[clamp(2.15rem,11vw,11rem)] leading-[0.88] transition-colors duration-500 hover:text-neutral-200"
+              className="font-sans font-bold tracking-tight sm:tracking-tighter text-white uppercase text-[clamp(1.75rem,10vw,10.5rem)] leading-[0.88] transition-colors duration-500 hover:text-neutral-200"
               aria-hidden="true"
             >
               AERVENLABS

@@ -5,6 +5,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { journeyMilestones, journeySectionConfig } from '../../data/journey';
 import { JourneyMilestone } from '../../types';
 
+/**
+ * Homepage Section 03: The Journey.
+ * Tells the company's development story through verified progression phases:
+ * - PHASE 01: Conception (Purpose-Driven Genesis)
+ * - PHASE 02: Exploration (Architectural Systems & Research)
+ * - PHASE 03: Product Development (Campus Connect Platform)
+ * - PHASE 04: Expansion (Intelligent Systems & Ecosystem)
+ * Desktop: Central architectural spine with progressive reveal.
+ * Mobile: Natural, accessible vertical timeline.
+ */
 export const Journey: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const timelineContainerRef = useRef<HTMLDivElement>(null);
@@ -23,7 +33,7 @@ export const Journey: React.FC = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // 1. Progress line scrub down the timeline spine
+      // 1. Central spine progress scrub down the timeline
       if (lineProgressRef.current && timelineContainerRef.current) {
         gsap.fromTo(
           lineProgressRef.current,
@@ -34,7 +44,7 @@ export const Journey: React.FC = () => {
             transformOrigin: 'top center',
             scrollTrigger: {
               trigger: timelineContainerRef.current,
-              start: 'top 60%',
+              start: 'top 65%',
               end: 'bottom 75%',
               scrub: 0.5,
             },
@@ -64,8 +74,8 @@ export const Journey: React.FC = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.1,
-        delayChildren: prefersReducedMotion ? 0 : 0.05,
+        staggerChildren: prefersReducedMotion ? 0 : 0.08,
+        delayChildren: prefersReducedMotion ? 0 : 0.04,
       },
     },
   };
@@ -90,7 +100,7 @@ export const Journey: React.FC = () => {
       ref={sectionRef}
       id="journey"
       aria-labelledby="journey-title"
-      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-28 md:py-36 lg:py-44"
+      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-24 sm:py-32 md:py-36 lg:py-44"
     >
       {/* Background Architectural Grid Lines */}
       <div
@@ -109,15 +119,15 @@ export const Journey: React.FC = () => {
       </div>
 
       <div className="container-architectural relative z-10 w-full">
-        {/* Section Header: Structured Eyebrow, Title, & Editorial Description */}
+        {/* Section Header */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="grid-architectural items-start mb-20 md:mb-28 lg:mb-36"
+          className="grid-architectural items-start mb-16 sm:mb-24 lg:mb-32"
         >
-          {/* Left Column: Eyebrow & Large Architectural Numeral */}
+          {/* Left Column: Eyebrow & Architectural Numeral 03 */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
             <motion.div variants={itemVariants} className="space-y-4">
               <div className="inline-flex items-center gap-2.5">
@@ -131,7 +141,7 @@ export const Journey: React.FC = () => {
               </p>
             </motion.div>
 
-            {/* Subtle Architectural 02 Numeral Device */}
+            {/* Architectural 03 Numeral Device */}
             <div
               className="hidden lg:block select-none pointer-events-none opacity-[0.05] -translate-x-3"
               aria-hidden="true"
@@ -143,11 +153,11 @@ export const Journey: React.FC = () => {
           </div>
 
           {/* Right Column: Editorial Headline & Subtitle */}
-          <div className="lg:col-span-8 space-y-8">
+          <div className="lg:col-span-8 space-y-6 sm:space-y-8">
             <motion.div variants={itemVariants}>
               <h2
                 id="journey-title"
-                className="text-heading-1 md:text-display-sm font-semibold tracking-tight text-white leading-[1.12]"
+                className="text-heading-1 sm:text-display-sm lg:text-display font-semibold tracking-tight text-white leading-[1.08]"
               >
                 {journeySectionConfig.headline}
               </h2>
@@ -190,8 +200,8 @@ export const Journey: React.FC = () => {
             />
           </div>
 
-          {/* Chronological Ordered List for Screen Readers and Visual Hierarchy */}
-          <ol role="list" className="relative space-y-16 sm:space-y-24 lg:space-y-36">
+          {/* Chronological Ordered List of 4 Phases */}
+          <ol role="list" className="relative space-y-12 sm:space-y-20 lg:space-y-28">
             {journeyMilestones.map((milestone: JourneyMilestone, index: number) => {
               const isEven = index % 2 === 1;
               const isActive = prefersReducedMotion || activeIndex === index;
@@ -218,7 +228,7 @@ export const Journey: React.FC = () => {
                   <div className="lg:hidden relative pl-10 sm:pl-14">
                     {/* Architectural Marker Node */}
                     <div
-                      className={`absolute left-4 sm:left-6 top-1.5 -translate-x-1/2 h-3 w-3 rotate-45 border transition-all duration-300 ${
+                      className={`absolute left-4 sm:left-6 top-2 -translate-x-1/2 h-3 w-3 rotate-45 border transition-all duration-300 ${
                         isActive
                           ? 'border-white bg-white scale-110'
                           : 'border-white/30 bg-black scale-90'
@@ -228,7 +238,6 @@ export const Journey: React.FC = () => {
 
                     {/* Content Container */}
                     <div className="surface-level-1 p-5 sm:p-7 space-y-4 rounded-[2px] border border-border-subtle">
-                      {/* Technical Meta Header */}
                       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border-subtle pb-3">
                         <div className="flex items-center gap-2">
                           <span
@@ -237,7 +246,7 @@ export const Journey: React.FC = () => {
                             }`}
                             aria-hidden="true"
                           />
-                          <span className="text-tech-label text-neutral-400 font-mono">
+                          <span className="text-tech-label text-neutral-300 font-mono tracking-wider">
                             {milestone.phase}
                           </span>
                         </div>
@@ -248,20 +257,16 @@ export const Journey: React.FC = () => {
                         )}
                       </div>
 
-                      {/* Milestone Title */}
                       <h3 className="text-heading-3 sm:text-heading-2 font-semibold text-white tracking-tight">
                         {milestone.title}
                       </h3>
 
-                      {/* Short Statement */}
                       <p className="text-xs sm:text-sm font-mono text-neutral-400">
                         {milestone.shortStatement}
                       </p>
 
-                      {/* Architectural Hairline Divider */}
                       <div className="h-[1px] w-12 bg-white/20" aria-hidden="true" />
 
-                      {/* Detailed Description */}
                       {milestone.description && (
                         <p className="text-sm sm:text-base text-secondary-text leading-relaxed font-sans">
                           {milestone.description}
@@ -285,13 +290,13 @@ export const Journey: React.FC = () => {
                     />
 
                     {/* Column 1 (Left Side) */}
-                    <div className={isEven ? 'order-1' : 'order-1'}>
+                    <div className="order-1">
                       {!isEven ? (
-                        // Odd Item: Main Milestone Card on Left
+                        // Odd Item: Main Card on Left
                         <div
                           className={`surface-level-1 p-8 xl:p-10 space-y-5 rounded-[2px] transition-all duration-300 border ${
                             isActive
-                              ? 'border-white/30 shadow-[0_0_24px_rgba(0,0,0,0.8)]'
+                              ? 'border-white/40 shadow-[0_0_24px_rgba(0,0,0,0.8)]'
                               : 'border-border-subtle'
                           }`}
                         >
@@ -352,13 +357,13 @@ export const Journey: React.FC = () => {
                     </div>
 
                     {/* Column 2 (Right Side) */}
-                    <div className={isEven ? 'order-2' : 'order-2'}>
+                    <div className="order-2">
                       {isEven ? (
-                        // Even Item: Main Milestone Card on Right
+                        // Even Item: Main Card on Right
                         <div
                           className={`surface-level-1 p-8 xl:p-10 space-y-5 rounded-[2px] transition-all duration-300 border ${
                             isActive
-                              ? 'border-white/30 shadow-[0_0_24px_rgba(0,0,0,0.8)]'
+                              ? 'border-white/40 shadow-[0_0_24px_rgba(0,0,0,0.8)]'
                               : 'border-border-subtle'
                           }`}
                         >

@@ -203,6 +203,11 @@ export interface Project {
   links?: ProjectLinks;
   order?: number;
   caseStudy?: CampusConnectCaseStudy;
+  archiveNumber?: string;
+  archiveLabel?: string;
+  statusLabel?: string;
+  platformBadges?: string[];
+  systemCode?: string;
 }
 
 export interface TeamMember {
