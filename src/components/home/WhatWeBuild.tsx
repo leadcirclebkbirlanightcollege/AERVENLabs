@@ -1,476 +1,174 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowRight, Code, Server, Smartphone, Globe, Shield, Sparkles } from 'lucide-react';
 import { capabilitiesData, capabilitiesSectionConfig } from '../../data/capabilities';
 import { Capability } from '../../types';
 
-/**
- * Homepage Section 04: What We Build (Engineering Capabilities).
- * Communicates WHAT WE ENGINEER across 5 core disciplines:
- * 01: Product Engineering
- * 02: Platform & Cloud Systems
- * 03: Intelligent Systems & Applied AI
- * 04: Interface Architecture & Design Systems
- * 05: Interactive & Experimental Technology
- * Desktop: Sticky editorial composition with smooth capability transitions.
- * Mobile: Clean, natural vertical sequence with zero scroll-trapping.
- */
 export const WhatWeBuild: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const pinContainerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState<number>(0);
 
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // GSAP desktop pinned storytelling setup
-  useEffect(() => {
-    if (prefersReducedMotion || typeof window === 'undefined') return;
+  const activeCapability: Capability = capabilitiesData[activeTab] || capabilitiesData[0];
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    const mm = gsap.matchMedia();
-
-    mm.add('(min-width: 1024px)', () => {
-      if (!sectionRef.current || !pinContainerRef.current) return;
-
-      let lastIndex = 0;
-
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: 'top top',
-        end: 'bottom bottom',
-        pin: pinContainerRef.current,
-        scrub: 0.5,
-        onUpdate: (self) => {
-          const index = Math.min(
-            Math.floor(self.progress * capabilitiesData.length),
-            capabilitiesData.length - 1
-          );
-          if (index !== lastIndex) {
-            lastIndex = index;
-            setActiveIndex(index);
-          }
-        },
-      });
-    });
-
-    return () => mm.revert();
-  }, [prefersReducedMotion]);
-
-  // Click / Keyboard selection handler on desktop
-  const handleSelectCapability = (index: number) => {
-    setActiveIndex(index);
-    if (sectionRef.current) {
-      const rect = sectionRef.current.getBoundingClientRect();
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const sectionTop = rect.top + scrollTop;
-      const totalScrollDistance = sectionRef.current.offsetHeight - window.innerHeight;
-      if (totalScrollDistance > 0) {
-        const targetY = sectionTop + (index / (capabilitiesData.length - 1)) * totalScrollDistance;
-        window.scrollTo({ top: targetY, behavior: 'smooth' });
-      }
-    }
-  };
-
-  // Motion variants for section entry
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.08,
-        delayChildren: prefersReducedMotion ? 0 : 0.04,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: {
-      opacity: prefersReducedMotion ? 1 : 0,
-      y: prefersReducedMotion ? 0 : 16,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: prefersReducedMotion ? 0.01 : 0.7,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
-    },
-  };
-
-  const activeCapability: Capability = capabilitiesData[activeIndex] || capabilitiesData[0];
+  const icons = [Code, Globe, Smartphone, Server, Shield, Sparkles];
 
   return (
     <section
-      ref={sectionRef}
       id="what-we-build"
       aria-labelledby="what-we-build-title"
-      className={`relative bg-black text-foreground border-t border-border-subtle py-24 sm:py-32 md:py-36 ${
-        prefersReducedMotion ? 'lg:py-44' : 'lg:py-0 lg:h-[200vh]'
-      }`}
+      className="relative overflow-hidden bg-[#F7F8FA] border-b border-[#E6E9EF] py-20 sm:py-28 lg:py-32"
     >
-      {/* Background Architectural Grid Lines */}
-      <div
-        className="pointer-events-none absolute inset-0 select-none opacity-40"
-        aria-hidden="true"
-      >
-        <div className="container-architectural h-full w-full">
-          <div className="h-full w-full border-x border-white/[0.04]">
-            <div className="grid h-full grid-cols-1 md:grid-cols-6 lg:grid-cols-12 divide-x divide-white/[0.03]">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="h-full" />
-              ))}
+      <div className="container-architectural relative z-10 w-full space-y-12 sm:space-y-16">
+        {/* Section Header */}
+        <div className="grid-architectural items-start gap-8">
+          <div className="lg:col-span-4 space-y-2">
+            <div className="inline-flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-[#315EFA]" />
+              <span className="text-eyebrow font-mono text-xs font-semibold tracking-wider text-[#315EFA]">
+                {capabilitiesSectionConfig.eyebrow}
+              </span>
             </div>
+            <p className="text-xs font-mono uppercase tracking-widest text-[#667085]">
+              {capabilitiesSectionConfig.metaLabel}
+            </p>
+          </div>
+
+          <div className="lg:col-span-8 space-y-4">
+            <h2
+              id="what-we-build-title"
+              className="text-heading-1 sm:text-display-sm font-bold tracking-tight text-[#101828] leading-tight"
+            >
+              {capabilitiesSectionConfig.headline}
+            </h2>
+            <p className="text-base sm:text-lg text-[#667085] max-w-2xl font-sans">
+              {capabilitiesSectionConfig.description}
+            </p>
           </div>
         </div>
-      </div>
 
-      {/* ============================================================== */}
-      {/* DESKTOP PINNED STORYTELLING EXPERIENCE (>= 1024px & !reduced) */}
-      {/* ============================================================== */}
-      {!prefersReducedMotion && (
-        <div
-          ref={pinContainerRef}
-          className="hidden lg:flex flex-col justify-between h-screen w-full overflow-hidden relative z-10 pt-10 pb-8"
-        >
-          <div className="container-architectural w-full flex-1 flex flex-col justify-between">
-            {/* Top Architectural Header */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid-architectural items-start border-b border-border-subtle pb-6"
-            >
-              {/* Left Column: Eyebrow & Category Label */}
-              <div className="lg:col-span-4 space-y-2">
-                <div className="inline-flex items-center gap-2.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-                  <span className="text-eyebrow text-neutral-400">
-                    {capabilitiesSectionConfig.eyebrow}
-                  </span>
-                </div>
-                <p className="text-tech-label text-neutral-500 font-mono tracking-widest">
-                  {capabilitiesSectionConfig.metaLabel}
-                </p>
-              </div>
-
-              {/* Right Column: Editorial Headline */}
-              <div className="lg:col-span-8">
-                <h2
-                  id="what-we-build-title"
-                  className="text-heading-2 xl:text-heading-1 font-semibold tracking-tight text-white leading-tight"
-                >
-                  {capabilitiesSectionConfig.headline}
-                </h2>
-              </div>
-            </motion.div>
-
-            {/* Core 12-Column Architectural Stage */}
-            <div className="grid-architectural items-center my-auto py-8">
-              {/* LEFT COLUMN (Cols 1-4): Persistent Capability Index & Architectural 04 */}
-              <div className="lg:col-span-4 flex flex-col justify-between space-y-8 pr-4">
-                <div className="space-y-4">
-                  <p className="text-tech-label text-neutral-500 font-mono">
-                    INDEX // WHAT WE ENGINEER
-                  </p>
-
-                  {/* Persistent Capability Navigation List */}
-                  <ol role="list" className="space-y-2" aria-label="Capabilities index">
-                    {capabilitiesData.map((cap, index) => {
-                      const isActive = activeIndex === index;
-                      return (
-                        <li key={cap.id}>
-                          <button
-                            type="button"
-                            onClick={() => handleSelectCapability(index)}
-                            aria-current={isActive ? 'true' : undefined}
-                            className={`group flex items-center justify-between w-full text-left py-2.5 px-3 transition-all duration-300 rounded-[2px] border ${
-                              isActive
-                                ? 'bg-surface border-white/40 text-white'
-                                : 'bg-transparent border-transparent text-neutral-500 hover:text-neutral-300 hover:border-border-subtle'
-                            }`}
-                          >
-                            <div className="flex items-center gap-3">
-                              <span
-                                className={`h-1.5 w-1.5 transition-all duration-300 ${
-                                  isActive ? 'bg-white scale-125' : 'bg-neutral-600 group-hover:bg-neutral-400'
-                                }`}
-                                aria-hidden="true"
-                              />
-                              <span
-                                className={`font-mono text-xs ${
-                                  isActive ? 'text-white' : 'text-neutral-500 group-hover:text-neutral-400'
-                                }`}
-                              >
-                                0{cap.order}
-                              </span>
-                              <span
-                                className={`text-sm tracking-tight transition-colors duration-200 ${
-                                  isActive ? 'font-medium text-white' : 'font-normal'
-                                }`}
-                              >
-                                {cap.title}
-                              </span>
-                            </div>
-
-                            <span
-                              className={`font-mono text-[10px] tracking-widest transition-colors duration-200 ${
-                                isActive ? 'text-neutral-400' : 'text-neutral-600'
-                              }`}
-                            >
-                              SYS_0{cap.order}
-                            </span>
-                          </button>
-                        </li>
-                      );
-                    })}
-                  </ol>
-                </div>
-
-                {/* Large Background 04 Numeral */}
-                <div
-                  className="hidden lg:block select-none pointer-events-none opacity-[0.04] -translate-x-2"
-                  aria-hidden="true"
-                >
-                  <span className="font-sans text-[9rem] font-bold leading-none tracking-tighter text-white">
-                    {capabilitiesSectionConfig.sectionId}
-                  </span>
-                </div>
-              </div>
-
-              {/* CENTER COLUMN (Cols 5-8): Large Active Capability Display */}
-              <div className="lg:col-span-4 xl:col-span-5 space-y-6">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeCapability.id}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="space-y-6"
+        {/* Interactive Capability Architecture Display */}
+        <div className="grid-architectural items-start gap-8 lg:gap-12">
+          {/* Left: Capability List Navigator */}
+          <div className="lg:col-span-5 space-y-2.5">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#98A2B3] block pb-1">
+              ENGINEERING DISCIPLINES //
+            </span>
+            <div className="space-y-2" role="tablist" aria-label="Capabilities tabs">
+              {capabilitiesData.map((cap, index) => {
+                const IconComponent = icons[index % icons.length];
+                const isActive = activeTab === index;
+                return (
+                  <button
+                    key={cap.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => setActiveTab(index)}
+                    className={`w-full text-left p-4 rounded-[10px] border transition-all duration-200 flex items-center justify-between group outline-none focus-visible:ring-2 focus-visible:ring-[#315EFA] ${
+                      isActive
+                        ? 'bg-white border-[#315EFA] shadow-sm'
+                        : 'bg-white/60 hover:bg-white border-[#E6E9EF] text-[#667085]'
+                    }`}
                   >
-                    {/* Architectural Coordinate Tag */}
-                    <div className="flex items-center gap-3">
-                      <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-                      <span className="text-tech-label text-neutral-400 font-mono">
-                        {activeCapability.systemCode}
-                      </span>
-                      <span className="h-3 w-[1px] bg-white/[0.15]" aria-hidden="true" />
-                      <span className="text-tech-label text-neutral-500 font-mono">
-                        {activeCapability.category}
-                      </span>
-                    </div>
-
-                    {/* Massive Display Title */}
-                    <h3 className="text-heading-1 xl:text-display-sm font-semibold tracking-tight text-white leading-[1.08]">
-                      {activeCapability.title}
-                    </h3>
-
-                    {/* Architectural Hairline Divider */}
-                    <div className="h-[1px] w-16 bg-white/20" aria-hidden="true" />
-
-                    {/* Tagline / Short Statement */}
-                    <p className="text-sm font-mono text-neutral-400 tracking-wide uppercase leading-relaxed">
-                      {activeCapability.tagline || activeCapability.shortDescription}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* RIGHT COLUMN (Cols 9-12): Description & Technical Stack Card */}
-              <div className="lg:col-span-4 xl:col-span-3 space-y-6">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`desc-${activeCapability.id}`}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-                    className="space-y-6"
-                  >
-                    {/* Editorial Description */}
-                    <p className="text-base text-secondary-text leading-relaxed font-sans">
-                      {activeCapability.description}
-                    </p>
-
-                    {/* Technical Specification Card */}
-                    <div className="surface-level-1 p-5 space-y-4 rounded-[2px] border border-border-subtle">
-                      <div className="flex items-center justify-between border-b border-border-subtle pb-2.5">
-                        <span className="text-tech-label text-neutral-500 font-mono">
-                          DISCIPLINE
+                    <div className="flex items-center gap-3.5">
+                      <div
+                        className={`p-2 rounded-[6px] transition-colors ${
+                          isActive
+                            ? 'bg-[#DCE5FF] text-[#315EFA]'
+                            : 'bg-[#F7F8FA] text-[#667085] group-hover:text-[#101828]'
+                        }`}
+                      >
+                        <IconComponent className="h-4 w-4" />
+                      </div>
+                      <div className="space-y-0.5">
+                        <span
+                          className={`font-semibold text-sm block transition-colors ${
+                            isActive ? 'text-[#101828]' : 'text-[#667085] group-hover:text-[#101828]'
+                          }`}
+                        >
+                          {cap.title}
                         </span>
-                        <span className="text-xs text-neutral-300 font-mono">
-                          {activeCapability.discipline}
+                        <span className="font-mono text-[11px] text-[#98A2B3]">
+                          {cap.discipline}
                         </span>
                       </div>
-
-                      <div className="space-y-2 pt-1">
-                        <span className="text-tech-label text-neutral-500 font-mono block">
-                          APPROVED STACK //
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {activeCapability.technologies?.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-2 py-0.5 text-tech-label font-mono text-neutral-300 bg-surface-dark border border-border-subtle rounded-[2px]"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
                     </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+
+                    <ArrowRight
+                      className={`h-4 w-4 transition-transform ${
+                        isActive
+                          ? 'text-[#315EFA] translate-x-0.5'
+                          : 'text-[#D0D5DD] opacity-0 group-hover:opacity-100'
+                      }`}
+                    />
+                  </button>
+                );
+              })}
             </div>
+          </div>
 
-            {/* Bottom Row: Coordinate Readout & Progress Line */}
-            <div className="w-full border-t border-border-subtle pt-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="text-tech-label text-neutral-400 font-mono">
-                    SYS_CAP // 0{activeIndex + 1} OF 0{capabilitiesData.length}
-                  </span>
-                  <span className="h-2.5 w-[1px] bg-white/[0.15]" aria-hidden="true" />
-                  <span className="text-tech-label text-neutral-500 font-mono">
+          {/* Right: Active Capability Detailed Showcase Card */}
+          <div className="lg:col-span-7">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCapability.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                className="p-8 sm:p-10 rounded-[16px] bg-white border border-[#E6E9EF] shadow-md shadow-[#101828]/04 space-y-6"
+              >
+                {/* Top Bezel */}
+                <div className="flex items-center justify-between border-b border-[#E6E9EF] pb-4">
+                  <div className="flex items-center gap-2 font-mono text-xs text-[#315EFA] font-semibold">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#315EFA]" />
+                    <span>{activeCapability.systemCode}</span>
+                  </div>
+                  <span className="font-mono text-[10px] text-[#667085] bg-[#F7F8FA] px-2.5 py-1 rounded-[4px] border border-[#E6E9EF]">
                     {activeCapability.category}
                   </span>
                 </div>
 
-                <div
-                  className="w-48 sm:w-64 h-[1px] bg-white/[0.10] relative overflow-hidden"
-                  aria-hidden="true"
-                >
-                  <div
-                    className="h-full bg-white transition-all duration-300"
-                    style={{
-                      width: `${((activeIndex + 1) / capabilitiesData.length) * 100}%`,
-                    }}
-                  />
+                <div className="space-y-3">
+                  <h3 className="text-heading-2 font-bold text-[#101828]">
+                    {activeCapability.title}
+                  </h3>
+                  <p className="text-xs font-mono text-[#315EFA]">
+                    {activeCapability.tagline}
+                  </p>
+                  <p className="text-base text-[#667085] leading-relaxed font-sans pt-1">
+                    {activeCapability.description}
+                  </p>
                 </div>
 
-                <span className="text-tech-label text-neutral-500 font-mono">
-                  AERVENLABS // SPEC_04
-                </span>
-              </div>
-            </div>
+                {/* Approved Technologies */}
+                <div className="pt-4 border-t border-[#E6E9EF] space-y-3">
+                  <span className="font-mono text-xs font-semibold text-[#101828] uppercase tracking-wider block">
+                    PROVEN STACK & ARCHITECTURE //
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {activeCapability.technologies?.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 rounded-[6px] bg-[#F7F8FA] border border-[#E6E9EF] font-mono text-xs text-[#101828]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom Verification Label */}
+                <div className="pt-2 flex items-center justify-between text-xs font-mono text-[#98A2B3]">
+                  <span>DISCIPLINE SPECIFICATION</span>
+                  <span>AERVENLABS // PRODUCTION-READY</span>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </div>
-      )}
-
-      {/* ============================================================== */}
-      {/* MOBILE, TABLET & REDUCED MOTION EXPERIENCE (< 1024px or reduced) */}
-      {/* ============================================================== */}
-      <div
-        className={`${
-          prefersReducedMotion ? 'block' : 'lg:hidden'
-        } container-architectural relative z-10 w-full`}
-      >
-        {/* Section Header */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="space-y-6 mb-16 sm:mb-20"
-        >
-          <motion.div variants={itemVariants} className="space-y-3">
-            <div className="inline-flex items-center gap-2.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-              <span className="text-eyebrow text-neutral-400">
-                {capabilitiesSectionConfig.eyebrow}
-              </span>
-            </div>
-            <p className="text-tech-label text-neutral-500 font-mono tracking-widest">
-              {capabilitiesSectionConfig.metaLabel}
-            </p>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <h2 className="text-heading-1 sm:text-display-sm font-semibold tracking-tight text-white leading-tight">
-              {capabilitiesSectionConfig.headline}
-            </h2>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <p className="text-base sm:text-lg text-secondary-text leading-relaxed max-w-2xl font-sans">
-              {capabilitiesSectionConfig.description}
-            </p>
-          </motion.div>
-        </motion.div>
-
-        {/* Natural Vertical Sequence */}
-        <div className="relative pl-6 sm:pl-8 border-l border-white/[0.08]">
-          <ol role="list" className="space-y-16 sm:space-y-20">
-            {capabilitiesData.map((cap) => (
-              <li key={cap.id} className="relative space-y-6">
-                <div
-                  className="absolute -left-[31px] sm:-left-[39px] top-1.5 h-3 w-3 rotate-45 border border-white bg-white"
-                  aria-hidden="true"
-                />
-
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="font-mono text-xs font-semibold text-white">
-                    0{cap.order}
-                  </span>
-                  <span className="h-2.5 w-[1px] bg-white/[0.2]" aria-hidden="true" />
-                  <span className="text-tech-label text-neutral-400 font-mono">
-                    {cap.systemCode}
-                  </span>
-                  <span className="h-2.5 w-[1px] bg-white/[0.2]" aria-hidden="true" />
-                  <span className="text-tech-label text-neutral-500 font-mono">
-                    {cap.category}
-                  </span>
-                </div>
-
-                <h3 className="text-heading-2 sm:text-heading-1 font-semibold text-white tracking-tight">
-                  {cap.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm font-mono text-neutral-400 tracking-wide uppercase">
-                  {cap.tagline || cap.shortDescription}
-                </p>
-
-                <div className="h-[1px] w-12 bg-white/20" aria-hidden="true" />
-
-                <p className="text-sm sm:text-base text-secondary-text leading-relaxed font-sans max-w-2xl">
-                  {cap.description}
-                </p>
-
-                <div className="surface-level-1 p-4 sm:p-5 space-y-3 rounded-[2px] border border-border-subtle max-w-xl">
-                  <div className="flex items-center justify-between border-b border-border-subtle pb-2">
-                    <span className="text-tech-label text-neutral-500 font-mono">
-                      DISCIPLINE
-                    </span>
-                    <span className="text-xs text-neutral-300 font-mono">
-                      {cap.discipline}
-                    </span>
-                  </div>
-
-                  <div className="space-y-1.5 pt-1">
-                    <span className="text-tech-label text-neutral-500 font-mono block">
-                      APPROVED STACK //
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {cap.technologies?.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-0.5 text-tech-label font-mono text-neutral-300 bg-surface-dark border border-border-subtle rounded-[2px]"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ol>
         </div>
       </div>
     </section>

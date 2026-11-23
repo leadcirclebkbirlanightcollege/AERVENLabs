@@ -14,54 +14,38 @@ export const NotFoundPage: React.FC = () => {
   return (
     <div
       data-testid="route-not-found"
-      className="min-h-screen bg-black text-foreground selection:bg-white selection:text-black flex flex-col justify-center overflow-x-hidden relative"
+      className="min-h-screen bg-white text-[#101828] flex flex-col justify-center overflow-x-hidden relative"
     >
-      {/* Background Architectural Grid Lines */}
-      <div
-        className="pointer-events-none absolute inset-0 select-none opacity-25"
-        aria-hidden="true"
-      >
-        <div className="container-architectural h-full w-full">
-          <div className="h-full w-full border-x border-white/[0.04]">
-            <div className="grid h-full grid-cols-1 md:grid-cols-6 lg:grid-cols-12 divide-x divide-white/[0.03]">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="h-full" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="container-architectural relative z-10 py-24 sm:py-32 w-full my-auto">
-        <div className="max-w-3xl space-y-8">
+        <div className="max-w-2xl space-y-8">
           {/* Top Bezel */}
-          <div className="inline-flex items-center gap-2.5 border border-border-subtle bg-surface px-3 py-1.5 rounded-[2px]">
-            <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" aria-hidden="true" />
-            <span className="text-tech-label text-neutral-400 font-mono tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F1F3F6] border border-[#E6E9EF] rounded-full text-xs font-mono text-[#315EFA]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#315EFA] animate-pulse" aria-hidden="true" />
+            <span className="tracking-widest uppercase">
               SYSTEM RESOLUTION // 404
             </span>
           </div>
 
           {/* Monumental 404 Display */}
           <div className="space-y-4">
-            <h1 className="text-display sm:text-display-lg lg:text-display font-bold tracking-tighter text-white uppercase leading-[0.92] select-none">
-              404 // ROUTE UNRESOLVED.
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#101828] leading-[1.08]">
+              404 // Route Unresolved.
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-secondary-text font-sans leading-relaxed">
-              The requested URL path does not map to an active architectural specification, project catalogue, or published page in the AervenLabs repository.
+            <p className="text-base sm:text-lg text-[#667085] font-sans leading-relaxed">
+              The requested URL path does not map to an active architectural specification, project catalogue, or published page in the AERVENLabs repository.
             </p>
           </div>
 
-          {/* Terminal Diagnostic Box */}
-          <div className="surface-level-1 p-5 rounded-[2px] border border-border-subtle font-mono text-xs text-neutral-400 space-y-2 max-w-lg">
-            <div className="flex items-center justify-between border-b border-border-subtle pb-2 text-neutral-500">
-              <span className="flex items-center gap-2">
-                <Terminal className="h-3.5 w-3.5" aria-hidden="true" />
+          {/* Diagnostic Box */}
+          <div className="bg-[#F7F8FA] p-5 rounded-[12px] border border-[#E6E9EF] font-mono text-xs text-[#667085] space-y-2 max-w-lg">
+            <div className="flex items-center justify-between border-b border-[#E6E9EF] pb-2 text-[#101828]">
+              <span className="flex items-center gap-2 font-medium">
+                <Terminal className="h-3.5 w-3.5 text-[#315EFA]" aria-hidden="true" />
                 <span>DIAGNOSTIC LOG</span>
               </span>
-              <span>SYS_CODE: 0x404</span>
+              <span className="text-[#315EFA]">SYS_CODE: 0x404</span>
             </div>
-            <div className="space-y-1 text-neutral-400 text-[11px]">
+            <div className="space-y-1 text-xs">
               <p>PATH_STATUS: UNMAPPED</p>
               <p>HOST: {siteConfig.url}</p>
               <p>FALLBACK_PROTOCOL: RETURN_TO_ORIGIN</p>
@@ -72,7 +56,7 @@ export const NotFoundPage: React.FC = () => {
           <div className="flex flex-wrap items-center gap-4 pt-4">
             <Link
               to="/"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-white text-black font-mono text-xs font-semibold tracking-wider uppercase rounded-[2px] hover:bg-neutral-200 transition-colors duration-200 min-h-[48px]"
+              className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#315EFA] text-white font-mono text-xs font-semibold tracking-wider uppercase rounded-[8px] hover:bg-[#254dd4] transition-colors duration-200 min-h-[44px] shadow-sm"
               aria-label="Return to homepage"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -81,19 +65,11 @@ export const NotFoundPage: React.FC = () => {
 
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-surface-dark text-white font-mono text-xs font-medium tracking-wider uppercase rounded-[2px] border border-border-subtle hover:border-white/30 transition-colors duration-200 min-h-[48px]"
-              aria-label="View project archive"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#F7F8FA] border border-[#E6E9EF] hover:border-[#101828] text-[#101828] font-mono text-xs font-semibold tracking-wider uppercase rounded-[8px] transition-colors duration-200 min-h-[44px]"
+              aria-label="Browse Projects archive"
             >
-              <span>EXPLORE PROJECTS</span>
-              <ArrowUpRight className="h-3.5 w-3.5 text-neutral-400" aria-hidden="true" />
-            </Link>
-
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-transparent text-neutral-400 hover:text-white font-mono text-xs font-medium tracking-wider uppercase rounded-[2px] transition-colors duration-200 min-h-[48px]"
-              aria-label="Contact AervenLabs"
-            >
-              <span>CONTACT SUPPORT</span>
+              <span>BROWSE PROJECTS</span>
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
         </div>

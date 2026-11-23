@@ -1,22 +1,33 @@
 /**
- * AervenLabs Official Design Tokens
- * Single source of programmatic truth for monochrome colors, layout scales,
- * typography hierarchy, and motion easing parameters.
+ * AERVENLabs Official Design Tokens
+ * Premium White-First Design Architecture:
+ * - Primary Background: #FFFFFF
+ * - Secondary Background: #F7F8FA
+ * - Soft Section Background: #F1F3F6
+ * - Primary Text: #101828
+ * - Secondary Text: #667085
+ * - Primary Accent: #315EFA (Engineering Blue)
+ * - Secondary Accent: #7657E8 (Future Violet)
+ * - Borders: #E6E9EF
+ * - Subtle Highlights: #DCE5FF
  */
 
 export const colors = {
-  black: '#000000',
-  nearBlack: '#0A0A0A',
-  surfaceDark: '#141414',
-  surfaceElevated: '#1C1C1C',
-  borderSubtle: '#262626',
-  mutedText: '#8A8A8A',
-  secondaryText: '#A3A3A3',
-  lightGray: '#D4D4D4',
+  background: '#FFFFFF',
+  secondaryBackground: '#F7F8FA',
+  softBackground: '#F1F3F6',
+  primaryText: '#101828',
+  secondaryText: '#667085',
+  primaryAccent: '#315EFA',
+  secondaryAccent: '#7657E8',
+  border: '#E6E9EF',
+  subtleHighlight: '#DCE5FF',
   white: '#FFFFFF',
+  surfaceCard: '#FFFFFF',
+  surfaceHover: '#F7F8FA',
 } as const;
 
-export const motion = {
+export const motionTokens = {
   easing: {
     cinematic: 'cubic-bezier(0.16, 1, 0.3, 1)',
     cinematicBezier: [0.16, 1, 0.3, 1] as [number, number, number, number],
@@ -25,17 +36,17 @@ export const motion = {
   duration: {
     micro: 0.2,     // 200ms
     ui: 0.3,        // 300ms
-    cinematic: 0.7, // 700ms
+    cinematic: 0.65, // 650ms
   },
 } as const;
 
 export const layout = {
-  maxContainerWidth: 1536,
+  maxContainerWidth: 1440,
   gutters: {
     mobile: 20,
     tablet: 32,
-    desktop: 56,
-    desktopLarge: 72,
+    desktop: 48,
+    desktopLarge: 64,
     desktopUltra: 80,
   },
   grid: {
@@ -54,31 +65,39 @@ export const typography = {
     bold: 700,
   },
   tracking: {
-    display: '-0.04em',
+    display: '-0.035em',
     heading: '-0.025em',
-    body: '0em',
-    eyebrow: '0.15em',
-    technical: '0.18em',
-  },
-  lineHeight: {
-    display: 0.95,
-    heading: 1.15,
-    body: 1.65,
-    technical: 1.3,
+    body: '-0.005em',
+    eyebrow: '0.12em',
+    technical: '0.15em',
   },
 } as const;
 
 export const borders = {
   radius: {
     none: '0px',
-    architectural: '2px',
-    component: '4px',
+    xs: '4px',
+    sm: '6px',
+    md: '8px',
+    lg: '12px',
+    xl: '16px',
+    full: '9999px',
   },
   width: {
     hairline: '1px',
+    standard: '1px',
+    accent: '2px',
   },
 } as const;
 
+export const shadows = {
+  subtle: '0 1px 3px 0 rgba(16, 24, 40, 0.04), 0 1px 2px 0 rgba(16, 24, 40, 0.02)',
+  card: '0 2px 6px -1px rgba(16, 24, 40, 0.05), 0 1px 4px -1px rgba(16, 24, 40, 0.03)',
+  cardHover: '0 12px 28px -4px rgba(16, 24, 40, 0.08), 0 4px 12px -2px rgba(16, 24, 40, 0.03)',
+  elevated: '0 20px 32px -8px rgba(16, 24, 40, 0.1), 0 8px 16px -4px rgba(16, 24, 40, 0.04)',
+  glowBlue: '0 0 24px -4px rgba(49, 94, 250, 0.18)',
+} as const;
+
 export const accessibility = {
-  minTouchTarget: 48, // 48px minimum touch area
+  minTouchTarget: 48,
 } as const;

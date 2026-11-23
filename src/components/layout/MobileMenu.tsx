@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { X } from 'lucide-react';
+import { X, ArrowRight, Mail } from 'lucide-react';
 import { navigationItems, footerLegalItems } from '../../data/navigation';
 import { siteConfig } from '../../config/site';
 
@@ -16,12 +16,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
   const menuRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Check if reduced motion is preferred
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Route-aware active checker
   const isRouteActive = (path: string) => {
     if (path === '/') {
       return location.pathname === '/';
@@ -29,13 +27,11 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
     return location.pathname === path || location.pathname.startsWith(`${path}/`);
   };
 
-  // Scroll lock & Escape key listener & focus management
   useEffect(() => {
     if (isOpen) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
 
-      // Move focus into the menu (close button)
       setTimeout(() => {
         closeButtonRef.current?.focus();
       }, 50);
@@ -44,7 +40,6 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
         if (event.key === 'Escape') {
           onClose();
         }
-        // Focus trap
         if (event.key === 'Tab' && menuRef.current) {
           const focusableElements = menuRef.current.querySelectorAll<HTMLElement>(
             'a[href], button:not([disabled])'
@@ -69,7 +64,6 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
       return () => {
         document.body.style.overflow = originalOverflow;
         window.removeEventListener('keydown', handleKeyDown);
-        // Restore focus to trigger button
         triggerRef.current?.focus();
       };
     }
@@ -78,10 +72,12 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
   const overlayVariants = {
     closed: {
       opacity: 0,
+      y: -8,
       transition: { duration: prefersReducedMotion ? 0.01 : 0.2, ease: [0.16, 1, 0.3, 1] as const },
     },
     open: {
       opacity: 1,
+      y: 0,
       transition: { duration: prefersReducedMotion ? 0.01 : 0.25, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
@@ -91,7 +87,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
     open: {
       transition: {
         staggerChildren: prefersReducedMotion ? 0 : 0.04,
-        delayChildren: prefersReducedMotion ? 0 : 0.08,
+        delayChildren: prefersReducedMotion ? 0 : 0.06,
       },
     },
   };
@@ -99,12 +95,12 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
   const itemVariants = {
     closed: {
       opacity: 0,
-      y: prefersReducedMotion ? 0 : 12,
+      x: prefersReducedMotion ? 0 : -8,
       transition: { duration: 0.15 },
     },
     open: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
@@ -117,28 +113,30 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
           ref={menuRef}
           role="dialog"
           aria-modal="true"
-          aria-label="Navigation Menu"
+          aria-label="Mobile Navigation Menu"
           initial="closed"
           animate="open"
           exit="closed"
           variants={overlayVariants}
-          className="fixed inset-0 z-50 flex flex-col justify-between bg-black px-6 py-5 sm:px-8 overflow-y-auto"
+          className="fixed inset-0 z-50 flex flex-col justify-between bg-white px-6 py-5 sm:px-8 overflow-y-auto"
         >
           {/* Top Bar inside Overlay */}
-          <div className="flex items-center justify-between border-b border-border-subtle pb-4">
+          <div className="flex items-center justify-between border-b border-[#E6E9EF] pb-4">
             <Link
               to="/"
               onClick={onClose}
-              className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              className="flex items-center gap-3 outline-none focus-visible:ring-2 focus-visible:ring-[#315EFA]"
               aria-label={`${siteConfig.name} — Return to homepage`}
             >
-              <img
-                src="/assets/aervenlabs-logo.png"
-                alt=""
-                className="h-7 w-7 object-contain"
-                aria-hidden="true"
-              />
-              <span className="font-sans text-sm font-semibold tracking-wider text-white uppercase">
+              <div className="flex items-center justify-center h-8 w-8 rounded-[6px] bg-[#F7F8FA] border border-[#E6E9EF] p-1.5">
+                <img
+                  src="/assets/aervenlabs-logo.png"
+                  alt=""
+                  className="h-full w-full object-contain"
+                  aria-hidden="true"
+                />
+              </div>
+              <span className="font-sans text-sm font-bold tracking-tight text-[#101828] uppercase">
                 {siteConfig.name}
               </span>
             </Link>
@@ -148,15 +146,15 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
               type="button"
               onClick={onClose}
               aria-label="Close navigation menu"
-              className="touch-target flex items-center justify-center rounded-[2px] text-neutral-400 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              className="touch-target flex items-center justify-center rounded-[8px] border border-[#E6E9EF] bg-[#F7F8FA] text-[#101828] hover:bg-[#F1F3F6] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#315EFA]"
             >
-              <X className="h-6 w-6 stroke-[1.5]" />
+              <X className="h-5 w-5 stroke-[2]" />
             </button>
           </div>
 
           {/* Primary Navigation Links */}
-          <nav aria-label="Mobile primary navigation" className="my-auto py-6">
-            <motion.ul variants={listVariants} className="space-y-4">
+          <nav aria-label="Mobile primary navigation" className="my-auto py-8">
+            <motion.ul variants={listVariants} className="space-y-3">
               {navigationItems.map((item) => {
                 const active = isRouteActive(item.path);
                 return (
@@ -165,18 +163,20 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
                       to={item.path}
                       onClick={onClose}
                       aria-current={active ? 'page' : undefined}
-                      className={`group flex items-center justify-between py-2 text-2xl font-medium tracking-tight transition-colors outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
+                      className={`group flex items-center justify-between px-3 py-2.5 rounded-[8px] text-lg font-medium tracking-tight transition-all outline-none focus-visible:ring-2 focus-visible:ring-[#315EFA] ${
                         active
-                          ? 'text-white'
-                          : 'text-neutral-400 hover:text-white'
+                          ? 'text-[#315EFA] bg-[#DCE5FF]/40 font-semibold'
+                          : 'text-[#101828] hover:text-[#315EFA] hover:bg-[#F7F8FA]'
                       }`}
                     >
                       <span>{item.label}</span>
-                      {active && (
+                      {active ? (
                         <span
-                          className="h-1.5 w-1.5 rounded-full bg-white"
+                          className="h-2 w-2 rounded-full bg-[#315EFA]"
                           aria-hidden="true"
                         />
+                      ) : (
+                        <ArrowRight className="h-4 w-4 text-[#98A2B3] opacity-0 group-hover:opacity-100 transition-opacity" />
                       )}
                     </Link>
                   </motion.li>
@@ -185,22 +185,31 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, trigger
             </motion.ul>
           </nav>
 
-          {/* Secondary / Legal Footer inside Mobile Menu */}
-          <div className="border-t border-border-subtle pt-6 pb-2">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex gap-6">
+          {/* Bottom Action & Legal Info inside Mobile Menu */}
+          <div className="border-t border-[#E6E9EF] pt-6 pb-2 space-y-4">
+            <Link
+              to="/contact"
+              onClick={onClose}
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#101828] text-white hover:bg-[#315EFA] font-medium text-sm rounded-[8px] transition-colors shadow-sm"
+            >
+              <Mail className="h-4 w-4" />
+              <span>Let's Connect</span>
+            </Link>
+
+            <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-[#667085]">
+              <div className="flex gap-4">
                 {footerLegalItems.map((item) => (
                   <Link
                     key={item.id}
                     to={item.path}
                     onClick={onClose}
-                    className="text-xs uppercase tracking-widest text-neutral-500 outline-none transition-colors hover:text-neutral-300 focus-visible:ring-2 focus-visible:ring-white"
+                    className="hover:text-[#101828] transition-colors"
                   >
                     {item.label}
                   </Link>
                 ))}
               </div>
-              <p className="text-xs text-neutral-600">
+              <p className="font-mono text-[11px] text-[#98A2B3]">
                 {siteConfig.legalName}
               </p>
             </div>

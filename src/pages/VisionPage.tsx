@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Compass, ShieldCheck } from 'lucide-react';
 import { useSEO } from '../hooks/useSEO';
 import { routeSEOConfig } from '../data/seo';
 import { generateBreadcrumbSchema } from '../lib/seo';
@@ -78,67 +78,49 @@ export const VisionPage: React.FC = () => {
   return (
     <div
       data-testid="route-vision"
-      className="min-h-screen bg-black text-foreground selection:bg-white selection:text-black overflow-x-hidden"
+      className="min-h-screen bg-white text-[#101828] overflow-x-hidden"
     >
-      {/* Background Architectural Grid Lines */}
-      <div
-        className="pointer-events-none absolute inset-0 select-none opacity-25"
-        aria-hidden="true"
-      >
-        <div className="container-architectural h-full w-full">
-          <div className="h-full w-full border-x border-white/[0.04]">
-            <div className="grid h-full grid-cols-1 md:grid-cols-6 lg:grid-cols-12 divide-x divide-white/[0.03]">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="h-full" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container-architectural relative z-10 py-16 sm:py-24 lg:py-32 space-y-16 sm:space-y-24 lg:space-y-32">
+      <div className="container-architectural relative z-10 py-16 sm:py-24 lg:py-32 space-y-16 sm:space-y-24">
         {/* Dedicated Page Header */}
         <motion.header
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-8 border-b border-border-subtle pb-12 sm:pb-16"
+          className="space-y-8 border-b border-[#E6E9EF] pb-12 sm:pb-16"
         >
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono text-neutral-400">
-            <Link to="/" className="hover:text-white transition-colors duration-200">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono text-[#667085]">
+            <Link to="/" className="hover:text-[#101828] transition-colors duration-200">
               HOME
             </Link>
             <span aria-hidden="true">/</span>
-            <span className="text-white" aria-current="page">
+            <span className="text-[#101828] font-medium" aria-current="page">
               VISION
             </span>
           </nav>
 
-          <div className="grid-architectural items-start gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Column: Eyebrow & Status */}
             <div className="lg:col-span-4 space-y-3">
-              <div className="inline-flex items-center gap-2.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-                <span className="text-eyebrow text-neutral-400">
-                  {visionSectionConfig.eyebrow}
-                </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F1F3F6] border border-[#E6E9EF] rounded-full text-xs font-mono text-[#315EFA]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#315EFA]" aria-hidden="true" />
+                <span>{visionSectionConfig.eyebrow}</span>
               </div>
-              <p className="text-tech-label text-neutral-500 font-mono tracking-widest">
+              <p className="text-xs text-[#667085] font-mono tracking-widest uppercase">
                 {visionSectionConfig.metaLabel}
               </p>
             </div>
 
             {/* Right Column: Monumental Headline & Narrative */}
             <div className="lg:col-span-8 space-y-6">
-              <h1 className="text-heading-1 sm:text-display-sm lg:text-display font-semibold tracking-tight text-white uppercase leading-[0.95] select-none">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#101828] leading-[1.08]">
                 {visionSectionConfig.headline}
               </h1>
-              <p className="text-base sm:text-lg lg:text-2xl text-white/90 font-medium font-sans leading-relaxed max-w-3xl">
+              <p className="text-lg sm:text-xl lg:text-2xl text-[#101828] font-medium font-sans leading-relaxed max-w-3xl">
                 {visionSectionConfig.statement}
               </p>
-              <div className="h-[1px] w-16 bg-white/20" aria-hidden="true" />
-              <p className="text-base sm:text-lg text-secondary-text leading-relaxed max-w-2xl font-sans">
+              <div className="h-[1px] w-16 bg-[#315EFA]" aria-hidden="true" />
+              <p className="text-base sm:text-lg text-[#667085] leading-relaxed max-w-2xl font-sans">
                 {visionSectionConfig.paragraph}
               </p>
             </div>
@@ -146,8 +128,8 @@ export const VisionPage: React.FC = () => {
         </motion.header>
 
         {/* The Horizon Architectural Specimen */}
-        <section aria-label="The Horizon architectural axis" className="space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-4 text-neutral-500 font-mono text-[10px] tracking-widest uppercase">
+        <section aria-label="The Horizon architectural axis" className="space-y-6 bg-[#F7F8FA] border border-[#E6E9EF] p-8 sm:p-12 rounded-[16px]">
+          <div className="flex flex-wrap items-center justify-between gap-4 text-[#667085] font-mono text-xs tracking-widest uppercase">
             <span>{visionSectionConfig.horizonCoordinates.origin}</span>
             <span className="hidden sm:inline">{visionSectionConfig.horizonCoordinates.focus}</span>
             <span className="hidden md:inline">{visionSectionConfig.horizonCoordinates.vector}</span>
@@ -155,27 +137,27 @@ export const VisionPage: React.FC = () => {
           </div>
 
           <div className="relative py-6">
-            <div className="h-[1px] w-full bg-white/[0.12]" aria-hidden="true" />
+            <div className="h-[1px] w-full bg-[#E6E9EF]" aria-hidden="true" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none select-none">
-              <div className="h-3 w-[1px] bg-white/40" />
-              <div className="h-2.5 w-2.5 rotate-45 border border-white bg-black my-1" />
-              <div className="h-3 w-[1px] bg-white/40" />
+              <div className="h-3 w-[1px] bg-[#315EFA]" />
+              <div className="h-3 w-3 rotate-45 border-2 border-[#315EFA] bg-white my-1" />
+              <div className="h-3 w-[1px] bg-[#315EFA]" />
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-neutral-600 font-mono text-[10px]" aria-hidden="true">
+          <div className="flex items-center justify-between text-[#667085] font-mono text-xs" aria-hidden="true">
             <span>AXIS // PERPETUAL_ALIGNMENT</span>
-            <span>INTENT OVER ARBITRARY SCALE</span>
+            <span className="text-[#315EFA] font-medium">INTENT OVER ARBITRARY SCALE</span>
           </div>
         </section>
 
         {/* Four Architectural Mandates Grid */}
         <section aria-label="Four architectural mandates" className="space-y-10 sm:space-y-12">
-          <div className="flex items-center justify-between border-b border-border-subtle pb-4">
-            <span className="text-tech-label text-neutral-400 font-mono tracking-widest uppercase">
+          <div className="flex items-center justify-between border-b border-[#E6E9EF] pb-4">
+            <span className="text-xs font-mono text-[#315EFA] tracking-widest uppercase font-semibold">
               STRATEGIC PILLARS // CORE MANDATES
             </span>
-            <span className="text-tech-label text-neutral-500 font-mono">
+            <span className="text-xs text-[#667085] font-mono">
               04 PRINCIPLES
             </span>
           </div>
@@ -188,29 +170,29 @@ export const VisionPage: React.FC = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: '-40px' }}
-                className="surface-level-1 p-8 sm:p-10 rounded-[2px] border border-border-subtle hover:border-white/30 transition-all duration-300 space-y-6 flex flex-col justify-between"
+                className="editorial-card p-8 sm:p-10 rounded-[12px] space-y-6 flex flex-col justify-between hover:border-[#315EFA]/40 transition-all duration-300"
               >
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-border-subtle pb-3">
-                    <span className="font-mono text-xs font-semibold text-white tracking-wider">
+                  <div className="flex items-center justify-between border-b border-[#E6E9EF] pb-3">
+                    <span className="font-mono text-xs font-semibold text-[#315EFA] tracking-wider">
                       {mandate.code}
                     </span>
-                    <span className="text-tech-label text-neutral-500 font-mono">
+                    <span className="text-xs text-[#667085] font-mono">
                       MANDATE
                     </span>
                   </div>
 
-                  <h2 className="text-heading-2 font-semibold text-white tracking-tight uppercase">
+                  <h2 className="text-xl sm:text-2xl font-bold text-[#101828] tracking-tight">
                     {mandate.title}
                   </h2>
 
-                  <p className="text-xs sm:text-sm font-mono text-neutral-400">
+                  <p className="text-xs sm:text-sm font-mono text-[#667085]">
                     {mandate.subtitle}
                   </p>
 
-                  <div className="h-[1px] w-12 bg-white/20" aria-hidden="true" />
+                  <div className="h-[1px] w-12 bg-[#315EFA]/30" aria-hidden="true" />
 
-                  <p className="text-sm sm:text-base text-secondary-text leading-relaxed font-sans">
+                  <p className="text-sm sm:text-base text-[#667085] leading-relaxed font-sans">
                     {mandate.description}
                   </p>
                 </div>
@@ -225,26 +207,26 @@ export const VisionPage: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="border-t border-border-subtle pt-12 sm:pt-16 lg:pt-20 space-y-8"
+          className="border-t border-[#E6E9EF] pt-12 sm:pt-16 space-y-8"
         >
           <div className="space-y-2 select-none">
-            <div className="text-display sm:text-display-lg lg:text-display font-bold tracking-tighter text-white uppercase leading-[0.9]">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#101828] leading-[1.05]">
               {visionSectionConfig.closingStatement.line1}
             </div>
-            <div className="text-display sm:text-display-lg lg:text-display font-bold tracking-tighter text-neutral-400 uppercase leading-[0.9]">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#315EFA] leading-[1.05]">
               {visionSectionConfig.closingStatement.line2}
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-8 border-t border-border-subtle">
-            <p className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-8 border-t border-[#E6E9EF]">
+            <p className="text-xs font-mono text-[#667085] uppercase tracking-widest">
               AERVENLABS TECHNOLOGIES PVT. LTD. // CONVICTION_SPEC
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 text-xs font-mono text-white bg-surface-dark border border-white/20 hover:border-white px-5 py-3 rounded-[2px] transition-colors duration-200 min-h-[48px]"
+                className="inline-flex items-center gap-2 text-xs font-mono text-[#101828] bg-[#F7F8FA] border border-[#E6E9EF] hover:border-[#101828] px-5 py-3 rounded-[8px] font-semibold transition-colors duration-200 min-h-[44px]"
                 aria-label="Explore our projects"
               >
                 <span>EXPLORE PRODUCTS</span>
@@ -253,7 +235,7 @@ export const VisionPage: React.FC = () => {
 
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 text-xs font-mono text-black bg-white hover:bg-neutral-200 px-5 py-3 rounded-[2px] font-semibold transition-colors duration-200 min-h-[48px]"
+                className="inline-flex items-center gap-2 text-xs font-mono text-white bg-[#315EFA] hover:bg-[#254dd4] px-5 py-3 rounded-[8px] font-semibold transition-colors duration-200 min-h-[44px] shadow-sm"
                 aria-label="Start a conversation"
               >
                 <span>START A CONVERSATION</span>

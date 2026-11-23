@@ -5,12 +5,13 @@ import { HomePage } from './pages/HomePage';
 
 /**
  * Secondary pages are lazy-loaded via React.lazy() + dynamic import().
- * This splits the bundle so the homepage loads only its own code.
- * The HomePage itself is eagerly imported because it is the critical first render.
+ * HomePage is eagerly imported for optimal critical first render.
  */
 const JourneyPage = lazy(() => import('./pages/JourneyPage').then(m => ({ default: m.JourneyPage })));
+const WhatWeBuildPage = lazy(() => import('./pages/WhatWeBuildPage').then(m => ({ default: m.WhatWeBuildPage })));
 const TeamPage = lazy(() => import('./pages/TeamPage').then(m => ({ default: m.TeamPage })));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })));
+const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage').then(m => ({ default: m.ProjectDetailPage })));
 const CampusConnectPage = lazy(() => import('./pages/CampusConnectPage').then(m => ({ default: m.CampusConnectPage })));
 const PartnersPage = lazy(() => import('./pages/PartnersPage').then(m => ({ default: m.PartnersPage })));
 const VisionPage = lazy(() => import('./pages/VisionPage').then(m => ({ default: m.VisionPage })));
@@ -21,20 +22,23 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ defa
 
 /**
  * Root Application Component.
- * Establishes client-side routing architecture for AervenLabs website.
- * Uses Suspense with a minimal fallback (black screen) consistent with the dark design system.
+ * Establishes client-side routing architecture for AERVENLabs website.
+ * Clean white-first Suspense fallback.
  */
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div className="min-h-screen bg-black" aria-hidden="true" />}>
+      <Suspense fallback={<div className="min-h-screen bg-white" aria-hidden="true" />}>
         <Routes>
           <Route path="/" element={<RootLayout />}>
             <Route index element={<HomePage />} />
             <Route path="journey" element={<JourneyPage />} />
+            <Route path="what-we-build" element={<WhatWeBuildPage />} />
             <Route path="team" element={<TeamPage />} />
             <Route path="projects" element={<ProjectsPage />} />
+            {/* Dedicated case study route for Campus Connect and dynamic detail pages for all projects */}
             <Route path="projects/campus-connect" element={<CampusConnectPage />} />
+            <Route path="projects/:slug" element={<ProjectDetailPage />} />
             <Route path="partners" element={<PartnersPage />} />
             <Route path="vision" element={<VisionPage />} />
             <Route path="contact" element={<ContactPage />} />

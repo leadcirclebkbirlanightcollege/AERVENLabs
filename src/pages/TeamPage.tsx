@@ -7,11 +7,13 @@ import { generateBreadcrumbSchema } from '../lib/seo';
 import { teamMembers, teamSectionConfig } from '../data/team';
 import { TeamMember } from '../types';
 import { TeamPortrait } from '../components/home/TeamPortrait';
+import { ArrowUpRight, ShieldCheck } from 'lucide-react';
 
 /**
  * Dedicated Team Page ('/team').
- * Full architectural gallery showcasing the 8 real members of AervenLabs Technologies Pvt. Ltd.
+ * Editorial gallery showcasing the 8 real members of AERVENLabs Technologies Pvt. Ltd.
  * Driven by the centralized src/data/team.ts single source of truth.
+ * White-first Apple-disciplined aesthetic.
  */
 export const TeamPage: React.FC = () => {
   useSEO(
@@ -29,7 +31,7 @@ export const TeamPage: React.FC = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.08,
+        staggerChildren: prefersReducedMotion ? 0 : 0.06,
         delayChildren: prefersReducedMotion ? 0 : 0.04,
       },
     },
@@ -44,69 +46,51 @@ export const TeamPage: React.FC = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: prefersReducedMotion ? 0.01 : 0.7,
+        duration: prefersReducedMotion ? 0.01 : 0.6,
         ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
 
   return (
-    <div className="bg-black text-foreground min-h-screen">
-      {/* Background Architectural Grid Lines */}
-      <div
-        className="pointer-events-none absolute inset-0 select-none opacity-40"
-        aria-hidden="true"
-      >
-        <div className="container-architectural h-full w-full">
-          <div className="h-full w-full border-x border-white/[0.04]">
-            <div className="grid h-full grid-cols-1 md:grid-cols-6 lg:grid-cols-12 divide-x divide-white/[0.03]">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="h-full" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container-architectural relative z-10 py-16 sm:py-24 lg:py-32 space-y-16 sm:space-y-24 lg:space-y-32">
+    <div className="bg-white text-[#101828] min-h-screen">
+      <div className="container-architectural relative z-10 py-16 sm:py-24 lg:py-32 space-y-16 sm:space-y-24">
         {/* Dedicated Page Header: Breadcrumb + Monumental Title + Purpose */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-8 border-b border-border-subtle pb-12 sm:pb-16"
+          className="space-y-8 border-b border-[#E6E9EF] pb-12 sm:pb-16"
         >
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono text-neutral-400">
-            <Link to="/" className="hover:text-white transition-colors duration-200">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono text-[#667085]">
+            <Link to="/" className="hover:text-[#101828] transition-colors duration-200">
               HOME
             </Link>
-            <span>/</span>
-            <span className="text-white" aria-current="page">
+            <span aria-hidden="true">/</span>
+            <span className="text-[#101828] font-medium" aria-current="page">
               TEAM
             </span>
           </nav>
 
-          <div className="grid-architectural items-start gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Column: Eyebrow & Status */}
             <div className="lg:col-span-4 space-y-3">
-              <div className="inline-flex items-center gap-2.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-                <span className="text-eyebrow text-neutral-400">
-                  AERVENLABS // TEAM DIRECTORY
-                </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F1F3F6] border border-[#E6E9EF] rounded-full text-xs font-mono text-[#315EFA]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#315EFA]" aria-hidden="true" />
+                <span>AERVENLABS // TEAM DIRECTORY</span>
               </div>
-              <p className="text-tech-label text-neutral-500 font-mono tracking-widest">
+              <p className="text-xs text-[#667085] font-mono tracking-widest uppercase">
                 VERIFIED ROSTER // 08 BUILDERS
               </p>
             </div>
 
             {/* Right Column: Monumental Headline & Narrative */}
             <div className="lg:col-span-8 space-y-6">
-              <h1 className="text-heading-1 sm:text-display-sm lg:text-display font-semibold tracking-tight text-white leading-[1.04]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#101828] leading-[1.08]">
                 People behind the systems.
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-secondary-text leading-relaxed max-w-3xl font-sans">
+              <p className="text-base sm:text-lg lg:text-xl text-[#667085] leading-relaxed max-w-3xl font-sans">
                 {teamSectionConfig.description}
               </p>
             </div>
@@ -151,9 +135,9 @@ export const TeamPage: React.FC = () => {
               <motion.article
                 key={member.id}
                 variants={itemVariants}
-                className={`group surface-level-1 p-5 sm:p-6 lg:p-7 rounded-[2px] border border-border-subtle hover:border-white/30 transition-all duration-300 flex flex-col justify-between ${gridSpanClass}`}
+                className={`group editorial-card p-6 sm:p-7 rounded-[12px] hover:border-[#315EFA]/40 transition-all duration-300 flex flex-col justify-between ${gridSpanClass}`}
               >
-                {/* 1. Portrait Frame with Cinematic Glitch Entry */}
+                {/* 1. Portrait Frame */}
                 <div className="w-full">
                   <TeamPortrait
                     member={member}
@@ -165,15 +149,15 @@ export const TeamPage: React.FC = () => {
                 {/* 2. Architectural Information Layer */}
                 <div className="space-y-4 pt-6">
                   {/* Top Bezel: Sequence Number & Discipline */}
-                  <div className="flex items-center justify-between border-b border-border-subtle pb-3">
+                  <div className="flex items-center justify-between border-b border-[#E6E9EF] pb-3 text-xs font-mono">
                     <div className="flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-                      <span className="font-mono text-xs font-semibold text-white tracking-wider">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#315EFA]" aria-hidden="true" />
+                      <span className="font-semibold text-[#101828]">
                         0{member.order} // {member.role.toUpperCase()}
                       </span>
                     </div>
                     {member.discipline && (
-                      <span className="text-tech-label text-neutral-500 font-mono">
+                      <span className="text-[#667085]">
                         {member.discipline}
                       </span>
                     )}
@@ -182,28 +166,44 @@ export const TeamPage: React.FC = () => {
                   {/* Member Name */}
                   <h2
                     className={`${
-                      member.featured ? 'text-heading-2 sm:text-heading-1' : 'text-heading-3 sm:text-heading-2'
-                    } font-semibold text-white tracking-tight uppercase leading-snug`}
+                      member.featured ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'
+                    } font-bold text-[#101828] tracking-tight leading-snug`}
                   >
                     {member.name}
                   </h2>
 
-                  {/* System Label */}
-                  <p className="text-tech-label text-neutral-400 font-mono tracking-widest leading-relaxed">
+                  {/* System Label / Tag */}
+                  <p className="text-xs text-[#667085] font-mono tracking-wide leading-relaxed">
                     {member.systemLabel}
                   </p>
 
-                  {/* Hairline Accent Divider */}
-                  <div className="h-[1px] w-12 bg-white/20" aria-hidden="true" />
+                  {/* Bio if available */}
+                  {member.bio && (
+                    <p className="text-sm text-[#667085] leading-relaxed font-sans line-clamp-3">
+                      {member.bio}
+                    </p>
+                  )}
 
-                  {/* Formal Role Readout */}
-                  <div className="flex items-center justify-between pt-1">
-                    <span className="text-xs sm:text-sm font-mono text-neutral-300">
+                  {/* Hairline Accent Divider */}
+                  <div className="h-[1px] w-12 bg-[#315EFA]/30" aria-hidden="true" />
+
+                  {/* Formal Role & Social Links */}
+                  <div className="flex items-center justify-between pt-2">
+                    <span className="text-xs font-mono text-[#101828] font-medium">
                       {member.role}
                     </span>
-                    <span className="text-tech-label text-neutral-600 font-mono">
-                      VERIFIED // 2026
-                    </span>
+                    {(member.links?.linkedin || member.socialLinks?.linkedin) && (
+                      <a
+                        href={member.links?.linkedin || member.socialLinks?.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs font-mono text-[#315EFA] hover:underline"
+                        aria-label={`${member.name} on LinkedIn`}
+                      >
+                        <span>Profile</span>
+                        <ArrowUpRight className="h-3 w-3" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.article>
@@ -212,23 +212,26 @@ export const TeamPage: React.FC = () => {
         </motion.div>
 
         {/* Closing Collective Narrative Block */}
-        <div className="surface-level-1 p-8 sm:p-12 lg:p-16 rounded-[2px] border border-border-subtle space-y-8">
+        <div className="bg-[#F7F8FA] border border-[#E6E9EF] p-8 sm:p-12 lg:p-16 rounded-[16px] space-y-8">
           <div className="space-y-4 max-w-3xl">
-            <span className="text-tech-label text-neutral-400 font-mono tracking-widest uppercase">
+            <span className="text-xs font-mono text-[#315EFA] uppercase tracking-widest">
               {teamSectionConfig.collectiveTitle}
             </span>
-            <h3 className="text-heading-2 sm:text-heading-1 font-semibold text-white tracking-tight uppercase leading-tight">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#101828] tracking-tight leading-tight">
               {teamSectionConfig.collectiveStatement}
             </h3>
-            <div className="h-[1px] w-14 bg-white/20" aria-hidden="true" />
-            <p className="text-base sm:text-lg text-secondary-text leading-relaxed font-sans">
+            <div className="h-[1px] w-14 bg-[#315EFA]/40" aria-hidden="true" />
+            <p className="text-base sm:text-lg text-[#667085] leading-relaxed font-sans">
               {teamSectionConfig.collectiveParagraph}
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border-subtle pt-6 text-neutral-500 font-mono text-[10px]">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#E6E9EF] pt-6 text-[#667085] font-mono text-xs">
             <span>AERVENLABS TECHNOLOGIES PVT. LTD. // CORE COLLECTIVE</span>
-            <span>INTENT_DRIVEN // ENDURING_VALUE</span>
+            <span className="flex items-center gap-2">
+              <ShieldCheck className="h-3.5 w-3.5 text-[#315EFA]" />
+              INTENT_DRIVEN // ENDURING_VALUE
+            </span>
           </div>
         </div>
       </div>

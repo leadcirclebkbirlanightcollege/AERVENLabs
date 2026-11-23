@@ -10,46 +10,43 @@ export interface PartnersSectionConfig {
 }
 
 /**
- * Editorial configuration for Homepage Section 08 — The Partners.
- * Sequential identifier 07 / THE PARTNERS following 06 / THE VISION.
- * Strictly communicates infrastructure relationships without exaggerated claims.
+ * Editorial configuration for Homepage Section 10 & Partners Page.
  */
 export const partnersSectionConfig: PartnersSectionConfig = {
-  sectionId: '08',
-  eyebrow: '08 / INFRASTRUCTURE',
-  headline: 'Built on infrastructure designed to endure.',
+  sectionId: '10',
+  eyebrow: '10 / TECHNOLOGY ECOSYSTEM',
+  headline: 'Built on infrastructure engineered to endure.',
   description:
-    'Our products depend on reliable infrastructure beneath the interface. AervenLabs works with established technology platforms to deploy, protect, and operate digital systems with discipline.',
-  metaLabel: 'FOUNDATION // INFRASTRUCTURE LAYER',
-  layerLabel: 'INFRASTRUCTURE ECOSYSTEM',
+    'Our digital products depend on dependable infrastructure beneath the surface. AERVENLabs leverages industry-standard cloud and protective platforms to deploy, secure, and operate software systems with discipline.',
+  metaLabel: 'INFRASTRUCTURE // CLOUD FOUNDATION',
+  layerLabel: 'VERIFIED INFRASTRUCTURE PROVIDERS',
 };
 
 /**
  * Verified infrastructure partners data layer.
- * Strictly limited to verified infrastructure relationships.
- * No speculative strategic claims, customer testimonials, or fake endorsements.
+ * Strictly limited to verified infrastructure relationships: Cloudflare & Vercel.
  */
 export const partnersData: Partner[] = [
   {
     id: 'cloudflare',
     name: 'Cloudflare',
     infraId: 'INFRA_01',
-    category: 'Infrastructure',
-    techRole: 'DNS / DOMAIN INFRASTRUCTURE',
-    role: 'DNS & Protective Edge Layer',
+    category: 'Security & DNS Infrastructure',
+    techRole: 'DNS & PROTECTIVE EDGE LAYER',
+    role: 'DNS & Edge Security Infrastructure',
     description:
-      'Domain and DNS infrastructure supporting the availability, global routing, and protective edge layer of AervenLabs digital properties.',
+      'Domain and DNS infrastructure providing automated DDoS mitigation, protective Web Application Firewall (WAF) filtering, and global edge routing for AERVENLabs digital properties.',
     websiteUrl: 'https://www.cloudflare.com',
   },
   {
     id: 'vercel',
     name: 'Vercel',
     infraId: 'INFRA_02',
-    category: 'Deployment Infrastructure',
-    techRole: 'DEPLOYMENT / HOSTING',
-    role: 'Web Deployment & Edge Hosting',
+    category: 'Edge Deployment & Cloud Runtime',
+    techRole: 'GLOBAL HOSTING & EDGE NETWORK',
+    role: 'Web Deployment & Edge Runtime',
     description:
-      'Deployment and hosting infrastructure supporting the continuous delivery, edge performance, and global availability of AervenLabs web applications.',
+      'Continuous deployment, edge compute network, and global hosting infrastructure powering sub-second response times, immutable build artifacts, and high-availability operations.',
     websiteUrl: 'https://vercel.com',
   },
 ];

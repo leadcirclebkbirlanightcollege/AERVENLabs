@@ -1,17 +1,16 @@
 import { Company, NavigationItem } from '../types';
 
 /**
- * Centralized site configuration for AervenLabs Technologies Pvt. Ltd.
+ * Centralized site configuration for AERVENLabs Technologies Pvt. Ltd.
  * Single source of truth for identity, URLs, social channels, and navigation.
  */
 export const siteConfig = {
-  name: 'AervenLabs',
-  legalName: 'AervenLabs Technologies Pvt. Ltd.',
-  // Production URL — authoritative custom domain
+  name: 'AERVENLabs',
+  legalName: 'AERVENLabs Technologies Pvt. Ltd.',
   url: 'https://aervenlabs.net',
-  tagline: 'Technology. Built with intent.',
+  tagline: "Engineering Ideas. Building What's Next.",
   description:
-    'Official website of AervenLabs Technologies Pvt. Ltd. Building high-impact digital products, platforms, and intelligent software systems.',
+    'Official website of AERVENLabs Technologies Pvt. Ltd. Transforming ambitious ideas into meaningful digital products, intelligent platforms, and innovative experiences.',
   email: 'aervenlabs@gmail.com',
   links: {
     github: 'https://github.com/aervenlabs',
@@ -20,13 +19,16 @@ export const siteConfig = {
     youtube: 'https://youtube.com/@aervenlabs',
   },
   keywords: [
-    'AervenLabs',
-    'AervenLabs Technologies',
-    'AervenLabs Technologies Pvt. Ltd.',
-    'AervenLabs software',
-    'AervenLabs technology',
-    'AervenLabs projects',
+    'AERVENLabs',
+    'AERVENLabs Technologies',
+    'AERVENLabs Technologies Pvt. Ltd.',
     'Campus Connect',
+    'NagrikSetu',
+    'RAILVERSE',
+    'Digital Product Engineering',
+    'Educational Technology Platform',
+    'Software Architecture',
+    'Intelligent Systems',
   ],
   ogImage: '/assets/aervenlabs-logo.png',
 } as const;
@@ -43,12 +45,13 @@ export const defaultCompany: Company = {
 
 export const mainNavigation: NavigationItem[] = [
   { id: 'nav-home', label: 'Home', path: '/', order: 1 },
-  { id: 'nav-journey', label: 'Journey', path: '/journey', order: 2 },
-  { id: 'nav-team', label: 'Team', path: '/team', order: 3 },
+  { id: 'nav-journey', label: 'Our Journey', path: '/journey', order: 2 },
+  { id: 'nav-what-we-build', label: 'What We Build', path: '/what-we-build', order: 3 },
   { id: 'nav-projects', label: 'Projects', path: '/projects', order: 4 },
-  { id: 'nav-partners', label: 'Partners', path: '/partners', order: 5 },
-  { id: 'nav-vision', label: 'Vision', path: '/vision', order: 6 },
-  { id: 'nav-contact', label: 'Contact', path: '/contact', order: 7 },
+  { id: 'nav-team', label: 'Our Team', path: '/team', order: 5 },
+  { id: 'nav-vision', label: 'Our Vision', path: '/vision', order: 6 },
+  { id: 'nav-partners', label: 'Partners', path: '/partners', order: 7 },
+  { id: 'nav-contact', label: 'Contact', path: '/contact', order: 8 },
 ];
 
 export const legalNavigation: NavigationItem[] = [

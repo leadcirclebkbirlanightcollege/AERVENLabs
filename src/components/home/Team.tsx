@@ -1,30 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
+import { ArrowRight, Linkedin, Github } from 'lucide-react';
 import { teamMembers, teamSectionConfig } from '../../data/team';
 import { TeamMember } from '../../types';
 import { TeamPortrait } from './TeamPortrait';
 
 /**
- * Homepage Section 06: The People.
- * Core statement: "People behind the systems."
- * Strictly verified roster of all 8 authentic team members:
- * - Mr. Amit N. Rai — Mentor
- * - Atharv A. Jadhav — Founder & CEO
- * - Pransu B. Mishra — Co-Founder & CTO
- * - Aditya S. Pandey — Lead Product Engineer
- * - Aditya V. Mishra — Product & UI/UX Designer
- * - Subhasree G. Padhi — Creative & Communications Lead
- * - Avadhut G. Kashid — Software Engineer
- * - Ajay A. Prajapati — Application Developer
- * Premium cinematic monochrome portraits with restrained signal-entry transitions.
- * No fabricated bios, credentials, or corporate milestones.
+ * Section 9: The Team.
+ * Clean, white-first editorial presentation of all 8 authentic team members.
  */
 export const Team: React.FC = () => {
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Staggered motion variants for section entry
   const containerVariants = {
     hidden: {},
     visible: {
@@ -44,7 +34,7 @@ export const Team: React.FC = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: prefersReducedMotion ? 0.01 : 0.7,
+        duration: prefersReducedMotion ? 0.01 : 0.65,
         ease: [0.16, 1, 0.3, 1] as const,
       },
     },
@@ -52,186 +42,140 @@ export const Team: React.FC = () => {
 
   return (
     <section
-      id="the-people"
-      aria-labelledby="the-people-title"
-      className="relative overflow-hidden bg-black text-foreground border-t border-border-subtle py-24 sm:py-32 md:py-36 lg:py-44"
+      id="team"
+      aria-labelledby="team-title"
+      className="relative overflow-hidden bg-[#F7F8FA] border-b border-[#E6E9EF] py-20 sm:py-28 lg:py-36"
     >
-      {/* Background Architectural Grid Lines */}
-      <div
-        className="pointer-events-none absolute inset-0 select-none opacity-40"
-        aria-hidden="true"
-      >
-        <div className="container-architectural h-full w-full">
-          <div className="h-full w-full border-x border-white/[0.04]">
-            <div className="grid h-full grid-cols-1 md:grid-cols-6 lg:grid-cols-12 divide-x divide-white/[0.03]">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="h-full" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container-architectural relative z-10 w-full space-y-16 sm:space-y-20 lg:space-y-28">
+      <div className="container-architectural relative z-10 w-full space-y-16">
         {/* Section Header */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="grid-architectural items-start"
-        >
-          {/* Left Column: Eyebrow & Architectural Numeral 06 */}
-          <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
-            <motion.div variants={itemVariants} className="space-y-3">
-              <div className="inline-flex items-center gap-2.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-                <span className="text-eyebrow text-neutral-400">
-                  {teamSectionConfig.eyebrow}
-                </span>
-              </div>
-              <p className="text-tech-label text-neutral-500 font-mono tracking-widest">
-                {teamSectionConfig.metaLabel}
-              </p>
-            </motion.div>
-
-            {/* Architectural 06 Numeral Device */}
-            <div
-              className="hidden lg:block select-none pointer-events-none opacity-[0.04] -translate-x-3"
-              aria-hidden="true"
-            >
-              <span className="font-sans text-[11rem] font-bold leading-none tracking-tighter text-white">
-                {teamSectionConfig.sectionId}
+        <div className="grid-architectural items-start gap-8">
+          <div className="lg:col-span-4 space-y-2">
+            <div className="inline-flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-[#315EFA]" />
+              <span className="text-eyebrow font-mono text-xs font-semibold tracking-wider text-[#315EFA]">
+                {teamSectionConfig.eyebrow}
               </span>
             </div>
+            <p className="text-xs font-mono uppercase tracking-widest text-[#667085]">
+              {teamSectionConfig.metaLabel}
+            </p>
           </div>
 
-          {/* Right Column: Editorial Headline & Purpose Copy */}
-          <div className="lg:col-span-8 space-y-6">
-            <motion.div variants={itemVariants}>
-              <h2
-                id="the-people-title"
-                className="text-heading-1 sm:text-display-sm lg:text-display font-semibold tracking-tight text-white leading-tight"
-              >
-                {teamSectionConfig.headline}
-              </h2>
-            </motion.div>
-
-            <motion.div variants={itemVariants}>
-              <p className="text-base sm:text-lg text-secondary-text leading-relaxed max-w-2xl font-sans">
-                {teamSectionConfig.description}
-              </p>
-            </motion.div>
+          <div className="lg:col-span-8 space-y-4">
+            <h2
+              id="team-title"
+              className="text-heading-1 sm:text-display-sm font-bold tracking-tight text-[#101828] leading-tight"
+            >
+              {teamSectionConfig.headline}
+            </h2>
+            <p className="text-base sm:text-lg text-[#667085] max-w-2xl font-sans">
+              {teamSectionConfig.description}
+            </p>
           </div>
-        </motion.div>
+        </div>
 
-        {/* ============================================================== */}
-        {/* 12-COLUMN EDITORIAL TEAM PORTRAIT SYSTEM (ALL 8 MEMBERS)       */}
-        {/* ============================================================== */}
+        {/* 8-Member Team Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {teamMembers.map((member: TeamMember, index: number) => {
-            // Editorial grid allocation:
-            // Leadership (Founder & Co-Founder) allocated 6 columns on large screens
-            // Advisory & Core Engineering / Design allocated 4 columns on large screens
-            const getGridClasses = (id: string) => {
-              switch (id) {
-                case 'atharv-a-jadhav':
-                  return 'lg:col-span-6 lg:order-1';
-                case 'pransu-b-mishra':
-                  return 'lg:col-span-6 lg:order-2';
-                case 'amit-n-rai':
-                  return 'lg:col-span-4 lg:order-3';
-                case 'aditya-s-pandey':
-                  return 'lg:col-span-4 lg:order-4';
-                case 'aditya-v-mishra':
-                  return 'lg:col-span-4 lg:order-5';
-                case 'subhasree-g-padhi':
-                  return 'lg:col-span-4 lg:order-6';
-                case 'avadhut-g-kashid':
-                  return 'lg:col-span-4 lg:order-7';
-                case 'ajay-a-prajapati':
-                  return 'lg:col-span-4 lg:order-8';
-                default:
-                  return 'lg:col-span-4';
-              }
-            };
+          {teamMembers.map((member: TeamMember, index: number) => (
+            <motion.article
+              key={member.id}
+              variants={itemVariants}
+              className="editorial-card p-5 sm:p-6 flex flex-col justify-between space-y-5 group hover:-translate-y-1 transition-all duration-300"
+            >
+              {/* Member Portrait */}
+              <div className="w-full">
+                <TeamPortrait
+                  member={member}
+                  index={index}
+                  prefersReducedMotion={Boolean(prefersReducedMotion)}
+                />
+              </div>
 
-            const gridSpanClass = getGridClasses(member.id);
-
-            return (
-              <motion.article
-                key={member.id}
-                variants={itemVariants}
-                className={`group surface-level-1 p-5 sm:p-6 lg:p-7 rounded-[2px] border border-border-subtle hover:border-white/30 transition-all duration-300 flex flex-col justify-between ${gridSpanClass}`}
-              >
-                {/* 1. Portrait Frame with Cinematic Glitch Entry */}
-                <div className="w-full">
-                  <TeamPortrait
-                    member={member}
-                    index={index}
-                    prefersReducedMotion={Boolean(prefersReducedMotion)}
-                  />
-                </div>
-
-                {/* 2. Architectural Information Layer */}
-                <div className="space-y-4 pt-6">
-                  {/* Top Bezel: Sequence Number & Discipline */}
-                  <div className="flex items-center justify-between border-b border-border-subtle pb-3">
-                    <div className="flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-                      <span className="font-mono text-xs font-semibold text-white tracking-wider">
-                        0{member.order} // {member.role.toUpperCase()}
-                      </span>
-                    </div>
+              {/* Bio & Details */}
+              <div className="space-y-3 flex-1 flex flex-col justify-between">
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs font-semibold text-[#315EFA]">
+                      0{member.order} // {member.role.toUpperCase()}
+                    </span>
                     {member.discipline && (
-                      <span className="text-tech-label text-neutral-500 font-mono">
+                      <span className="font-mono text-[10px] text-[#98A2B3]">
                         {member.discipline}
                       </span>
                     )}
                   </div>
 
-                  {/* Member Name */}
-                  <h3
-                    className={`${
-                      member.featured ? 'text-heading-2 sm:text-heading-1' : 'text-heading-3 sm:text-heading-2'
-                    } font-semibold text-white tracking-tight uppercase leading-snug`}
-                  >
+                  <h3 className="text-heading-3 font-bold text-[#101828] group-hover:text-[#315EFA] transition-colors">
                     {member.name}
                   </h3>
 
-                  {/* System Label */}
-                  <p className="text-tech-label text-neutral-400 font-mono tracking-widest leading-relaxed">
-                    {member.systemLabel}
-                  </p>
+                  {member.bio && (
+                    <p className="text-xs text-[#667085] leading-relaxed font-sans line-clamp-3">
+                      {member.bio}
+                    </p>
+                  )}
+                </div>
 
-                  {/* Hairline Accent Divider */}
-                  <div className="h-[1px] w-12 bg-white/20" aria-hidden="true" />
+                {/* Social links & status */}
+                <div className="pt-3 border-t border-[#E6E9EF] flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-[#667085]">
+                    {member.role}
+                  </span>
 
-                  {/* Formal Role Readout */}
-                  <div className="flex items-center justify-between pt-1">
-                    <span className="text-xs sm:text-sm font-mono text-neutral-300">
-                      {member.role}
-                    </span>
-                    <span className="text-tech-label text-neutral-600 font-mono">
-                      VERIFIED // 2026
-                    </span>
+                  <div className="flex items-center gap-2">
+                    {member.links?.linkedin && (
+                      <a
+                        href={member.links.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#98A2B3] hover:text-[#315EFA] transition-colors p-1"
+                        aria-label={`${member.name} LinkedIn`}
+                      >
+                        <Linkedin className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    {member.links?.github && (
+                      <a
+                        href={member.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#98A2B3] hover:text-[#101828] transition-colors p-1"
+                        aria-label={`${member.name} GitHub`}
+                      >
+                        <Github className="h-3.5 w-3.5" />
+                      </a>
+                    )}
                   </div>
                 </div>
-              </motion.article>
-            );
-          })}
+              </div>
+            </motion.article>
+          ))}
         </motion.div>
 
-        {/* Bottom Architectural Readout */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border-subtle pt-6 text-neutral-500 font-mono text-[10px] select-none" aria-hidden="true">
-          <span>AERVENLABS TECHNOLOGIES // 08 VERIFIED BUILDERS</span>
-          <span>SYS_SPEC // HUMAN_CAPITAL_ARCH</span>
+        {/* Collective Statement & Team Page Link */}
+        <div className="p-8 sm:p-10 rounded-[16px] bg-white border border-[#E6E9EF] shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="space-y-1 max-w-2xl">
+            <h4 className="font-bold text-base text-[#101828]">
+              {teamSectionConfig.collectiveStatement}
+            </h4>
+            <p className="text-sm text-[#667085]">
+              {teamSectionConfig.collectiveParagraph}
+            </p>
+          </div>
+
+          <Link
+            to="/team"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-[8px] bg-[#101828] text-white hover:bg-[#315EFA] text-xs font-semibold tracking-wider uppercase transition-colors shrink-0 shadow-sm"
+          >
+            <span>Meet All 8 Builders</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
       </div>
     </section>

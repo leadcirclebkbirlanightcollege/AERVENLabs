@@ -6,123 +6,95 @@ import {
   Instagram,
   Youtube,
   ArrowUpRight,
+  Mail,
+  ShieldCheck,
 } from 'lucide-react';
 import { navigationItems, footerLegalItems } from '../../data/navigation';
+import { projectsData } from '../../data/projects';
 import { siteConfig } from '../../config/site';
 
 /**
- * Footer Component — The Final System Layer.
- * Global architectural closure for AervenLabs Technologies Pvt. Ltd.
- * Strictly monochrome, restrained, editorial, and monumental.
+ * Footer Component — Section 12: Refined Global Closure.
+ * Premium white-first aesthetic:
+ * - Subtle background surface (#F7F8FA)
+ * - Fine boundary lines (#E6E9EF)
+ * - Crisp typography (#101828 / #667085)
+ * - Company branding, navigation links, projects directory, contact details,
+ *   verified social links, and legal terms.
  */
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer
-      className="relative border-t border-border-subtle bg-black text-neutral-400 overflow-hidden"
+      className="relative border-t border-[#E6E9EF] bg-[#F7F8FA] text-[#667085] overflow-hidden"
       role="contentinfo"
     >
-      {/* Background Architectural Grid Lines */}
-      <div
-        className="pointer-events-none absolute inset-0 select-none opacity-20"
-        aria-hidden="true"
-      >
-        <div className="container-architectural h-full w-full">
-          <div className="h-full w-full border-x border-white/[0.04]">
-            <div className="grid h-full grid-cols-1 md:grid-cols-6 lg:grid-cols-12 divide-x divide-white/[0.03]">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="h-full" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container-architectural relative z-10 py-16 sm:py-20 md:py-28 lg:py-32 space-y-16 sm:space-y-20 lg:space-y-24">
-        {/* ============================================================== */}
-        {/* SECTION A: HEROIC BRAND STATEMENT / MONUMENTAL WORDMARK        */}
-        {/* ============================================================== */}
-        <div className="w-full space-y-6 sm:space-y-8 border-b border-border-subtle pb-12 sm:pb-16 lg:pb-20">
-          {/* Top Bezel: Brand Identity & Flagship Metadata */}
-          <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="container-architectural relative z-10 py-16 sm:py-20 lg:py-24 space-y-16">
+        {/* Top Section: Brand Statement & Wordmark */}
+        <div className="grid-architectural items-start border-b border-[#E6E9EF] pb-12 sm:pb-16 gap-8">
+          <div className="lg:col-span-6 space-y-4">
             <Link
               to="/"
-              className="group inline-flex items-center gap-3 outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              className="group inline-flex items-center gap-3 outline-none focus-visible:ring-2 focus-visible:ring-[#315EFA] rounded-[6px]"
               aria-label={`${siteConfig.name} — Return to homepage`}
             >
-              <img
-                src="/assets/aervenlabs-logo.png"
-                alt=""
-                className="h-7 w-7 sm:h-8 sm:w-8 object-contain transition-transform duration-300 group-hover:scale-105"
-                aria-hidden="true"
-              />
-              <span className="font-mono text-xs tracking-widest uppercase text-neutral-400 group-hover:text-white transition-colors duration-200">
-                SYSTEM // ZERO
-              </span>
+              <div className="flex items-center justify-center h-9 w-9 rounded-[8px] bg-white border border-[#E6E9EF] p-1.5 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                <img
+                  src="/assets/aervenlabs-logo.png"
+                  alt=""
+                  className="h-full w-full object-contain"
+                  aria-hidden="true"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-sans text-base font-bold tracking-tight text-[#101828] uppercase">
+                  {siteConfig.name}
+                </span>
+                <span className="font-mono text-[10px] tracking-wider text-[#667085]">
+                  {siteConfig.legalName}
+                </span>
+              </div>
             </Link>
 
-            <div className="flex items-center gap-3 font-mono text-[10px] sm:text-xs text-neutral-500 tracking-widest uppercase">
-              <span>FLAGSHIP SITE</span>
-              <span className="h-1 w-1 rounded-full bg-neutral-600" aria-hidden="true" />
-              <span>SYS_LAYER // FINAL</span>
+            <p className="text-sm text-[#667085] max-w-md leading-relaxed font-sans pt-1">
+              {siteConfig.description}
+            </p>
+
+            <div className="flex items-center gap-2 pt-2">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[6px] bg-[#DCE5FF]/40 border border-[#DCE5FF] text-[#315EFA] font-mono text-[11px] font-medium">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#315EFA]" aria-hidden="true" />
+                <span>INDEPENDENT TECHNOLOGY STARTUP</span>
+              </span>
             </div>
           </div>
 
-          {/* Monumental Wordmark Display */}
-          <div className="w-full overflow-hidden select-none">
-            <h2 className="sr-only">AervenLabs Official Brand</h2>
-            <div
-              className="font-sans font-bold tracking-tight sm:tracking-tighter text-white uppercase text-[clamp(1.75rem,10vw,10.5rem)] leading-[0.88] transition-colors duration-500 hover:text-neutral-200"
-              aria-hidden="true"
+          {/* Quick Direct Contact Card */}
+          <div className="lg:col-span-6 flex flex-col lg:items-end justify-center space-y-3">
+            <span className="font-mono text-xs text-[#98A2B3] tracking-widest uppercase">
+              DIRECT COMMUNICATION
+            </span>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="inline-flex items-center gap-2.5 px-5 py-3 rounded-[8px] bg-white border border-[#E6E9EF] text-sm font-mono text-[#101828] hover:border-[#315EFA] hover:text-[#315EFA] transition-all shadow-sm group"
+              aria-label={`Send direct email to ${siteConfig.email}`}
             >
-              AERVENLABS
-            </div>
+              <Mail className="h-4 w-4 text-[#315EFA]" aria-hidden="true" />
+              <span>{siteConfig.email}</span>
+              <ArrowUpRight className="h-3.5 w-3.5 text-[#98A2B3] group-hover:text-[#315EFA] transition-colors" />
+            </a>
+            <p className="text-xs text-[#667085]">
+              Response within 24–48 hours for collaborative inquiries.
+            </p>
           </div>
         </div>
 
-        {/* ============================================================== */}
-        {/* SECTION B: 12-COLUMN ARCHITECTURAL CONTENT GRID                */}
-        {/* ============================================================== */}
-        <div className="grid-architectural items-start">
-          {/* Columns 1-5: Brand Conviction, Legal Entity & Direct Dispatch */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="space-y-2">
-              <p className="text-tech-label text-neutral-500 font-mono tracking-widest">
-                COMPANY // CONVICTION
-              </p>
-              <p className="text-lg sm:text-xl font-medium text-white max-w-sm leading-snug">
-                {siteConfig.tagline}
-              </p>
-              <p className="text-sm text-neutral-400 max-w-md leading-relaxed font-sans pt-1">
-                {siteConfig.description}
-              </p>
-            </div>
-
-            {/* Legal Identity & Verified Direct Email Dispatch */}
-            <div className="space-y-2 pt-2 border-t border-border-subtle max-w-md">
-              <p className="text-xs font-mono text-neutral-500 tracking-wider uppercase">
-                LEGAL ENTITY // {siteConfig.legalName}
-              </p>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs font-mono text-neutral-500 uppercase">
-                  DIRECT DISPATCH:
-                </span>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="text-xs font-mono text-neutral-300 hover:text-white transition-colors duration-200 outline-none focus-visible:ring-1 focus-visible:ring-white underline-offset-4 hover:underline py-1 inline-block"
-                  aria-label={`Send direct email to ${siteConfig.email}`}
-                >
-                  {siteConfig.email}
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Columns 6-8: Navigation Map */}
+        {/* 12-Column Footer Directory Grid */}
+        <div className="grid-architectural items-start gap-10">
+          {/* Columns 1-3: Main Navigation */}
           <div className="lg:col-span-3 space-y-4">
-            <p className="text-tech-label text-neutral-500 font-mono tracking-widest">
-              NAVIGATION // MAP
+            <p className="text-xs font-semibold tracking-wider text-[#101828] uppercase font-mono">
+              NAVIGATION
             </p>
             <nav aria-label="Footer navigation">
               <ul className="space-y-2.5">
@@ -130,180 +102,138 @@ export const Footer: React.FC = () => {
                   <li key={item.id}>
                     <Link
                       to={item.path}
-                      className="group inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-white py-0.5"
+                      className="text-sm text-[#667085] hover:text-[#101828] transition-colors duration-200 inline-block py-0.5"
                     >
-                      <span className="transition-transform duration-200 group-hover:translate-x-1">
-                        {item.label}
-                      </span>
+                      {item.label}
                     </Link>
                   </li>
                 ))}
-                {/* Secondary flagship project link: Campus Connect */}
-                <li className="pt-1">
-                  <Link
-                    to="/projects/campus-connect"
-                    className="group inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 hover:text-white transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-white py-0.5"
-                  >
-                    <span className="text-neutral-600 font-mono">↳</span>
-                    <span className="transition-transform duration-200 group-hover:translate-x-1">
-                      Campus Connect
-                    </span>
-                    <ArrowUpRight
-                      className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-neutral-400"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                </li>
               </ul>
             </nav>
           </div>
 
-          {/* Columns 9-10: Connect / Social Channels */}
-          <div className="lg:col-span-2 space-y-4">
-            <p className="text-tech-label text-neutral-500 font-mono tracking-widest">
-              CONNECT // CHANNELS
+          {/* Columns 4-7: Projects & Initiatives */}
+          <div className="lg:col-span-4 space-y-4">
+            <p className="text-xs font-semibold tracking-wider text-[#101828] uppercase font-mono">
+              PROJECTS & INITIATIVES
             </p>
-            <nav aria-label="Social channels">
-              <ul className="space-y-2.5">
-                {/* GitHub */}
-                {siteConfig.links.github && (
-                  <li>
-                    <a
-                      href={siteConfig.links.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2.5 text-sm text-neutral-400 hover:text-white transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-white py-0.5"
-                      aria-label="AervenLabs on GitHub (opens in a new tab)"
-                    >
-                      <Github
-                        className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:scale-110"
-                        aria-hidden="true"
-                      />
-                      <span>GitHub</span>
-                      <ArrowUpRight
-                        className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-neutral-500"
-                        aria-hidden="true"
-                      />
-                    </a>
-                  </li>
-                )}
-                {/* LinkedIn */}
-                {siteConfig.links.linkedin && (
-                  <li>
-                    <a
-                      href={siteConfig.links.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2.5 text-sm text-neutral-400 hover:text-white transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-white py-0.5"
-                      aria-label="AervenLabs on LinkedIn (opens in a new tab)"
-                    >
-                      <Linkedin
-                        className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:scale-110"
-                        aria-hidden="true"
-                      />
-                      <span>LinkedIn</span>
-                      <ArrowUpRight
-                        className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-neutral-500"
-                        aria-hidden="true"
-                      />
-                    </a>
-                  </li>
-                )}
+            <ul className="space-y-2.5" aria-label="Projects directory">
+              {projectsData.map((project) => (
+                <li key={project.id}>
+                  <Link
+                    to={`/projects/${project.slug}`}
+                    className="group inline-flex items-center gap-2 text-sm text-[#667085] hover:text-[#315EFA] transition-colors duration-200 py-0.5"
+                  >
+                    <span className="font-medium text-[#101828] group-hover:text-[#315EFA] transition-colors">
+                      {project.title}
+                    </span>
+                    <span className="text-xs text-[#98A2B3]">· {project.category.split(' ')[0]}</span>
+                    <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-                {/* Instagram */}
-                {siteConfig.links.instagram && (
-                  <li>
-                    <a
-                      href={siteConfig.links.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2.5 text-sm text-neutral-400 hover:text-white transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-white py-0.5"
-                      aria-label="AervenLabs on Instagram (opens in a new tab)"
-                    >
-                      <Instagram
-                        className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:scale-110"
-                        aria-hidden="true"
-                      />
-                      <span>Instagram</span>
-                      <ArrowUpRight
-                        className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-neutral-500"
-                        aria-hidden="true"
-                      />
-                    </a>
-                  </li>
-                )}
-                {/* YouTube */}
-                {siteConfig.links.youtube && (
-                  <li>
-                    <a
-                      href={siteConfig.links.youtube}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2.5 text-sm text-neutral-400 hover:text-white transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-white py-0.5"
-                      aria-label="AervenLabs on YouTube (opens in a new tab)"
-                    >
-                      <Youtube
-                        className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:scale-110"
-                        aria-hidden="true"
-                      />
-                      <span>YouTube</span>
-                      <ArrowUpRight
-                        className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-neutral-500"
-                        aria-hidden="true"
-                      />
-                    </a>
-                  </li>
-                )}
-              </ul>
-            </nav>
+          {/* Columns 8-10: Connect Channels */}
+          <div className="lg:col-span-3 space-y-4">
+            <p className="text-xs font-semibold tracking-wider text-[#101828] uppercase font-mono">
+              CONNECT & REPOSITORY
+            </p>
+            <ul className="space-y-2.5" aria-label="Social and code channels">
+              {siteConfig.links.github && (
+                <li>
+                  <a
+                    href={siteConfig.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 text-sm text-[#667085] hover:text-[#101828] transition-colors duration-200 py-0.5"
+                  >
+                    <Github className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    <span>GitHub</span>
+                    <ArrowUpRight className="h-3 w-3 text-[#98A2B3]" />
+                  </a>
+                </li>
+              )}
+              {siteConfig.links.linkedin && (
+                <li>
+                  <a
+                    href={siteConfig.links.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 text-sm text-[#667085] hover:text-[#101828] transition-colors duration-200 py-0.5"
+                  >
+                    <Linkedin className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    <span>LinkedIn</span>
+                    <ArrowUpRight className="h-3 w-3 text-[#98A2B3]" />
+                  </a>
+                </li>
+              )}
+              {siteConfig.links.instagram && (
+                <li>
+                  <a
+                    href={siteConfig.links.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 text-sm text-[#667085] hover:text-[#101828] transition-colors duration-200 py-0.5"
+                  >
+                    <Instagram className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    <span>Instagram</span>
+                    <ArrowUpRight className="h-3 w-3 text-[#98A2B3]" />
+                  </a>
+                </li>
+              )}
+              {siteConfig.links.youtube && (
+                <li>
+                  <a
+                    href={siteConfig.links.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 text-sm text-[#667085] hover:text-[#101828] transition-colors duration-200 py-0.5"
+                  >
+                    <Youtube className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    <span>YouTube</span>
+                    <ArrowUpRight className="h-3 w-3 text-[#98A2B3]" />
+                  </a>
+                </li>
+              )}
+            </ul>
           </div>
 
           {/* Columns 11-12: Legal & Governance */}
           <div className="lg:col-span-2 space-y-4">
-            <p className="text-tech-label text-neutral-500 font-mono tracking-widest">
-              LEGAL // POLICIES
+            <p className="text-xs font-semibold tracking-wider text-[#101828] uppercase font-mono">
+              LEGAL & PRIVACY
             </p>
-            <nav aria-label="Legal policies">
-              <ul className="space-y-2.5">
-                {footerLegalItems.map((item) => (
-                  <li key={item.id}>
-                    <Link
-                      to={item.path}
-                      className="group inline-flex items-center gap-1.5 text-sm text-neutral-400 hover:text-white transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-white py-0.5"
-                    >
-                      <span className="transition-transform duration-200 group-hover:translate-x-1">
-                        {item.label}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <div className="pt-4 border-t border-border-subtle space-y-1">
-              <span className="text-tech-label text-neutral-600 font-mono block">
-                STATUS // MONITORED
-              </span>
-              <span className="text-[11px] font-mono text-neutral-500 block">
-                ALL SYSTEMS NOMINAL
-              </span>
+            <ul className="space-y-2.5" aria-label="Legal navigation">
+              {footerLegalItems.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    to={item.path}
+                    className="text-sm text-[#667085] hover:text-[#101828] transition-colors duration-200 inline-block py-0.5"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="pt-2 flex items-center gap-1.5 text-xs text-[#667085]">
+              <ShieldCheck className="h-3.5 w-3.5 text-[#315EFA]" />
+              <span>Verified Governance</span>
             </div>
           </div>
         </div>
 
-        {/* ============================================================== */}
-        {/* SECTION C: BOTTOM CLOSURE / COPYRIGHT & TECHNICAL SPEC         */}
-        {/* ============================================================== */}
-        <div className="pt-8 border-t border-border-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-neutral-500">
+        {/* Bottom Bar: Copyright & Protocol */}
+        <div className="pt-8 border-t border-[#E6E9EF] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[#98A2B3]">
           <p>
             © {currentYear} {siteConfig.legalName}. All rights reserved.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 text-[11px] text-neutral-600">
-            <span>ARCH_SPEC // INTENT_DRIVEN</span>
-            <span className="hidden sm:inline" aria-hidden="true">
-              |
-            </span>
-            <span>SYS_LAYER // FINAL_CLOSURE</span>
+          <div className="flex flex-wrap items-center gap-4 font-mono text-[11px]">
+            <span>DESIGN SYSTEM // WHITE-FIRST 2.0</span>
+            <span className="hidden sm:inline" aria-hidden="true">·</span>
+            <span>DOM // AERVENLABS.NET</span>
           </div>
         </div>
       </div>

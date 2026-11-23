@@ -1,365 +1,252 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUpRight } from 'lucide-react';
-import { buttonVariants } from '../ui/button';
+import { ArrowRight, Sparkles, Layers, ShieldCheck, ChevronDown } from 'lucide-react';
 import { siteConfig } from '../../config/site';
 
 /**
- * Homepage Section 01: Master Flagship Hero.
- * Asymmetric 12-column architectural composition.
- * Establishes the visual and narrative benchmark for the entire AervenLabs identity:
- * - Monumental display typography: "IDEAS TO IMPACT"
- * - Restrained technical system diagram: IDEA → SYSTEM → PRODUCT → IMPACT
- * - Verified company definition & single purposeful CTA
- * - Strictly monochrome palette (Black, White, Neutral Grays)
+ * Section 2: Master Hero Experience.
+ * White-First Premium Brand Presentation.
+ * Headline: "Engineering Ideas. Building What's Next."
+ * Supporting description:
+ * "We are an independent technology startup transforming ambitious ideas into meaningful digital products, intelligent platforms, and innovative experiences."
+ * Primary CTA: Explore Our Work
+ * Secondary CTA: Discover AERVENLabs
+ * Visual: High-precision abstract technology architecture visual with subtle geometric vectors.
  */
 export const Hero: React.FC = () => {
-  const heroRef = useRef<HTMLElement>(null);
-  const headlineRef = useRef<HTMLDivElement>(null);
-  const secondaryRef = useRef<HTMLDivElement>(null);
-  const scrollCueRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
 
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // GSAP scroll-driven depth and parallax (desktop only)
-  useEffect(() => {
-    if (prefersReducedMotion || typeof window === 'undefined') return;
+  // Staggered entrance variants
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: prefersReducedMotion ? 0 : 0.08,
+        delayChildren: prefersReducedMotion ? 0 : 0.05,
+      },
+    },
+  };
 
-    gsap.registerPlugin(ScrollTrigger);
+  const itemVariants = {
+    hidden: {
+      opacity: prefersReducedMotion ? 1 : 0,
+      y: prefersReducedMotion ? 0 : 18,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: prefersReducedMotion ? 0.01 : 0.65,
+        ease: [0.16, 1, 0.3, 1] as const,
+      },
+    },
+  };
 
-    const mm = gsap.matchMedia();
-
-    mm.add('(min-width: 1024px)', () => {
-      // Subtle headline drift upward
-      if (headlineRef.current && heroRef.current) {
-        gsap.to(headlineRef.current, {
-          y: -18,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 1,
-          },
-        });
-      }
-
-      // Secondary panel gentle deceleration
-      if (secondaryRef.current && heroRef.current) {
-        gsap.to(secondaryRef.current, {
-          opacity: 0.7,
-          y: -10,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: '15% top',
-            end: 'bottom top',
-            scrub: 1,
-          },
-        });
-      }
-
-      // Scroll cue natural fadeout
-      if (scrollCueRef.current && heroRef.current) {
-        gsap.to(scrollCueRef.current, {
-          opacity: 0,
-          ease: 'power1.out',
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: 'top top',
-            end: '160px top',
-            scrub: true,
-          },
-        });
-      }
-    });
-
-    return () => mm.revert();
-  }, [prefersReducedMotion]);
-
-  // Monumental statement words
-  const headlineWords = ['IDEAS', 'TO', 'IMPACT'];
-
-  // Architectural system workflow nodes
-  const systemFlowNodes = [
-    { code: '01', label: 'IDEA', meta: 'CONCEPTION' },
-    { code: '02', label: 'SYSTEM', meta: 'ARCHITECTURE' },
-    { code: '03', label: 'PRODUCT', meta: 'ENGINEERING' },
-    { code: '04', label: 'IMPACT', meta: 'REAL WORLD' },
+  const nodes = [
+    { title: 'Conception', code: '01 // IDEA', status: 'Intentional' },
+    { title: 'Architecture', code: '02 // SYSTEM', status: 'Type-Safe' },
+    { title: 'Engineering', code: '03 // PLATFORM', status: 'Scale & RLS' },
+    { title: 'Impact', code: '04 // EXPERIENCE', status: 'Real-World' },
   ];
 
   return (
     <section
-      ref={heroRef}
-      aria-label="Hero"
-      className="relative flex min-h-[calc(100svh-4rem)] md:min-h-[calc(100svh-5rem)] flex-col justify-between overflow-hidden bg-black text-foreground pt-6 pb-8 md:pt-10 md:pb-12"
+      ref={containerRef}
+      aria-label="AERVENLabs Introduction"
+      className="relative overflow-hidden bg-white pt-8 pb-16 sm:pt-14 sm:pb-24 lg:pt-20 lg:pb-32 border-b border-[#E6E9EF]"
     >
-      {/* Background Architectural Grid Lines */}
+      {/* Subtle Dot Matrix Background (Light Mode) */}
       <div
-        className="pointer-events-none absolute inset-0 select-none opacity-40"
+        className="pointer-events-none absolute inset-0 select-none opacity-40 dot-pattern-light"
         aria-hidden="true"
-      >
-        <div className="container-architectural h-full w-full">
-          <div className="h-full w-full border-x border-white/[0.04]">
-            <div className="grid h-full grid-cols-1 md:grid-cols-6 lg:grid-cols-12 divide-x divide-white/[0.03]">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="h-full" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      />
 
-      {/* Subtle Monochrome Ambient Radial Depth */}
+      {/* Gentle Radial Highlight (Blue/Violet Accent used sparingly) */}
       <div
-        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-[450px] w-full max-w-[1200px] opacity-[0.03] select-none"
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[520px] opacity-40 select-none"
         style={{
-          background: 'radial-gradient(circle at 50% 10%, #FFFFFF 0%, transparent 70%)',
+          background:
+            'radial-gradient(circle at 50% 20%, rgba(220, 229, 255, 0.6) 0%, rgba(241, 243, 246, 0.3) 45%, transparent 70%)',
         }}
         aria-hidden="true"
-      ></div>
+      />
 
-      {/* Main 12-Column Asymmetric Stage */}
-      <div className="container-architectural relative z-10 my-auto w-full py-6 sm:py-8 lg:py-10">
-        <div className="grid-architectural items-end gap-y-10 lg:gap-y-0">
-          {/* ============================================================== */}
-          {/* LEFT & CENTER (Cols 1-7): Monumental Statement & System Vector */}
-          {/* ============================================================== */}
-          <div ref={headlineRef} className="lg:col-span-7 xl:col-span-8 space-y-8 sm:space-y-10">
-            {/* Technical Eyebrow & System Identifier */}
-            <motion.div
-              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex flex-wrap items-center gap-2.5 sm:gap-3 border border-border-subtle bg-surface px-3 py-1.5 rounded-[2px]"
-            >
-              <img
-                src="/assets/aervenlabs-logo.png"
-                alt=""
-                width={14}
-                height={14}
-                fetchPriority="high"
-                className="h-3.5 w-3.5 object-contain"
-                aria-hidden="true"
-              />
-              <span className="text-tech-label text-neutral-300 font-mono tracking-wider">
-                AERVENLABS TECHNOLOGIES
-              </span>
-              <span className="h-2.5 w-[1px] bg-white/[0.15]" aria-hidden="true" />
-              <span className="text-tech-label text-neutral-400 font-mono">
-                SYS_ID // 2026
-              </span>
-              <span className="hidden sm:inline-block h-2.5 w-[1px] bg-white/[0.15]" aria-hidden="true" />
-              <span className="hidden sm:inline-block text-tech-label text-neutral-500 font-mono">
-                PRODUCTS // PLATFORMS // SYSTEMS
+      <div className="container-architectural relative z-10 w-full space-y-12 sm:space-y-16">
+        {/* Top 12-Column Hero Stage */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid-architectural items-center gap-12 lg:gap-16"
+        >
+          {/* Left Column (Cols 1-7): Monumental Editorial Typography & Action CTAs */}
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+            {/* Pill Eyebrow Badge */}
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F7F8FA] border border-[#E6E9EF] text-xs font-medium text-[#101828] shadow-sm">
+                <span className="h-2 w-2 rounded-full bg-[#315EFA] animate-pulse" aria-hidden="true" />
+                <span className="font-semibold text-[#315EFA]">AERVENLabs</span>
+                <span className="text-[#98A2B3]">/</span>
+                <span className="text-[#667085] hidden sm:inline">Independent Technology Startup</span>
+                <span className="text-[#667085] sm:hidden">Tech Startup</span>
               </span>
             </motion.div>
 
-            {/* Oversized Monumental Display H1 */}
-            <h1 className="select-none space-y-1 sm:space-y-2">
-              <span className="sr-only">AervenLabs — Ideas to Impact</span>
-              {headlineWords.map((word, index) => (
-                <div key={word} className="overflow-hidden">
-                  <motion.span
-                    initial={
-                      prefersReducedMotion
-                        ? { y: 0, opacity: 1 }
-                        : { y: '105%', opacity: 0.2 }
-                    }
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      duration: prefersReducedMotion ? 0.01 : 0.85,
-                      delay: prefersReducedMotion ? 0 : 0.12 + index * 0.09,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="block text-display font-semibold tracking-tighter text-white uppercase leading-[0.92]"
-                    aria-hidden="true"
-                  >
-                    {word}
-                  </motion.span>
-                </div>
-              ))}
-            </h1>
+            {/* Monumental Headline */}
+            <motion.div variants={itemVariants} className="space-y-1 sm:space-y-2">
+              <h1 className="text-display font-bold tracking-tight text-[#101828] leading-[1.03]">
+                Engineering Ideas. <br />
+                <span className="text-[#315EFA]">Building What's Next.</span>
+              </h1>
+            </motion.div>
 
-            {/* Architectural System Visual: IDEA → SYSTEM → PRODUCT → IMPACT */}
+            {/* Supporting Description */}
+            <motion.div variants={itemVariants}>
+              <p className="text-base sm:text-lg lg:text-xl text-[#667085] leading-relaxed max-w-2xl font-sans">
+                We are an independent technology startup transforming ambitious ideas into meaningful digital products, intelligent platforms, and innovative experiences.
+              </p>
+            </motion.div>
+
+            {/* Decisive Dual CTAs */}
             <motion.div
-              initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                duration: prefersReducedMotion ? 0.01 : 0.8,
-                delay: prefersReducedMotion ? 0 : 0.45,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="pt-2 sm:pt-4 max-w-xl"
-              aria-label="Engineering progression: Idea to System to Product to Impact"
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2"
             >
-              <div className="border border-border-subtle surface-level-1 p-3.5 sm:p-4 rounded-[2px] space-y-3">
-                <div className="flex items-center justify-between text-neutral-500 font-mono text-[10px] tracking-widest border-b border-border-subtle pb-2">
-                  <span>ARCHITECTURE // PIPELINE</span>
-                  <span>SYSTEM_AXIS // 01-04</span>
+              <Link
+                to="/projects"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#101828] hover:bg-[#315EFA] text-white font-medium text-sm rounded-[8px] transition-all duration-200 shadow-md shadow-[#101828]/10 active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-[#315EFA]"
+              >
+                <span>Explore Our Work</span>
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+
+              <a
+                href="#brand-intro"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-[#F7F8FA] text-[#101828] border border-[#E6E9EF] hover:border-[#D0D5DD] font-medium text-sm rounded-[8px] transition-all duration-200 shadow-sm active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-[#315EFA]"
+              >
+                <span>Discover AERVENLabs</span>
+                <ChevronDown className="h-4 w-4 text-[#667085]" aria-hidden="true" />
+              </a>
+            </motion.div>
+
+            {/* Verified Trust Strip */}
+            <motion.div
+              variants={itemVariants}
+              className="pt-4 border-t border-[#E6E9EF] flex flex-wrap items-center gap-6 text-xs text-[#667085] font-mono"
+            >
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-[#315EFA]" />
+                <span>Zero-Noise Engineering</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Layers className="h-4 w-4 text-[#7657E8]" />
+                <span>Multi-Tenant Architecture</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-[#315EFA]" />
+                <span>Production-Validated</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Column (Cols 8-12): Premium Abstract Technology Visual */}
+          <div className="lg:col-span-5">
+            <motion.div
+              variants={itemVariants}
+              className="relative p-6 sm:p-8 rounded-[16px] bg-[#F7F8FA] border border-[#E6E9EF] shadow-lg shadow-[#101828]/05 space-y-6 overflow-hidden"
+            >
+              {/* Top Visual Bezel */}
+              <div className="flex items-center justify-between border-b border-[#E6E9EF] pb-4">
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#315EFA]" />
+                  <span className="font-mono text-xs font-semibold text-[#101828] tracking-wider uppercase">
+                    SYSTEMS ARCHITECTURE MATRIX
+                  </span>
+                </div>
+                <span className="font-mono text-[10px] text-[#667085] bg-white px-2 py-0.5 rounded-[4px] border border-[#E6E9EF]">
+                  AERVEN // 2026
+                </span>
+              </div>
+
+              {/* Central Geometric Blueprint Schematic */}
+              <div className="space-y-3 py-2">
+                <div className="p-4 rounded-[10px] bg-white border border-[#E6E9EF] shadow-sm flex items-center justify-between">
+                  <div className="space-y-1">
+                    <span className="font-mono text-[10px] text-[#315EFA] font-semibold tracking-wider">
+                      FLAGSHIP PLATFORM // HIGHER EDUCATION
+                    </span>
+                    <h3 className="font-semibold text-base text-[#101828]">Campus Connect</h3>
+                    <p className="text-xs text-[#667085]">
+                      Unified Collegiate Operating System · Production Ready
+                    </p>
+                  </div>
+                  <span className="px-2.5 py-1 text-[11px] font-mono font-medium rounded-full bg-[#DCE5FF] text-[#315EFA]">
+                    v1.0.0
+                  </span>
                 </div>
 
-                {/* 4 Connected System Nodes */}
-                <div className="grid grid-cols-4 gap-2 relative">
-                  {systemFlowNodes.map((node, i) => (
-                    <div key={node.code} className="relative space-y-1">
-                      <div className="flex items-center gap-1.5">
-                        <span className="h-1.5 w-1.5 rounded-full bg-white/70" aria-hidden="true" />
-                        <span className="font-mono text-[11px] font-semibold text-white tracking-wider">
-                          {node.label}
-                        </span>
-                      </div>
-                      <p className="font-mono text-[9px] text-neutral-500 tracking-wider">
-                        {node.meta}
-                      </p>
-                      {/* Connecting line to next node */}
-                      {i < systemFlowNodes.length - 1 && (
-                        <div
-                          className="hidden sm:block absolute top-1.5 left-full w-full -translate-x-2 h-[1px] bg-white/[0.12]"
-                          aria-hidden="true"
-                        />
-                      )}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3.5 rounded-[10px] bg-white border border-[#E6E9EF] shadow-sm space-y-1">
+                    <span className="font-mono text-[10px] text-[#0D9488] font-semibold tracking-wider">
+                      CIVIC TECHNOLOGY
+                    </span>
+                    <h4 className="font-semibold text-sm text-[#101828]">NagrikSetu</h4>
+                    <p className="text-[11px] text-[#667085]">
+                      Public Service & Notice Access
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-[10px] bg-white border border-[#E6E9EF] shadow-sm space-y-1">
+                    <span className="font-mono text-[10px] text-[#7657E8] font-semibold tracking-wider">
+                      TRANSIT MOBILITY
+                    </span>
+                    <h4 className="font-semibold text-sm text-[#101828]">RAILVERSE</h4>
+                    <p className="text-[11px] text-[#667085]">
+                      Railway Simulation Engine
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 4 Connected Progression Nodes */}
+              <div className="pt-2 border-t border-[#E6E9EF] space-y-2">
+                <div className="flex items-center justify-between text-[11px] font-mono text-[#667085]">
+                  <span>PIPELINE AXIS</span>
+                  <span>DISCIPLINE // ZERO BLOAT</span>
+                </div>
+                <div className="grid grid-cols-4 gap-2">
+                  {nodes.map((node, i) => (
+                    <div
+                      key={node.code}
+                      className="p-2 rounded-[6px] bg-white border border-[#E6E9EF] text-center space-y-0.5"
+                    >
+                      <span className="font-mono text-[9px] text-[#98A2B3] block">
+                        {node.code}
+                      </span>
+                      <span className="font-semibold text-[11px] text-[#101828] block">
+                        {node.title}
+                      </span>
+                      <span className="text-[9px] text-[#315EFA] font-medium block">
+                        {node.status}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
-            </motion.div>
-          </div>
 
-          {/* ============================================================== */}
-          {/* RIGHT SIDE (Cols 8-12): Verified Positioning & Decisive CTA     */}
-          {/* ============================================================== */}
-          <div
-            ref={secondaryRef}
-            className="lg:col-span-5 xl:col-span-4 lg:pl-6 space-y-6 sm:space-y-8 pb-1"
-          >
-            {/* Core Purpose Definition */}
-            <motion.p
-              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: prefersReducedMotion ? 0.01 : 0.7,
-                delay: prefersReducedMotion ? 0 : 0.35,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="text-base sm:text-lg text-neutral-300 leading-relaxed max-w-lg font-sans"
-            >
-              A technology company building purposeful digital products, platforms, and intelligent software systems.
-            </motion.p>
-
-            {/* Architectural System Specs Panel */}
-            <motion.div
-              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: prefersReducedMotion ? 0.01 : 0.7,
-                delay: prefersReducedMotion ? 0 : 0.45,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="surface-level-1 p-5 space-y-3.5 rounded-[2px] border border-border-subtle"
-            >
-              <div className="flex items-center justify-between border-b border-border-subtle pb-2.5">
-                <span className="text-tech-label text-neutral-500 font-mono">CORE DISCIPLINE</span>
-                <span className="text-xs text-neutral-300 font-mono">PRODUCT & SYSTEMS</span>
-              </div>
-              <div className="flex items-center justify-between border-b border-border-subtle pb-2.5">
-                <span className="text-tech-label text-neutral-500 font-mono">FLAGSHIP SYSTEM</span>
-                <span className="text-xs text-white font-mono font-medium">CAMPUS CONNECT</span>
-              </div>
-              <div className="flex items-center justify-between border-b border-border-subtle pb-2.5">
-                <span className="text-tech-label text-neutral-500 font-mono">ENGINEERING</span>
-                <span className="text-xs text-neutral-300 font-mono">PURPOSE-DRIVEN // RIGOR</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-tech-label text-neutral-500 font-mono">PRODUCTION DOMAIN</span>
-                <span className="text-xs text-neutral-400 font-mono">AERVENLABS.NET</span>
+              {/* Subtle Tech Telemetry */}
+              <div className="flex items-center justify-between text-[10px] font-mono text-[#98A2B3] pt-1">
+                <span>POSTGRESQL · REACT 18 · DENO EDGE</span>
+                <span>PRODUCTION DOMAIN // AERVENLABS.NET</span>
               </div>
             </motion.div>
-
-            {/* Single Decisive Primary CTA */}
-            <motion.div
-              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: prefersReducedMotion ? 0.01 : 0.7,
-                delay: prefersReducedMotion ? 0 : 0.55,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="pt-1"
-            >
-              <Link
-                to="/projects"
-                className={`${buttonVariants({
-                  variant: 'default',
-                  size: 'touch',
-                })} group gap-2.5 w-full sm:w-auto justify-center`}
-                aria-label="Explore AervenLabs engineering projects"
-              >
-                <span className="tracking-wider">EXPLORE PROJECTS</span>
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            </motion.div>
           </div>
-        </div>
-      </div>
-
-      {/* Bottom Architectural Readout & Scroll Cue */}
-      <div className="container-architectural relative z-10 w-full pt-4">
-        <div className="flex items-center justify-between border-t border-border-subtle pt-5 text-neutral-500 font-mono text-[10px] sm:text-xs">
-          {/* Left Metadata Coordinate */}
-          <div className="flex items-center gap-3">
-            <span className="h-1.5 w-1.5 rounded-full bg-white/40" aria-hidden="true" />
-            <span className="text-tech-label text-neutral-400">
-              {siteConfig.legalName}
-            </span>
-            <span className="hidden md:inline-block h-2.5 w-[1px] bg-white/[0.15]" aria-hidden="true" />
-            <span className="hidden md:inline-block text-tech-label text-neutral-600">
-              OFFICIAL PRODUCTION REPOSITORY // 2026
-            </span>
-          </div>
-
-          {/* Right: Architectural Scroll Cue */}
-          <motion.div
-            ref={scrollCueRef}
-            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: prefersReducedMotion ? 0.01 : 0.6,
-              delay: prefersReducedMotion ? 0 : 0.65,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="flex items-center gap-3"
-            aria-hidden="true"
-          >
-            <span className="text-tech-label text-neutral-400">SCROLL</span>
-            <div className="relative h-6 w-[1px] bg-neutral-800 overflow-hidden">
-              <motion.div
-                animate={
-                  prefersReducedMotion
-                    ? {}
-                    : {
-                        y: ['-100%', '100%'],
-                      }
-                }
-                transition={
-                  prefersReducedMotion
-                    ? {}
-                    : {
-                        repeat: Infinity,
-                        duration: 1.8,
-                        ease: 'easeInOut',
-                      }
-                }
-                className="h-full w-full bg-white"
-              />
-            </div>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

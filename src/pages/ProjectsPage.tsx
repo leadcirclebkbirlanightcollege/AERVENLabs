@@ -11,15 +11,11 @@ import { ProjectsArchiveFooter } from '../components/projects/ProjectsArchiveFoo
 /**
  * ProjectsPage — Official Technology Archive (/projects).
  *
- * An editorial technology archive and engineering portfolio for AervenLabs Technologies Pvt. Ltd.
- * Master reference consistency with the flagship landing page:
- * - 01 / ARCHIVE HERO: "SYSTEMS BUILT WITH INTENT."
- * - 02 / SELECTED WORK: Architectural index row (no generic 3-column card grid).
- * - 03 / FLAGSHIP PRESENTATION: Campus Connect with abstract architectural visual,
- *   editorial context (Problem, System, Evolution), verified engineering metrics,
- *   and transition to case study.
- * - 04 / ARCHIVE CLOSURE: "ONE SYSTEM. MORE TO BUILD." quiet closing section.
- * - Zero fake projects, zero GPS/maps, strictly monochrome.
+ * White-first editorial technology archive showcasing all 4 authentic AERVENLabs projects:
+ * 1. Campus Connect
+ * 2. NagrikSetu
+ * 3. RAILVERSE
+ * 4. AERVENLabs Platform
  */
 export const ProjectsPage: React.FC = () => {
   useSEO(
@@ -32,12 +28,12 @@ export const ProjectsPage: React.FC = () => {
   return (
     <div
       data-testid="route-projects"
-      className="min-h-screen bg-black text-foreground selection:bg-white selection:text-black overflow-x-hidden"
+      className="min-h-screen bg-white text-[#101828] overflow-x-hidden"
     >
       {/* 01 / ARCHIVE HERO */}
       <ProjectsHero />
 
-      {/* 02 / SELECTED WORK: Editorial Engineering Ledger / Index */}
+      {/* 02 / SELECTED WORK: Editorial Engineering Ledger / Index for all 4 projects */}
       <ProjectsArchiveIndex projects={projectsData} />
 
       {/* 03 / CAMPUS CONNECT FLAGSHIP FEATURE: Abstract Architectural System */}

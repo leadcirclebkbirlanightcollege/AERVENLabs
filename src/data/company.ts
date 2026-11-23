@@ -2,49 +2,84 @@ import { Company, OriginPhilosophy, ContactCTAConfig } from '../types';
 import { defaultCompany, siteConfig } from '../config/site';
 
 /**
- * Verified company data for AervenLabs Technologies Pvt. Ltd.
+ * Verified company data for AERVENLabs Technologies Pvt. Ltd.
  */
 export const companyData: Company = defaultCompany;
 
 /**
- * Origin philosophy for Homepage Section 02 — The Beginning.
- * Captures the founding conviction and purpose without unverified historical claims.
+ * Brand Introduction & Philosophy for Homepage Section 03.
+ * Headline: "Not Just Building Technology. Building Possibilities."
  */
 export const originPhilosophy: OriginPhilosophy = {
-  sectionId: '02',
-  eyebrow: '02 / THE IDEA',
-  headline: 'Every meaningful system begins with a reason to exist.',
+  sectionId: '03',
+  eyebrow: '03 / BRAND INTRODUCTION',
+  headline: 'Not Just Building Technology. Building Possibilities.',
   paragraphs: [
-    'Technology should not exist simply because it can be engineered. It should exist because it solves something fundamental.',
-    'AervenLabs began with a singular conviction: to bridge raw technical capability with genuine purpose. We build digital products, scalable platforms, and intelligent software systems engineered to turn ideas into enduring human impact.',
+    'Technology should not exist simply because code can be compiled. It should exist because it solves something fundamental, removes friction, and creates lasting value for people and institutions.',
+    'AERVENLabs is an independent technology startup founded on the belief that raw technical ambition must be paired with engineering discipline. We build purposeful digital products, scalable platforms, and intelligent software systems that transform ambitious ideas into enduring realities.',
   ],
   principles: [
-    { label: 'PHILOSOPHY', detail: 'PURPOSE PRECEDES EXECUTION' },
-    { label: 'DISCIPLINE', detail: 'RESTRAINT & INTENTIONALITY' },
-    { label: 'IMPACT', detail: 'ENDURING DIGITAL VALUE' },
+    { label: 'THINK BEYOND', detail: 'Identify fundamental opportunities beneath surface symptoms' },
+    { label: 'DESIGN INTELLIGENTLY', detail: 'Craft interfaces that prioritize human clarity and cognitive calm' },
+    { label: 'ENGINEER PRECISELY', detail: 'Architect resilient data models and robust, reliable cloud systems' },
+    { label: 'BUILD MEANINGFULLY', detail: 'Create software that leaves behind enduring human and institutional value' },
   ],
 };
 
 /**
- * Editorial configuration for Homepage Section 09 — The Contact.
- * Sequential identifier 09 / CONTACT following 08 / INFRASTRUCTURE.
- * Grounds the final homepage conversion in genuine human intent without marketing clichés.
+ * Our Approach Section Data (Homepage Section 04)
+ */
+export const companyApproach = [
+  {
+    step: '01',
+    title: 'Think Beyond.',
+    subtitle: 'Question the status quo before writing a single line of code.',
+    description:
+      'We reject superficial solutions and feature bloat. We begin every project by deeply understanding the operational friction, organizational dynamics, and human realities at play.',
+  },
+  {
+    step: '02',
+    title: 'Design Intelligently.',
+    subtitle: 'Simplicity and restraint as a deliberate discipline.',
+    description:
+      'Great design is not decorative styling — it is clear thinking made visible. We compose whitespace, typography, and mathematical layout rhythms to make complex workflows intuitive.',
+  },
+  {
+    step: '03',
+    title: 'Engineer Precisely.',
+    subtitle: 'Resilient architectures built for scale, speed, and security.',
+    description:
+      'From database Row-Level Security and timing-safe protocols to sub-second client performance, we engineer systems that are dependable, observable, and built to endure.',
+  },
+  {
+    step: '04',
+    title: 'Build Meaningfully.',
+    subtitle: 'Delivering tangible digital impact in the real world.',
+    description:
+      'Every product, platform, and experiment we launch is measured by its real-world utility — empowering students, assisting citizens, and optimizing public infrastructure.',
+  },
+];
+
+/**
+ * Contact CTA Configuration (Homepage Section 11 & Closing sections)
+ * Headline: "Have an Idea Worth Building?"
+ * Description: "Let's turn ambitious ideas into meaningful technology."
+ * CTA: Start a Conversation.
  */
 export const contactCTAConfig: ContactCTAConfig = {
-  sectionId: '09',
-  eyebrow: '09 / CONTACT',
-  tagline: "LET'S BUILD SOMETHING MEANINGFUL.",
-  headline: 'Have an idea worth building?',
+  sectionId: '11',
+  eyebrow: '11 / START A CONVERSATION',
+  tagline: "LET'S TURN AMBITIOUS IDEAS INTO MEANINGFUL TECHNOLOGY.",
+  headline: 'Have an Idea Worth Building?',
   supportingCopy:
-    "Tell us what you're imagining. Whether it is a product, platform, experiment, or system, meaningful work begins with a clear conversation.",
-  ctaText: 'START A CONVERSATION',
+    "We collaborate with institutions, founders, and forward-looking teams to build innovative digital products and future-ready platforms. Tell us what you're imagining.",
+  ctaText: 'Start a Conversation',
   ctaHref: '/contact',
   email: siteConfig.email,
-  closingMicrocopy: 'IDEAS → CONVERSATION → EXECUTION',
+  closingMicrocopy: 'IDEAS → ARCHITECTURE → EXECUTION',
   metaLabels: {
-    protocol: 'PROTOCOL // CONVERSATION',
-    status: 'STATUS // OPEN',
-    channel: 'CHANNEL // DIRECT',
+    protocol: 'COMMUNICATION // DIRECT',
+    status: 'STATUS // OPEN FOR INQUIRIES',
+    channel: 'INBOX // DIRECT DISPATCH',
   },
 };
-

@@ -146,13 +146,6 @@ const SUBSYSTEM_MODULES: SubsystemModule[] = [
   },
 ];
 
-/**
- * CampusConnectArchitecturalVisual.
- * Abstract software architecture blueprint:
- * OPERATING CORE ───► [ATTENDANCE, IDENTITY, ACADEMICS, CREDENTIALS, ENGAGEMENT, COMMUNICATION, ADMINISTRATION]
- * Strictly monochrome, technical lines, system nodes, coordinate labels, telemetry.
- * Absolute zero GPS/map/navigation claims.
- */
 export const CampusConnectArchitecturalVisual: React.FC = () => {
   const [selectedNode, setSelectedNode] = useState<string>('attendance');
 
@@ -165,89 +158,72 @@ export const CampusConnectArchitecturalVisual: React.FC = () => {
 
   return (
     <div
-      className="relative w-full rounded-[2px] border border-border-subtle bg-surface-dark overflow-hidden select-none"
+      className="relative w-full rounded-[16px] border border-[#E6E9EF] bg-white overflow-hidden select-none shadow-sm"
       aria-labelledby="architectural-visual-title"
     >
       <h3 id="architectural-visual-title" className="sr-only">
         Campus Connect Operating System Architectural Specification Visual
       </h3>
 
-      {/* Background Architectural Grid Lines */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04] select-none"
-        aria-hidden="true"
-      >
-        <div className="h-full w-full bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:24px_24px]" />
-      </div>
-
       {/* Top Telemetry Bezel Bar */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-border-subtle px-4 sm:px-6 py-3 bg-black/60 text-[11px] font-mono text-neutral-400">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-[#E6E9EF] px-5 py-3.5 bg-[#F7F8FA] text-xs font-mono text-[#667085]">
         <div className="flex items-center gap-2.5">
-          <span className="h-2 w-2 rounded-full bg-white" aria-hidden="true" />
-          <span className="text-white font-semibold tracking-wider uppercase">
+          <span className="h-2 w-2 rounded-full bg-[#315EFA]" aria-hidden="true" />
+          <span className="text-[#101828] font-semibold tracking-wider uppercase">
             ARCH_SPEC // CC_SYSTEM_BLUEPRINT
           </span>
-          <span className="hidden sm:inline h-3 w-[1px] bg-white/15" aria-hidden="true" />
-          <span className="hidden sm:inline text-neutral-500">
+          <span className="hidden sm:inline h-3 w-[1px] bg-[#E6E9EF]" aria-hidden="true" />
+          <span className="hidden sm:inline text-[#667085]">
             ENTERPRISE CAMPUS OS
           </span>
         </div>
 
-        <div className="flex items-center gap-3 sm:gap-5 text-neutral-500">
+        <div className="flex items-center gap-3 sm:gap-5 text-[#667085]">
           <span className="hidden md:inline">RLS_ISOLATION // ENFORCED</span>
-          <span className="hidden lg:inline">TENANT_KEY // college_id</span>
-          <span className="px-2 py-0.5 font-mono text-[10px] text-white bg-neutral-900 border border-white/20 rounded-[2px]">
+          <span className="hidden lg:inline text-[#315EFA] font-medium">TENANT_KEY // college_id</span>
+          <span className="px-2.5 py-0.5 font-mono text-[11px] text-[#315EFA] bg-[#F1F3F6] border border-[#E6E9EF] rounded-full font-semibold">
             VERSION // 1.0.0
           </span>
         </div>
       </div>
 
-      {/* Coordinate Crosshairs NW / NE */}
-      <div
-        className="relative z-10 flex justify-between px-4 sm:px-6 pt-3 pb-1 text-[10px] font-mono text-neutral-600"
-        aria-hidden="true"
-      >
-        <span>+ [SPEC_NW: 19.2183° N]</span>
-        <span>+ [SPEC_NE: 72.9781° E]</span>
-      </div>
-
       {/* Main Architectural Blueprint Canvas */}
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-6">
+      <div className="relative z-10 p-6 sm:p-8 space-y-6">
         {/* Central Operating Core Node */}
-        <div className="relative p-5 sm:p-6 rounded-[2px] border border-white/20 bg-black text-center">
-          <div className="flex items-center justify-center gap-2 text-[10px] font-mono text-neutral-400 uppercase tracking-widest pb-2 border-b border-white/10">
-            <Cpu className="h-3.5 w-3.5 text-white" aria-hidden="true" />
-            <span>CENTRAL OPERATING SYSTEM CORE</span>
+        <div className="relative p-6 sm:p-8 rounded-[12px] border border-[#E6E9EF] bg-[#F7F8FA] text-center">
+          <div className="flex items-center justify-center gap-2 text-xs font-mono text-[#315EFA] uppercase tracking-widest pb-3 border-b border-[#E6E9EF]">
+            <Cpu className="h-4 w-4 text-[#315EFA]" aria-hidden="true" />
+            <span className="font-semibold">CENTRAL OPERATING SYSTEM CORE</span>
           </div>
 
-          <div className="py-3 space-y-1">
-            <div className="font-sans text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-white uppercase select-none">
+          <div className="py-4 space-y-1">
+            <div className="text-2xl sm:text-3xl font-bold tracking-tight text-[#101828] uppercase select-none">
               CAMPUS CONNECT
             </div>
-            <p className="text-xs sm:text-sm font-mono text-neutral-400 tracking-wider uppercase">
+            <p className="text-xs sm:text-sm font-mono text-[#667085] tracking-wider uppercase">
               INSTITUTIONAL NERVOUS SYSTEM · MULTI-TENANT ARCHITECTURE
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/10 text-[10px] font-mono text-neutral-500">
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#E6E9EF] text-xs font-mono text-[#667085]">
             <span>POSTGRESQL 15+ RELATIONAL CORE</span>
-            <span className="text-neutral-400">25 DENO EDGE FUNCTIONS</span>
-            <span className="text-white">62 RELATIONAL TABLES</span>
+            <span className="text-[#315EFA] font-medium">25 DENO EDGE FUNCTIONS</span>
+            <span className="text-[#101828] font-semibold">62 RELATIONAL TABLES</span>
           </div>
         </div>
 
         {/* Subsystem Telemetry Nodes Grid */}
-        <div className="space-y-2.5">
-          <div className="flex items-center justify-between text-[10px] font-mono text-neutral-400">
-            <span className="tracking-wider uppercase">
+        <div className="space-y-3">
+          <div className="flex items-center justify-between text-xs font-mono text-[#667085]">
+            <span className="tracking-wider uppercase font-semibold text-[#101828]">
               INSPECT CORE ARCHITECTURAL MODULES //
             </span>
-            <span className="text-neutral-600 hidden sm:inline">
-              SELECT MODULE TO INSPECT SPECIFICATION
+            <span className="text-[#667085] hidden sm:inline">
+              SELECT MODULE TO VIEW SPECIFICATION
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {SUBSYSTEM_MODULES.map((subsystem) => {
               const Icon = subsystem.icon;
               const isSelected = selectedNode === subsystem.id;
@@ -258,41 +234,34 @@ export const CampusConnectArchitecturalVisual: React.FC = () => {
                   type="button"
                   onClick={() => setSelectedNode(subsystem.id)}
                   aria-pressed={isSelected}
-                  className={`group relative text-left p-3.5 rounded-[2px] border transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px] ${
+                  className={`group relative text-left p-4 rounded-[10px] border transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#315EFA] min-h-[52px] ${
                     isSelected
-                      ? 'bg-neutral-900 border-white text-white'
-                      : 'bg-black/60 border-white/10 text-neutral-300 hover:border-white/30 hover:bg-neutral-950'
+                      ? 'bg-white border-[#315EFA] shadow-md'
+                      : 'bg-[#F7F8FA] border-[#E6E9EF] text-[#667085] hover:border-[#315EFA]/50 hover:bg-white'
                   }`}
                 >
-                  <div className="flex items-center justify-between text-[10px] font-mono text-neutral-400 pb-1.5 border-b border-white/10">
-                    <span className="flex items-center gap-1.5 text-white font-semibold">
-                      <Icon className="h-3 w-3 text-white shrink-0" aria-hidden="true" />
+                  <div className="flex items-center justify-between text-xs font-mono text-[#667085] pb-2 border-b border-[#E6E9EF]">
+                    <span className="flex items-center gap-1.5 text-[#101828] font-semibold">
+                      <Icon className={`h-3.5 w-3.5 ${isSelected ? 'text-[#315EFA]' : 'text-[#667085]'}`} aria-hidden="true" />
                       <span>NODE_{subsystem.code}</span>
                     </span>
                     <span
-                      className={`text-[9px] font-mono ${
-                        isSelected ? 'text-white' : 'text-neutral-500'
+                      className={`text-[10px] font-mono font-medium ${
+                        isSelected ? 'text-[#315EFA]' : 'text-[#667085]'
                       }`}
                     >
                       {isSelected ? 'INSPECTING' : 'ACTIVE'}
                     </span>
                   </div>
 
-                  <div className="pt-2 space-y-0.5">
-                    <p className="text-xs font-semibold tracking-wide text-white uppercase font-sans">
+                  <div className="pt-2.5 space-y-0.5">
+                    <p className={`text-xs font-bold tracking-tight font-sans ${isSelected ? 'text-[#315EFA]' : 'text-[#101828]'}`}>
                       {subsystem.title}
                     </p>
-                    <p className="text-[10px] font-mono text-neutral-400">
+                    <p className="text-[11px] font-mono text-[#667085]">
                       {subsystem.layer}
                     </p>
                   </div>
-
-                  {isSelected && (
-                    <div
-                      className="absolute bottom-1.5 right-2 h-1 w-1 bg-white rounded-full"
-                      aria-hidden="true"
-                    />
-                  )}
                 </button>
               );
             })}
@@ -307,35 +276,35 @@ export const CampusConnectArchitecturalVisual: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
             transition={{ duration: 0.2 }}
-            className="surface-level-2 border border-border-subtle p-4 sm:p-5 rounded-[2px] space-y-3.5"
+            className="editorial-card p-5 sm:p-6 rounded-[12px] space-y-4"
           >
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border-subtle pb-2.5">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E6E9EF] pb-3">
               <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-                <span className="text-tech-label text-white font-mono tracking-widest">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#315EFA]" aria-hidden="true" />
+                <span className="text-xs font-mono text-[#101828] font-semibold tracking-wider">
                   TELEMETRY // NODE_{activeModule.code} — {activeModule.title}
                 </span>
               </div>
-              <span className="text-[10px] font-mono text-neutral-400">
+              <span className="text-xs font-mono text-[#315EFA] font-medium">
                 {activeModule.techSpec}
               </span>
             </div>
 
-            <p className="text-xs sm:text-sm text-secondary-text leading-relaxed font-sans">
+            <p className="text-sm text-[#667085] leading-relaxed font-sans">
               {activeModule.summary}
             </p>
 
-            <div className="space-y-1.5 pt-1">
-              <span className="text-[10px] font-mono text-neutral-500 tracking-wider uppercase block">
+            <div className="space-y-2 pt-1">
+              <span className="text-xs font-mono text-[#101828] font-semibold tracking-wider uppercase block">
                 ENGINEERED CAPABILITIES //
               </span>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2" role="list">
                 {activeModule.capabilities.map((cap) => (
                   <li
                     key={cap}
-                    className="flex items-center gap-2 text-xs text-neutral-300 font-mono"
+                    className="flex items-center gap-2 text-xs text-[#667085] font-sans"
                   >
-                    <CheckCircle2 className="h-3 w-3 text-neutral-400 shrink-0" aria-hidden="true" />
+                    <CheckCircle2 className="h-3.5 w-3.5 text-[#315EFA] shrink-0" aria-hidden="true" />
                     <span>{cap}</span>
                   </li>
                 ))}
@@ -345,24 +314,15 @@ export const CampusConnectArchitecturalVisual: React.FC = () => {
         </AnimatePresence>
       </div>
 
-      {/* Coordinate Crosshairs SW / SE */}
-      <div
-        className="relative z-10 flex justify-between px-4 sm:px-6 py-1 text-[10px] font-mono text-neutral-600"
-        aria-hidden="true"
-      >
-        <span>+ [SPEC_SW: 309_TESTS]</span>
-        <span>+ [SPEC_SE: ZERO_MAP_DEPENDENCY]</span>
-      </div>
-
       {/* Bottom Telemetry Footer */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-t border-border-subtle px-4 sm:px-6 py-2.5 bg-black/60 text-[10px] font-mono text-neutral-500">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-t border-[#E6E9EF] px-5 py-3 bg-[#F7F8FA] text-xs font-mono text-[#667085]">
         <div className="flex items-center gap-2.5">
-          <span>AERVENLABS TECHNOLOGIES // FLAGSHIP BLUEPRINT</span>
+          <span className="font-semibold text-[#101828]">AERVENLABS TECHNOLOGIES // FLAGSHIP BLUEPRINT</span>
           <span className="hidden sm:inline">·</span>
           <span className="hidden sm:inline">62 RELATIONAL TABLES</span>
         </div>
-        <div className="flex items-center gap-2 text-neutral-400">
-          <Layers className="h-3 w-3 text-neutral-400" aria-hidden="true" />
+        <div className="flex items-center gap-2 text-[#315EFA] font-medium">
+          <Layers className="h-3.5 w-3.5 text-[#315EFA]" aria-hidden="true" />
           <span>ZERO-LEAK TENANT ISOLATION (RLS)</span>
         </div>
       </div>

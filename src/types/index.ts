@@ -67,6 +67,8 @@ export type ProjectStatus = 'concept' | 'in-development' | 'production-ready' | 
 
 export interface ProjectLinks {
   demo?: string;
+  live?: string;
+  website?: string;
   github?: string;
   caseStudy?: string;
   playStore?: string;
@@ -184,6 +186,64 @@ export interface CampusConnectCaseStudy {
   };
 }
 
+export interface GenericProjectCaseStudy {
+  id: string;
+  slug: string;
+  title: string;
+  primaryTagline: string;
+  secondaryPositioning: string;
+  category: string;
+  shortPositioning: string;
+  status: string;
+  version: string;
+  platformBadges: string[];
+  partnerOrInstitution?: {
+    name: string;
+    role: string;
+    description: string;
+  };
+  problems: CaseStudyProblem[];
+  objectives?: string[];
+  solutionOverview: string;
+  features: {
+    number: string;
+    title: string;
+    description: string;
+    tag?: string;
+  }[];
+  systems?: CaseStudySystemModule[];
+  personas?: CaseStudyRolePersona[];
+  architecture?: {
+    headline: string;
+    description: string;
+    layers: CaseStudyArchitectureLayer[];
+  };
+  techStack: CaseStudyTechStackGroup[];
+  metrics?: CaseStudyMetric[];
+  evolution: CaseStudyEvolutionPhase[];
+  currentStatus: {
+    stage: string;
+    timeline: string;
+    readiness: string;
+    focus: string;
+  };
+  relatedProjects?: {
+    title: string;
+    slug: string;
+    category: string;
+    description: string;
+  }[];
+  cta: {
+    eyebrow: string;
+    headline: string;
+    copy: string;
+    buttonText: string;
+    href: string;
+  };
+}
+
+export type ProjectCaseStudy = CampusConnectCaseStudy | GenericProjectCaseStudy;
+
 export interface Project {
   id: string;
   slug: string;
@@ -202,12 +262,13 @@ export interface Project {
   image?: string;
   links?: ProjectLinks;
   order?: number;
-  caseStudy?: CampusConnectCaseStudy;
+  caseStudy?: ProjectCaseStudy;
   archiveNumber?: string;
   archiveLabel?: string;
   statusLabel?: string;
   platformBadges?: string[];
   systemCode?: string;
+  accentColor?: string;
 }
 
 export interface TeamMember {
@@ -221,6 +282,7 @@ export interface TeamMember {
   discipline?: string;
   bio?: string;
   links?: SocialLinks;
+  socialLinks?: SocialLinks;
   order: number;
   featured?: boolean;
 }

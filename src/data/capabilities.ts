@@ -9,97 +9,106 @@ export interface CapabilitiesSectionConfig {
 }
 
 /**
- * Editorial configuration for Homepage Section 04 — What We Build.
- * Sequential identifier 03 / WHAT WE BUILD following 02 / THE JOURNEY.
+ * Editorial configuration for Homepage Section 05 & What We Build Page.
  */
 export const capabilitiesSectionConfig: CapabilitiesSectionConfig = {
-  sectionId: '04',
-  eyebrow: '04 / WHAT WE BUILD',
-  headline: 'From product ideas to systems designed to operate in the real world.',
+  sectionId: '05',
+  eyebrow: '05 / WHAT WE BUILD',
+  headline: 'Engineering capabilities grounded in real-world software.',
   description:
-    'We engineer digital products, scalable cloud platforms, and intelligent software systems. Every capability is grounded in architectural discipline, performance, and purposeful execution.',
-  metaLabel: 'SYSTEMS // CAPABILITIES',
+    'We engineer digital products, scalable technology platforms, and intelligent software systems. Every capability is demonstrated through production code and active initiatives.',
+  metaLabel: 'SYSTEMS // ENGINEERING DISCIPLINES',
 };
 
 /**
- * Verified technology capabilities data layer for AervenLabs Technologies Pvt. Ltd.
- * Derived strictly from verified project specifications and foundational architecture.
- * No speculative domains, buzzwords, or unverified services included.
+ * Verified technology and development capabilities for AERVENLabs.
+ * Formatted precisely around authentic engineering work.
  */
 export const capabilitiesData: Capability[] = [
   {
-    id: 'product-engineering',
+    id: 'digital-product-development',
     order: 1,
-    title: 'Product Engineering',
-    tagline: 'High-performance web and mobile application engineering.',
-    category: 'SOFTWARE & PLATFORMS',
-    systemCode: 'SYS_01 // PROD_ENG',
-    discipline: 'SOFTWARE & WEB APPLICATIONS',
+    title: 'Digital Product Development',
+    tagline: 'End-to-end product conception, architecture, and deployment.',
+    category: 'PRODUCT & PLATFORMS',
+    systemCode: 'CAP_01 // PROD_DEV',
+    discipline: 'PRODUCT LIFECYCLE',
     shortDescription:
-      'Architecting robust, responsive web applications and cross-platform mobile systems built for speed, resilience, and scale.',
+      'Transforming complex domain requirements into cohesive, intuitive digital products with clear user journeys and sustainable architecture.',
     description:
-      'We design and engineer end-to-end software applications across modern web and mobile platforms. Utilizing typed architectures, component-driven design systems, and responsive patterns, we turn complex problem spaces into intuitive, high-performance software products.',
-    technologies: ['React', 'React Native', 'TypeScript', 'Node.js', 'REST APIs'],
+      'We guide products from problem discovery and systems modeling through to production delivery. By tightly integrating UX research, typed software design, and continuous automated testing, we build digital products that users embrace and operators can maintain.',
+    technologies: ['React 18', 'TypeScript', 'Tailwind CSS', 'Vite', 'REST & GraphQL'],
   },
   {
-    id: 'platform-systems',
+    id: 'web-applications',
     order: 2,
-    title: 'Platform & Cloud Systems',
-    tagline: 'Scalable cloud infrastructure, distributed backends, and platform services.',
-    category: 'INFRASTRUCTURE & BACKEND',
-    systemCode: 'SYS_02 // CLOUD_ARCH',
-    discipline: 'CLOUD & BACKEND SYSTEMS',
+    title: 'Web Applications',
+    tagline: 'High-performance responsive applications and Progressive Web Apps (PWAs).',
+    category: 'FRONTEND ARCHITECTURE',
+    systemCode: 'CAP_02 // WEB_APPS',
+    discipline: 'MODERN WEB ENGINEERING',
     shortDescription:
-      'Developing resilient cloud backends, real-time data synchronization layers, and scalable API platforms operating in production.',
+      'Building lightning-fast, accessible single-page web applications with sub-second page transitions and offline service worker caching.',
     description:
-      'Every impactful digital product requires a dependable foundation. We architect distributed backend services, real-time databases, and cloud infrastructure engineered for low latency, secure authentication, and elastic scalability.',
-    technologies: ['Node.js', 'Supabase', 'Firebase', 'REST APIs', 'Cloud Platforms'],
+      'We treat frontend engineering as a precision discipline. Utilizing component-driven architectures, strict typography scales, and fluid layout math, our web applications achieve 100/100 Core Web Vitals while maintaining flawless responsive ergonomics across phones, tablets, and desktops.',
+    technologies: ['React', 'TypeScript', 'Workbox PWA', 'TanStack Query', 'Motion / GSAP'],
   },
   {
-    id: 'intelligent-software',
+    id: 'mobile-applications',
     order: 3,
-    title: 'Intelligent Systems & Applied AI',
-    tagline: 'Applied machine learning, algorithmic automation, and intelligent workflows.',
-    category: 'APPLIED INTELLIGENCE',
-    systemCode: 'SYS_03 // INTEL_SYS',
-    discipline: 'AI & INTELLIGENT SYSTEMS',
+    title: 'Mobile Applications',
+    tagline: 'Cross-platform native mobile solutions and hybrid runtimes.',
+    category: 'MOBILE PLATFORMS',
+    systemCode: 'CAP_03 // MOB_APPS',
+    discipline: 'CROSS-PLATFORM MOBILE',
     shortDescription:
-      'Integrating modern machine learning models and intelligent automation directly into practical product workflows.',
+      'Delivering fluid mobile experiences compiled for Android and iOS using modern Capacitor runtimes and responsive design.',
     description:
-      'Artificial intelligence is most valuable when integrated seamlessly into the product experience. We build intelligent software systems that leverage machine learning algorithms, automated data pipelines, and contextual inference to solve concrete real-world tasks.',
-    technologies: ['Modern AI & ML', 'Python', 'Automated Workflows', 'TypeScript'],
+      'We build mobile applications that bridge native hardware performance with web flexibility. Through Capacitor bridges (targeting Android SDK 36), we integrate camera-based QR scanners, biometric security, and offline data sync for platforms like Campus Connect.',
+    technologies: ['Capacitor', 'Android SDK', 'PWA', 'TypeScript', 'Mobile Web'],
   },
   {
-    id: 'interface-architecture',
+    id: 'technology-platforms',
     order: 4,
-    title: 'Interface Architecture & Design Systems',
-    tagline: 'Typography-driven design systems, accessible UI, and purposeful interactions.',
-    category: 'DESIGN & INTERACTION',
-    systemCode: 'SYS_04 // UI_ARCH',
-    discipline: 'UI/UX & PRODUCT DESIGN',
+    title: 'Technology Platforms & Cloud Systems',
+    tagline: 'Multi-tenant relational backends, real-time sync, and edge compute.',
+    category: 'CLOUD & INFRASTRUCTURE',
+    systemCode: 'CAP_04 // PLATFORMS',
+    discipline: 'BACKEND ARCHITECTURE',
     shortDescription:
-      'Crafting systematic design tokens, strict typographic hierarchies, and accessible interfaces that elevate clarity.',
+      'Architecting multi-tenant relational schemas, Row-Level Security data isolation, and low-latency edge function execution.',
     description:
-      'We treat interface design as an engineering discipline. From mathematical typography scales to accessible component hierarchies, we create rigorous design systems and interaction patterns that ensure consistency, visual restraint, and effortless user interaction.',
-    technologies: ['Design Systems', 'Responsive Architecture', 'Accessibility (a11y)', 'Geist Typography'],
+      'Impactful products demand rock-solid foundations. We design distributed relational databases partitioned by tenant IDs (such as college_id in Campus Connect), real-time WebSocket broadcast channels, and isolated serverless edge runtimes deployed globally on Vercel.',
+    technologies: ['PostgreSQL', 'Supabase', 'Deno Edge Functions', 'Row-Level Security (RLS)', 'Vercel Edge'],
   },
   {
-    id: 'experimental-technology',
+    id: 'software-engineering',
     order: 5,
-    title: 'Interactive & Experimental Technology',
-    tagline: 'Real-time interactive environments, digital prototypes, and exploratory systems.',
-    category: 'EXPLORATION & RESEARCH',
-    systemCode: 'SYS_05 // EXP_TECH',
-    discipline: 'EXPERIMENTAL TECHNOLOGY',
+    title: 'Software Engineering & Security',
+    tagline: 'Type-safe contracts, timing-safe protocols, and automated test suites.',
+    category: 'ENGINEERING STANDARDS',
+    systemCode: 'CAP_05 // SOFT_ENG',
+    discipline: 'CORE ENGINEERING',
     shortDescription:
-      'Exploring real-time rendering, interactive graphics engines, and novel software prototypes testing future capabilities.',
+      'Enforcing strict TypeScript compilation, cryptographic token authentication, and rigorous unit and integration test coverage.',
     description:
-      'Innovation demands continuous experimentation. We research and prototype emerging digital experiences, interactive simulations, and real-time graphics engines, testing new paradigms to inform future product architectures.',
-    technologies: ['Unity', 'Interactive Engines', 'Rapid Prototyping', 'Modern Web Standards'],
+      'Quality is not an afterthought — it is an engineering constraint. We enforce timing-safe token matching to prevent timing attacks, write comprehensive test suites (over 300+ automated tests in Campus Connect), and maintain clean modular folder structures.',
+    technologies: ['TypeScript', 'Vitest / Jest', 'Cryptographic Hashing', 'JWT Security', 'CI/CD Pipelines'],
+  },
+  {
+    id: 'digital-innovation-research',
+    order: 6,
+    title: 'Digital Innovation & Research',
+    tagline: 'Civic technology initiatives, transit simulation, and experimental prototyping.',
+    category: 'RESEARCH & INNOVATION',
+    systemCode: 'CAP_06 // RESEARCH',
+    discipline: 'APPLIED R&D',
+    shortDescription:
+      'Pioneering applied digital initiatives like NagrikSetu for citizen services and RAILVERSE for real-time transit intelligence.',
+    description:
+      'We commit dedicated bandwidth to exploratory software engineering. By testing real-time canvas simulations, decentralized public credentials, and low-bandwidth civic interfaces, we develop technologies that answer the emerging challenges of tomorrow.',
+    technologies: ['Canvas Simulation', 'Real-time Telemetry', 'Civic Tech Models', 'Reactive State Engines'],
   },
 ];
 
-/**
- * Backward compatibility alias
- */
 export const capabilities = capabilitiesData;
