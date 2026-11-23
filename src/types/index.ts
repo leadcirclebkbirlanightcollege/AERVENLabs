@@ -260,6 +260,8 @@ export interface Project {
   status: ProjectStatus;
   featured: boolean;
   image?: string;
+  imageUrl?: string;
+  thumbnailUrl?: string;
   links?: ProjectLinks;
   order?: number;
   caseStudy?: ProjectCaseStudy;

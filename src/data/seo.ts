@@ -62,13 +62,13 @@ export const routeSEOConfig: Record<string, Partial<SEOConfig>> = {
     ],
   },
   projects: {
-    title: `Campus Connect — Official Project Showcase | ${siteConfig.name}`,
+    title: `Our Work — Digital Products & Institutional Platforms | ${siteConfig.name}`,
     description:
-      'Explore Campus Connect, our flagship higher education campus operating system uniting academic workflows, attendance, and student life.',
+      'Explore selected digital products and platforms engineered by AERVENLabs, including Campus Connect (Higher Education Campus OS) and UNNATI 2026–27 (Official Festival Platform).',
     canonicalUrl: `${siteConfig.url}/projects`,
     breadcrumbs: [
       { name: 'Home', path: '/' },
-      { name: 'Projects', path: '/projects' },
+      { name: 'Our Work', path: '/projects' },
     ],
   },
   campusConnect: {
@@ -78,8 +78,22 @@ export const routeSEOConfig: Record<string, Partial<SEOConfig>> = {
     canonicalUrl: `${siteConfig.url}/projects/campus-connect`,
     breadcrumbs: [
       { name: 'Home', path: '/' },
-      { name: 'Projects', path: '/projects' },
+      { name: 'Our Work', path: '/projects' },
       { name: 'Campus Connect', path: '/projects/campus-connect' },
+    ],
+  },
+  unnati: {
+    title: `UNNATI 2026–27: Roots & Rhythm — Official MKMP Festival Platform | ${siteConfig.name}`,
+    description:
+      'The official digital event platform for the 16th Inter-Collegiate Cultural Festival at MKMP College Thakurli, featuring 23 competitions, interactive schedule, and online registration.',
+    canonicalUrl: `${siteConfig.url}/projects/unnati-2026-27`,
+    openGraph: {
+      image: '/assets/projects/unnati/unnati-og-banner.jpg',
+    },
+    breadcrumbs: [
+      { name: 'Home', path: '/' },
+      { name: 'Our Work', path: '/projects' },
+      { name: 'UNNATI 2026–27', path: '/projects/unnati-2026-27' },
     ],
   },
   partners: {

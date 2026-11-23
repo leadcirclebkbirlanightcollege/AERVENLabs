@@ -112,12 +112,12 @@ export const Footer: React.FC = () => {
             </nav>
           </div>
 
-          {/* Columns 4-7: Flagship Initiative */}
+          {/* Columns 4-7: Our Work */}
           <div className="lg:col-span-4 space-y-4">
             <p className="text-xs font-semibold tracking-wider text-[#101828] uppercase font-mono">
-              FLAGSHIP INITIATIVE
+              OUR WORK
             </p>
-            <ul className="space-y-2.5" aria-label="Projects directory">
+            <ul className="space-y-2.5" aria-label="Our Work directory">
               {projectsData.map((project) => (
                 <li key={project.id}>
                   <Link
@@ -127,7 +127,7 @@ export const Footer: React.FC = () => {
                     <span className="font-medium text-[#101828] group-hover:text-[#315EFA] transition-colors">
                       {project.title}
                     </span>
-                    <span className="text-xs text-[#98A2B3]">· Campus Operating System</span>
+                    <span className="text-xs text-[#98A2B3]">· {project.discipline || project.category}</span>
                     <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>

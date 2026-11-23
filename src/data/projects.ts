@@ -1,50 +1,53 @@
-import { Project, CampusConnectCaseStudy } from '../types';
+import { Project, CampusConnectCaseStudy, GenericProjectCaseStudy } from '../types';
 
 /**
  * Projects Archive Configuration
- * Exclusively focused on Campus Connect as the sole official project.
+ * Showcasing our two selected initiatives: Campus Connect & UNNATI 2026–27.
  */
 export const projectsArchiveConfig = {
   sectionId: 'projects-archive',
-  eyebrow: '01 / FLAGSHIP INITIATIVE',
-  headline: 'CAMPUS CONNECT.',
+  eyebrow: '02 / SELECTED WORK',
+  headline: 'OUR WORK.',
   description:
-    'A unified collegiate operating system connecting academic operations, dynamic QR attendance, verified digital credentials, campus events, and student engagement into one institutional platform.',
+    'We turn ideas into digital experiences that move institutions forward. From student-focused digital ecosystems to institutional event platforms, AERVENLabs works at the intersection of technology, design, and practical innovation.',
   meta: {
-    projectsCount: 'FLAGSHIP INITIATIVE // 01',
-    activeSystems: 'ACTIVE SYSTEM // 01',
-    archiveStatus: 'ARCHIVE STATUS // PRODUCTION-READY',
-    system: 'SYSTEM // HIGHER EDUCATION CAMPUS OS',
+    projectsCount: 'SELECTED WORKS // 02',
+    activeSystems: 'ACTIVE PRODUCTIONS // 02',
+    archiveStatus: 'PORTFOLIO STATUS // PRODUCTION',
+    system: 'ECOSYSTEM // HIGHER EDUCATION & EVENTS',
   },
   technicalReadout: {
-    label: 'FLAGSHIP PLATFORM',
-    items: ['CAMPUS CONNECT // ENTERPRISE CAMPUS OS'],
+    label: 'SELECTED INITIATIVES',
+    items: [
+      '01 / CAMPUS CONNECT — COLLEGIATE OPERATING SYSTEM',
+      '02 / UNNATI 2026–27 — ROOTS & RHYTHM FESTIVAL PORTAL',
+    ],
   },
   editorialBlocks: {
     problem: {
       label: 'THE CHALLENGE',
-      title: 'Institutional Operational Friction',
+      title: 'Institutional Friction & Fragmented Experiences',
       description:
-        'Disconnected administrative procedures, manual paper attendance registers, lost records, and fragmented notice channels create daily friction across higher education campuses.',
+        'Disconnected administrative procedures, manual paper registers, lost records, and unorganized event channels create daily friction across collegiate campuses.',
     },
     system: {
-      label: 'THE PLATFORM',
-      title: 'Integrated Campus Operating System',
+      label: 'THE SYSTEMS',
+      title: 'Integrated Digital Platforms',
       description:
-        'Campus Connect unifies attendance, digital student identity, timetables, coursework, examinations, event notifications, and public document authentication into one isolated multi-tenant architecture.',
+        'AERVENLabs engineers purpose-built platforms—from full-scale campus operating systems to high-energy cultural event portals—combining responsive modern frontends with resilient cloud infrastructure.',
     },
     evolution: {
-      label: 'THE JOURNEY',
-      title: 'From Classroom Prototype to Enterprise OS',
+      label: 'THE COMMITMENT',
+      title: 'Built with Institutional Rigor',
       description:
-        'Conceived and validated within active collegiate workflows, evolving from a fast attendance scanner into an enterprise-scale multi-tenant operating system.',
+        'Conceived and validated directly within active collegiate and festival environments, delivering measurable operational reliability and student delight.',
     },
   },
   footerSection: {
-    label: 'PORTFOLIO // CURRENT STATE',
-    headline: 'ONE SYSTEM. BUILT WITH INTENT.',
+    label: 'PORTFOLIO // SELECTION',
+    headline: 'TWO INITIATIVES. BUILT WITH INTENT.',
     description:
-      'AERVENLabs focuses engineering resources on deep, resilient, production-grade systems. Campus Connect represents our benchmark in higher education software infrastructure.',
+      'AERVENLabs focuses engineering discipline on deep, resilient, production-grade solutions. Explore our vision and how we collaborate with institutions.',
     ctaText: 'EXPLORE OUR VISION',
     ctaHref: '/vision',
   },
@@ -493,8 +496,170 @@ export const campusConnectCaseStudy: CampusConnectCaseStudy = {
 };
 
 /**
+ * Authoritative UNNATI 2026–27 Cultural Festival Case Study Data.
+ * Verified event architecture, competitions, schedule, and institutional collaboration with MKMP College Thakurli.
+ */
+export const unnatiCaseStudy: GenericProjectCaseStudy = {
+  id: 'unnati-2026-27',
+  slug: 'unnati-2026-27',
+  title: 'UNNATI 2026–27',
+  primaryTagline: 'Roots & Rhythm — 16th Inter-Collegiate Fest',
+  secondaryPositioning: 'Official Festival Digital Platform',
+  category: 'Institutional Event Platform & Digital Experience',
+  shortPositioning:
+    'An official digital experience and event management platform engineered for the 16th Inter-Collegiate Cultural Festival at MKMP College Thakurli, featuring 23 competitions, interactive schedules, and online registration.',
+  status: 'STATUS // COMPLETED & DEPLOYED',
+  version: 'EDITION // 16TH INTER-COLLEGIATE',
+  platformBadges: ['WEB PLATFORM // REACT + VITE', 'RESPONSIVE // MOBILE-FIRST', 'REGISTRATION // SUPABASE'],
+  partnerOrInstitution: {
+    name: 'Matrushri Kashiben Motilal Patel Senior College of Commerce & Science (MKMP College)',
+    role: 'Host Institution & Cultural Committee Partner',
+    description:
+      'Shri Dombivli Mitra Mandal’s MKMP Senior College in Thakurli (East), hosting colleges across Maharashtra for the landmark 16th edition of the annual inter-collegiate festival.',
+  },
+  problems: [
+    {
+      number: '01',
+      title: 'Dispersed event information across physical brochures',
+      description:
+        'Traditional print flyers and circulars frequently lead to fragmented event awareness, lost rulebooks, and outdated scheduling across participating colleges.',
+    },
+    {
+      number: '02',
+      title: 'Manual registration queues & coordination friction',
+      description:
+        'Handling registrations for 23 diverse competitions on paper or informal messaging creates bottlenecks, duplicate entries, and delayed verification.',
+    },
+    {
+      number: '03',
+      title: 'Schedule opacity across a 3-day multi-venue festival',
+      description:
+        'With dozens of simultaneous activities across cultural stages, sports grounds, and computer labs, participants needed a single real-time schedule timeline.',
+    },
+    {
+      number: '04',
+      title: 'Institutional brand & cultural storytelling',
+      description:
+        'The festival required a modern digital identity that honored the cultural heritage of the "Roots & Rhythm" theme while delivering a frictionless web experience.',
+    },
+  ],
+  solutionOverview:
+    'AERVENLabs designed and engineered the official UNNATI 2026–27 festival platform: a fast, mobile-first web application unifying event discovery for 23 competitions, interactive 3-day schedules, rulebook guidelines, registration tracking, and institutional wayfinding.',
+  features: [
+    {
+      number: '01',
+      title: '23-Competition Directory',
+      description:
+        'Categorized catalog spanning Performing Arts (Dance Solo/Group, Singing Solo/Group, Ethnic Fusion Fashion Show, NAAD Music Battle), Fine Arts (Nail Art, Hair Styling, Rangoli, Sketching, Mehendi, Tattoo Making), Sports (Box Cricket, Chess Boys/Girls, Carrom Boys/Girls), Gaming (BGMI, Free Fire), and Management (Brand Battle, Quiz).',
+      tag: 'EVENT CATALOG',
+    },
+    {
+      number: '02',
+      title: 'Interactive 3-Day Schedule Matrix',
+      description:
+        'Structured chronological schedule for December 3–5, 2026, breaking down reporting times, venues, rounds, and judging windows across college grounds.',
+      tag: 'TIMELINE',
+    },
+    {
+      number: '03',
+      title: 'Digital Registration & Verification Tracking',
+      description:
+        'Streamlined entry modal allowing students and contingent leaders to select events, input team rosters, submit details, and track verification status.',
+      tag: 'REGISTRATION',
+    },
+    {
+      number: '04',
+      title: 'Centralized Rules & Regulations Manual',
+      description:
+        'Transparent, downloadable and readable guidelines for each competition, including eligibility, time limits, judging criteria, and code of conduct.',
+      tag: 'GOVERNANCE',
+    },
+    {
+      number: '05',
+      title: 'Core Committee & Faculty Leadership Directory',
+      description:
+        'Official transparent contact directory featuring faculty coordinators (Prof. Neha Barnwal & Prof. Akanksha Narkhede), student heads, and help desks.',
+      tag: 'LEADERSHIP',
+    },
+    {
+      number: '06',
+      title: 'Festival Flyer & Visual Media Showcase',
+      description:
+        'High-resolution interactive digital flyer viewer and official poster gallery preserving festival aesthetics and sponsor presentations.',
+      tag: 'MEDIA',
+    },
+  ],
+  techStack: [
+    {
+      category: 'Frontend Architecture',
+      technologies: [
+        { name: 'React 18', detail: 'Component-driven user interface' },
+        { name: 'TypeScript', detail: 'Strict static typing & event schemas' },
+        { name: 'Vite', detail: 'High-performance build tooling & lightning HMR' },
+        { name: 'Tailwind CSS', detail: 'Custom heritage color tokens & responsive utilities' },
+      ],
+    },
+    {
+      category: 'Data & Backend Integration',
+      technologies: [
+        { name: 'Supabase Cloud', detail: 'Real-time database & secure storage' },
+        { name: 'Phosphor Icons', detail: 'Consistent accessible iconography' },
+      ],
+    },
+    {
+      category: 'Performance & Deployment',
+      technologies: [
+        { name: 'Vercel Edge Network', detail: 'Global CDN distribution (<1.5s mobile FCP)' },
+        { name: 'Schema.org JSON-LD', detail: 'Rich festival and college structured data' },
+      ],
+    },
+  ],
+  evolution: [
+    {
+      phase: 'Phase 01',
+      title: 'Event Architecture & Theme Alignment',
+      description:
+        'Collaborated with MKMP College cultural coordinators to distill 23 competitions, time slots, and rules into an intuitive, accessible information architecture.',
+    },
+    {
+      phase: 'Phase 02',
+      title: 'Visual Identity & Cultural Palette',
+      description:
+        'Crafted a warm, festive visual language grounded in heritage tones (#FAF7F2 ivory, #881337 crimson, gold accents, and deep navy #0F1D36) balancing tradition with digital clarity.',
+    },
+    {
+      phase: 'Phase 03',
+      title: 'Platform Development & Registration Engine',
+      description:
+        'Built the full responsive web portal with real-time event filtering, schedule timeline, and registration verification modal.',
+    },
+    {
+      phase: 'Phase 04',
+      title: 'Edge Deployment & Production Launch',
+      description:
+        'Deployed to global edge hosting at unnatiatmkmp.runs-on.dev with automated performance audits, SEO metadata, and zero-downtime reliability.',
+    },
+  ],
+  currentStatus: {
+    stage: 'Deployed & Active Production',
+    timeline: 'Official Launch for 2026–27 Academic Session',
+    readiness: '100% Operational',
+    focus: 'Serving live participant discovery and registration for the 16th Inter-Collegiate Festival.',
+  },
+  cta: {
+    eyebrow: 'OFFICIAL LIVE FESTIVAL PLATFORM',
+    headline: 'Experience UNNATI 2026–27 Live.',
+    copy: 'Explore the full 23-event directory, interactive schedule, and registration portal directly on the official MKMP College festival website.',
+    buttonText: 'Visit Live Website →',
+    href: 'https://unnatiatmkmp.runs-on.dev/',
+  },
+};
+
+/**
  * Projects data layer.
- * STRICT REQUIREMENT: Campus Connect is the ONLY project displayed anywhere on the website.
+ * STRICT REQUIREMENT: Showcase ONLY TWO works:
+ * 1. Campus Connect (Higher Education Campus OS)
+ * 2. UNNATI 2026–27 (Roots & Rhythm — 16th Inter-Collegiate Fest)
  */
 export const projectsData: Project[] = [
   {
@@ -545,11 +710,67 @@ export const projectsData: Project[] = [
     status: 'production-ready',
     featured: true,
     accentColor: '#315EFA',
+    imageUrl: '/assets/aervenlabs-logo.png',
     links: {
       demo: 'https://campusconnect.indevs.in',
       live: 'https://campusconnect.indevs.in',
       caseStudy: '/projects/campus-connect',
     },
     caseStudy: campusConnectCaseStudy,
+  },
+  {
+    id: 'unnati-2026-27',
+    slug: 'unnati-2026-27',
+    order: 2,
+    archiveNumber: '02',
+    archiveLabel: 'CULTURAL FESTIVAL // MKMP THAKURLI',
+    statusLabel: 'STATUS // COMPLETED & DEPLOYED',
+    platformBadges: ['WEB PLATFORM // REACT', 'EVENT PORTAL // 23 EVENTS', 'MKMP THAKURLI'],
+    systemCode: 'SYS_SPEC // EXP_UNNATI_02',
+    title: 'UNNATI 2026–27',
+    tagline: 'Roots & Rhythm — 16th Inter-Collegiate Fest',
+    category: 'Institutional Event Platform & Digital Experience',
+    discipline: 'EVENT DIGITAL EXPERIENCE',
+    platforms: ['Web Platform', 'Mobile-First PWA', 'Responsive Web'],
+    description:
+      'The official digital event platform for the 16th Inter-Collegiate Festival at MKMP College Thakurli, featuring 23 competitions, interactive 3-day schedules, digital rulebook, and online registration.',
+    capabilities: [
+      '23-Event Competition Directory',
+      '3-Day Interactive Festival Schedule',
+      'Online Registration & Status Tracking',
+      'Centralized Rulebook & Regulations',
+      'Core Committee & Faculty Directory',
+      'Digital Event Flyer & Poster Viewer',
+      'Institutional Wayfinding to Campus',
+    ],
+    features: [
+      'Roots & Rhythm Heritage Visual Design',
+      '23 Competitions across Arts, Sports, eSports & Management',
+      'Chronological 3-Day Schedule Matrix (Dec 3–5, 2026)',
+      'Digital Registration Entry & Verification',
+      'Official Faculty Coordinator Directory',
+      'Live Production Deployment on Vercel',
+    ],
+    technologies: [
+      'React 18',
+      'TypeScript',
+      'Vite',
+      'Tailwind CSS',
+      'Supabase',
+      'Phosphor Icons',
+      'Vercel',
+    ],
+    status: 'production-ready',
+    featured: true,
+    accentColor: '#881337',
+    imageUrl: '/assets/projects/unnati/unnati-og-banner.jpg',
+    thumbnailUrl: '/assets/projects/unnati/unnati-poster.jpg',
+    links: {
+      demo: 'https://unnatiatmkmp.runs-on.dev/',
+      live: 'https://unnatiatmkmp.runs-on.dev/',
+      website: 'https://unnatiatmkmp.runs-on.dev/',
+      caseStudy: '/projects/unnati-2026-27',
+    },
+    caseStudy: unnatiCaseStudy,
   },
 ];

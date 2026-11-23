@@ -13,6 +13,7 @@ const TeamPage = lazy(() => import('./pages/TeamPage').then(m => ({ default: m.T
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })));
 const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage').then(m => ({ default: m.ProjectDetailPage })));
 const CampusConnectPage = lazy(() => import('./pages/CampusConnectPage').then(m => ({ default: m.CampusConnectPage })));
+const UnnatiPage = lazy(() => import('./pages/UnnatiPage').then(m => ({ default: m.UnnatiPage })));
 const PartnersPage = lazy(() => import('./pages/PartnersPage').then(m => ({ default: m.PartnersPage })));
 const VisionPage = lazy(() => import('./pages/VisionPage').then(m => ({ default: m.VisionPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
@@ -36,8 +37,9 @@ export const App: React.FC = () => {
             <Route path="what-we-build" element={<WhatWeBuildPage />} />
             <Route path="team" element={<TeamPage />} />
             <Route path="projects" element={<ProjectsPage />} />
-            {/* Dedicated case study route for Campus Connect and dynamic detail pages for all projects */}
+            {/* Dedicated case study routes for Campus Connect and UNNATI 2026–27 */}
             <Route path="projects/campus-connect" element={<CampusConnectPage />} />
+            <Route path="projects/unnati-2026-27" element={<UnnatiPage />} />
             <Route path="projects/:slug" element={<ProjectDetailPage />} />
             <Route path="partners" element={<PartnersPage />} />
             <Route path="vision" element={<VisionPage />} />

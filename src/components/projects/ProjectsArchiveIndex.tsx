@@ -29,7 +29,7 @@ export const ProjectsArchiveIndex: React.FC<ProjectsArchiveIndexProps> = ({ proj
             </span>
           </div>
           <span className="text-xs text-[#667085] font-mono tracking-widest uppercase">
-            FLAGSHIP INITIATIVE // VERIFIED PRODUCTION
+            SELECTED DIGITAL PRODUCTS &amp; EXPERIENCES // VERIFIED PRODUCTION
           </span>
         </div>
 

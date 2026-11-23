@@ -178,7 +178,7 @@ export const Hero: React.FC = () => {
                 <div className="p-4 rounded-[10px] bg-white border border-[#E6E9EF] shadow-sm flex items-center justify-between">
                   <div className="space-y-1">
                     <span className="font-mono text-[10px] text-[#315EFA] font-semibold tracking-wider">
-                      FLAGSHIP PLATFORM // HIGHER EDUCATION
+                      WORK 01 // HIGHER EDUCATION PLATFORM
                     </span>
                     <h3 className="font-semibold text-base text-[#101828]">Campus Connect</h3>
                     <p className="text-xs text-[#667085]">
@@ -192,22 +192,22 @@ export const Hero: React.FC = () => {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-3.5 rounded-[10px] bg-white border border-[#E6E9EF] shadow-sm space-y-1">
-                    <span className="font-mono text-[10px] text-[#0D9488] font-semibold tracking-wider">
-                      CAMPUS NAVIGATION
+                    <span className="font-mono text-[10px] text-[#881337] font-semibold tracking-wider">
+                      WORK 02 // CULTURAL FESTIVAL
                     </span>
-                    <h4 className="font-semibold text-sm text-[#101828]">Wayfinding Engine</h4>
+                    <h4 className="font-semibold text-sm text-[#101828]">UNNATI 2026–27</h4>
                     <p className="text-[11px] text-[#667085]">
-                      Multi-Venue Vector Mapping & Realtime Routes
+                      Roots &amp; Rhythm · 23 Events · MKMP Thakurli
                     </p>
                   </div>
 
                   <div className="p-3.5 rounded-[10px] bg-white border border-[#E6E9EF] shadow-sm space-y-1">
-                    <span className="font-mono text-[10px] text-[#7657E8] font-semibold tracking-wider">
-                      CAMPUS ENGAGEMENT
+                    <span className="font-mono text-[10px] text-[#0D9488] font-semibold tracking-wider">
+                      INSTITUTIONAL REACH
                     </span>
-                    <h4 className="font-semibold text-sm text-[#101828]">Events & Bulletins</h4>
+                    <h4 className="font-semibold text-sm text-[#101828]">Digital Experiences</h4>
                     <p className="text-[11px] text-[#667085]">
-                      Verified Broadcasts & Automated Ingestion
+                      Production Edge Systems for Campuses
                     </p>
                   </div>
                 </div>
