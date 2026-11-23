@@ -193,21 +193,21 @@ export const Hero: React.FC = () => {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-3.5 rounded-[10px] bg-white border border-[#E6E9EF] shadow-sm space-y-1">
                     <span className="font-mono text-[10px] text-[#0D9488] font-semibold tracking-wider">
-                      CIVIC TECHNOLOGY
+                      CAMPUS NAVIGATION
                     </span>
-                    <h4 className="font-semibold text-sm text-[#101828]">NagrikSetu</h4>
+                    <h4 className="font-semibold text-sm text-[#101828]">Wayfinding Engine</h4>
                     <p className="text-[11px] text-[#667085]">
-                      Public Service & Notice Access
+                      Multi-Venue Vector Mapping & Realtime Routes
                     </p>
                   </div>
 
                   <div className="p-3.5 rounded-[10px] bg-white border border-[#E6E9EF] shadow-sm space-y-1">
                     <span className="font-mono text-[10px] text-[#7657E8] font-semibold tracking-wider">
-                      TRANSIT MOBILITY
+                      CAMPUS ENGAGEMENT
                     </span>
-                    <h4 className="font-semibold text-sm text-[#101828]">RAILVERSE</h4>
+                    <h4 className="font-semibold text-sm text-[#101828]">Events & Bulletins</h4>
                     <p className="text-[11px] text-[#667085]">
-                      Railway Simulation Engine
+                      Verified Broadcasts & Automated Ingestion
                     </p>
                   </div>
                 </div>

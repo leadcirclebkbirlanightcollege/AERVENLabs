@@ -20,7 +20,7 @@ export const TermsPage: React.FC = () => {
       number: '01',
       title: 'ACCEPTANCE OF TERMS & SCOPE OF SERVICE',
       content:
-        'These Terms & Conditions ("Terms") govern access to and use of the website, software applications, platforms, and services operated by AERVENLabs Technologies Pvt. Ltd. ("AERVENLabs", "we", "our"). By accessing or using our websites or platforms, including Campus Connect, NagrikSetu, and RAILVERSE, you agree to be bound by these Terms and our Privacy Policy. If you do not agree, you must cease using our services immediately.',
+        'These Terms & Conditions ("Terms") govern access to and use of the website, software applications, platforms, and services operated by AERVENLabs Technologies Pvt. Ltd. ("AERVENLabs", "we", "our"). By accessing or using our websites or platforms, including Campus Connect, you agree to be bound by these Terms and our Privacy Policy. If you do not agree, you must cease using our services immediately.',
     },
     {
       id: 'licensing',

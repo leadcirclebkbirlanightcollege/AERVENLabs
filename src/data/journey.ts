@@ -56,11 +56,11 @@ export const journeyMilestones: JourneyMilestone[] = [
   {
     id: 'ecosystem-expansion',
     phase: 'PHASE 04',
-    category: 'ECOSYSTEM EXPANSION',
-    title: 'Civic & Mobility Platform Initiatives',
-    shortStatement: 'Broadening into civic digital access and transit intelligence.',
+    category: 'PLATFORM MATURITY',
+    title: 'Enterprise Scalability & Platform Ecosystem',
+    shortStatement: 'Advancing multi-tenant resilience, statutory compliance, and mobile ecosystem.',
     description:
-      'Expanding our software catalog to include NagrikSetu (lightweight civic information access) and RAILVERSE (real-time railway network simulation and transit telemetry), transforming ambitious ideas into purposeful technology across higher education, civic infrastructure, and transit mobility.',
+      'Evolving Campus Connect into a hardened, high-availability platform with compiled Android release packages, sub-second edge functions, automated statutory percentage compilations, and cryptographic public credential verification.',
     order: 4,
   },
 ];

@@ -23,8 +23,6 @@ export const siteConfig = {
     'AERVENLabs Technologies',
     'AERVENLabs Technologies Pvt. Ltd.',
     'Campus Connect',
-    'NagrikSetu',
-    'RAILVERSE',
     'Digital Product Engineering',
     'Educational Technology Platform',
     'Software Architecture',

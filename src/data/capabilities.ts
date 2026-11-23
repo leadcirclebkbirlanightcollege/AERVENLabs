@@ -99,15 +99,15 @@ export const capabilitiesData: Capability[] = [
     id: 'digital-innovation-research',
     order: 6,
     title: 'Digital Innovation & Research',
-    tagline: 'Civic technology initiatives, transit simulation, and experimental prototyping.',
+    tagline: 'Experimental architecture, trust protocols, and future-ready prototyping.',
     category: 'RESEARCH & INNOVATION',
     systemCode: 'CAP_06 // RESEARCH',
     discipline: 'APPLIED R&D',
     shortDescription:
-      'Pioneering applied digital initiatives like NagrikSetu for citizen services and RAILVERSE for real-time transit intelligence.',
+      'Pioneering applied software architectures, zero-knowledge credentials, and high-concurrency event telemetry.',
     description:
-      'We commit dedicated bandwidth to exploratory software engineering. By testing real-time canvas simulations, decentralized public credentials, and low-bandwidth civic interfaces, we develop technologies that answer the emerging challenges of tomorrow.',
-    technologies: ['Canvas Simulation', 'Real-time Telemetry', 'Civic Tech Models', 'Reactive State Engines'],
+      'We commit dedicated bandwidth to exploratory software engineering. By testing real-time event telemetry, decentralized zero-auth public credentials, and high-performance reactive interfaces, we develop technologies that answer the emerging challenges of tomorrow.',
+    technologies: ['Timing-Safe Protocols', 'Real-time Telemetry', 'Zero-Auth Verification', 'Reactive State Engines'],
   },
 ];
 

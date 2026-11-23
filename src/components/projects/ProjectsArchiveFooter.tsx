@@ -31,13 +31,13 @@ export const ProjectsArchiveFooter: React.FC = () => {
                 id="archive-current-state-title"
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#101828] leading-[1.08]"
               >
-                FOUR SYSTEMS.
+                ONE SYSTEM.
                 <br />
-                <span className="text-[#315EFA]">MORE TO BUILD.</span>
+                <span className="text-[#315EFA]">BUILT WITH INTENT.</span>
               </h2>
 
               <p className="text-base sm:text-lg text-[#667085] leading-relaxed font-sans max-w-2xl pt-2">
-                AERVENLabs continues to explore purposeful software, intelligent systems, and digital infrastructure across education, civic engagement, logistics, and company platforms.
+                AERVENLabs focuses engineering effort on deep, resilient, production-grade systems. Campus Connect represents our benchmark in higher education enterprise infrastructure.
               </p>
             </div>
 

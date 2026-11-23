@@ -112,10 +112,10 @@ export const Footer: React.FC = () => {
             </nav>
           </div>
 
-          {/* Columns 4-7: Projects & Initiatives */}
+          {/* Columns 4-7: Flagship Initiative */}
           <div className="lg:col-span-4 space-y-4">
             <p className="text-xs font-semibold tracking-wider text-[#101828] uppercase font-mono">
-              PROJECTS & INITIATIVES
+              FLAGSHIP INITIATIVE
             </p>
             <ul className="space-y-2.5" aria-label="Projects directory">
               {projectsData.map((project) => (
@@ -127,7 +127,7 @@ export const Footer: React.FC = () => {
                     <span className="font-medium text-[#101828] group-hover:text-[#315EFA] transition-colors">
                       {project.title}
                     </span>
-                    <span className="text-xs text-[#98A2B3]">· {project.category.split(' ')[0]}</span>
+                    <span className="text-xs text-[#98A2B3]">· Campus Operating System</span>
                     <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>

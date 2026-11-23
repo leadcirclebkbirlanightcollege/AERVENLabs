@@ -9,13 +9,11 @@ import { CampusConnectFeature } from '../components/projects/CampusConnectFeatur
 import { ProjectsArchiveFooter } from '../components/projects/ProjectsArchiveFooter';
 
 /**
- * ProjectsPage — Official Technology Archive (/projects).
+ * ProjectsPage — Official Technology Showcase (/projects).
  *
- * White-first editorial technology archive showcasing all 4 authentic AERVENLabs projects:
- * 1. Campus Connect
- * 2. NagrikSetu
- * 3. RAILVERSE
- * 4. AERVENLabs Platform
+ * STRICT REQUIREMENT: Campus Connect is the ONLY project displayed anywhere on the website.
+ * White-first editorial technology presentation focused on Campus Connect as the flagship
+ * Higher Education Enterprise Campus Operating System.
  */
 export const ProjectsPage: React.FC = () => {
   useSEO(
@@ -33,7 +31,7 @@ export const ProjectsPage: React.FC = () => {
       {/* 01 / ARCHIVE HERO */}
       <ProjectsHero />
 
-      {/* 02 / SELECTED WORK: Editorial Engineering Ledger / Index for all 4 projects */}
+      {/* 02 / SELECTED WORK: Editorial Engineering Ledger showcasing Campus Connect */}
       <ProjectsArchiveIndex projects={projectsData} />
 
       {/* 03 / CAMPUS CONNECT FLAGSHIP FEATURE: Abstract Architectural System */}

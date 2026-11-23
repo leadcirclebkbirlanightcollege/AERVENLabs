@@ -20,7 +20,7 @@ import { ContactCTA } from '../components/home/ContactCTA';
  * Section 03: Brand Introduction ("Not Just Building Technology. Building Possibilities.")
  * Section 04: Our Approach ("Think Beyond. Design Intelligently. Engineer Precisely. Build Meaningfully.")
  * Section 05: What We Build (Capabilities: Digital Product Dev, Web, Mobile, Platforms, Engineering, Innovation)
- * Section 06: Featured Projects (Campus Connect, NagrikSetu, RAILVERSE, AERVENLabs Platform)
+ * Section 06: Featured Project — Campus Connect (Flagship Showcase)
  * Section 07: Our Journey (Authentic Timeline & Progression)
  * Section 08: Our Philosophy & Vision ("The Future Isn't Something We Wait For. It's Something We Build.")
  * Section 09: Team (All 8 Verified Builders with Clean Portraits & Biographies)

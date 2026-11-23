@@ -65,8 +65,8 @@ export const JourneyPage: React.FC = () => {
     'ecosystem-expansion': [
       'Edge Runtime Computing (25 Deno Functions)',
       'Zero-Auth Cryptographic Credential Protocol',
-      'NagrikSetu Civic Information Access Prototype',
-      'RAILVERSE Railway Simulation & Telemetry Engine',
+      'Android Native Bridge (SDK 36 Capacitor)',
+      'VAPID ES256 Push Notification Pipeline',
     ],
   };
 

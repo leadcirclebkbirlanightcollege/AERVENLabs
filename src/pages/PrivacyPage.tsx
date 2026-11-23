@@ -27,7 +27,7 @@ export const PrivacyPage: React.FC = () => {
       number: '02',
       title: 'MULTI-TENANT DATA ISOLATION & ROW-LEVEL SECURITY',
       content:
-        'All client applications, including Campus Connect and NagrikSetu, utilize multi-tenant database architectures partitioned strictly by unique institutional and authority identifiers. At the database core, PostgreSQL Row-Level Security (RLS) policies enforce mathematical data segregation at execution time. Under no circumstance can one institution or unauthorized user query or access data belonging to another tenant.',
+        'All client applications, including Campus Connect, utilize multi-tenant database architectures partitioned strictly by unique institutional identifiers. At the database core, PostgreSQL Row-Level Security (RLS) policies enforce mathematical data segregation at execution time. Under no circumstance can one institution or unauthorized user query or access data belonging to another tenant.',
     },
     {
       id: 'collected-information',

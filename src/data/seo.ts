@@ -62,9 +62,9 @@ export const routeSEOConfig: Record<string, Partial<SEOConfig>> = {
     ],
   },
   projects: {
-    title: `Projects & Initiatives — ${siteConfig.name}`,
+    title: `Campus Connect — Official Project Showcase | ${siteConfig.name}`,
     description:
-      'Explore digital products and platforms engineered by AERVENLabs, including Campus Connect, NagrikSetu, and RAILVERSE.',
+      'Explore Campus Connect, our flagship higher education campus operating system uniting academic workflows, attendance, and student life.',
     canonicalUrl: `${siteConfig.url}/projects`,
     breadcrumbs: [
       { name: 'Home', path: '/' },
@@ -80,39 +80,6 @@ export const routeSEOConfig: Record<string, Partial<SEOConfig>> = {
       { name: 'Home', path: '/' },
       { name: 'Projects', path: '/projects' },
       { name: 'Campus Connect', path: '/projects/campus-connect' },
-    ],
-  },
-  nagrikSetu: {
-    title: `NagrikSetu — Civic Technology & Public Service Digital Initiative | ${siteConfig.name}`,
-    description:
-      'A digital initiative focused on citizen-oriented connectivity, accessible municipal notices, and direct public service transparency.',
-    canonicalUrl: `${siteConfig.url}/projects/nagriksetu`,
-    breadcrumbs: [
-      { name: 'Home', path: '/' },
-      { name: 'Projects', path: '/projects' },
-      { name: 'NagrikSetu', path: '/projects/nagriksetu' },
-    ],
-  },
-  railverse: {
-    title: `RAILVERSE — Transit Systems & Real-Time Mobility Technology | ${siteConfig.name}`,
-    description:
-      'A technology initiative within AERVENLabs focused on dynamic railway simulation, station telemetry, and commuter flow analytics.',
-    canonicalUrl: `${siteConfig.url}/projects/railverse`,
-    breadcrumbs: [
-      { name: 'Home', path: '/' },
-      { name: 'Projects', path: '/projects' },
-      { name: 'RAILVERSE', path: '/projects/railverse' },
-    ],
-  },
-  aervenlabsWebsite: {
-    title: `AERVENLabs Platform — Digital Flagship | ${siteConfig.name}`,
-    description:
-      'The company\'s official digital platform, engineered as a white-first, high-performance showcase of AERVENLabs\' product ecosystem.',
-    canonicalUrl: `${siteConfig.url}/projects/aervenlabs-website`,
-    breadcrumbs: [
-      { name: 'Home', path: '/' },
-      { name: 'Projects', path: '/projects' },
-      { name: 'AERVENLabs Platform', path: '/projects/aervenlabs-website' },
     ],
   },
   partners: {
